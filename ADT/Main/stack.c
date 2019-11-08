@@ -1,9 +1,3 @@
-/* Nama             : Garin Ichsan Nugraha */
-/* NIM              : 18218050 */
-/* Tanggal          : 2 Oktober 2019 */
-/* Topik Praktikum  : Stack */
-/* Deskripsi        : implementasi dari stack.h */
-
 #include <stdio.h>
 #include "stack.h"
 

@@ -1,9 +1,3 @@
-/* Nama : Garin Ichsan Nugraha */
-/* NIM : 18218050 */
-/* Tanggal : 10 September 2019 */
-/* Topik Praktikum : array.c */
-/* Deskripsi : implementasi dari array.h */
-
 #include <stdio.h>
 #include "array.h"
 

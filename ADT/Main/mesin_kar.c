@@ -1,9 +1,3 @@
-/* Nama             : Garin Ichsan Nugraha */
-/* NIM              : 18218050 */
-/* Tanggal          : 19 September 2019 */
-/* Topik Praktikum  : Mesin Karakter */
-/* Deskripsi        : implementasi dari mesin_kar.h */
-
 #include "mesin_kar.h"
 
 char CC;

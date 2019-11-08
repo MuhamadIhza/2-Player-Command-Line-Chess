@@ -1,9 +1,3 @@
-/* Nama             : Garin Ichsan Nugraha */
-/* NIM              : 18218050 */
-/* Tanggal          : 24 Oktober 2019 */
-/* Topik Praktikum  : List Linear */
-/* Deskripsi        : implementasi list linear */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "listlinier.h"

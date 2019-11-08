@@ -1,9 +1,3 @@
-/* Nama             : Garin Ichsan Nugraha */
-/* NIM              : 18218050 */
-/* Tanggal          : 25 September 2019 */
-/* Topik Praktikum  : Mesin Kata */
-/* Deskripsi        : implementasi dari mesin_kata.h */
-
 #include <stdio.h>
 #include "mesin_kata.h"
 
