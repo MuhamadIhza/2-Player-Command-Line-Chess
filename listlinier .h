@@ -15,7 +15,8 @@ typedef struct {
 	int y;
 	char infobidak;
 } infotype;
-typedef struct tElmtlist *address;
+typedef struct tElmt
+list *address;
 typedef struct tElmtlist { 
 	infotype info;
 	address next;
