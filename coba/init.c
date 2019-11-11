@@ -1,4 +1,6 @@
 #include "init.h"
+#include "listlinier.h"
+#include "Main/array.h"
 void inisialisasi_papan(List *L){
     CreateEmpty(L);
     InsVFirst(L,'R');
@@ -29,4 +31,20 @@ void inisialisasi_papan(List *L){
     InsVFirst(L,'b');
     InsVFirst(L,'h');
     InsVFirst(L,'r');
+}
+
+TabInt ListToArr (List L)
+{
+    TabInt T;
+    address P;
+    int 
+    List Bidak; 
+    inisialisasi_papan(&Bidak);
+    MakeEmpty(&T);
+    P = First(Bidak);
+    while (P != Nil){
+        for 
+
+    }
+
 }
