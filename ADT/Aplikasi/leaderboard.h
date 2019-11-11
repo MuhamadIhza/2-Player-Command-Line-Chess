@@ -2,6 +2,7 @@
 #define __SCORE_BOARD__
 
 #include "../Main/mesin_kata.h"
+#include "../Main/prioqueue.h"
 
 void savedata();
 void bacasb();
