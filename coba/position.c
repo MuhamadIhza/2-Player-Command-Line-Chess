@@ -9,9 +9,6 @@
 #define   KING    5
 #define   EMPTY   6
 
-#define   WHITE   0
-#define   BLACK   1
-
 /* written by Ichsan Sholeh Abdurrahim*/
 /* 18218026 */
 /* Information Systems and Technology ITB 2018 */
