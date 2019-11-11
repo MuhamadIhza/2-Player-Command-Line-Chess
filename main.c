@@ -1,4 +1,12 @@
 #include <stdio.h>
+#define   VALUE_PAWN      1
+#define   VALUE_KNIGHT    2
+#define   VALUE_BISHOP    4
+#define   VALUE_ROOK      4
+#define   VALUE_QUEEN     8
+#define   VALUE_KING      10
+
+#define   MATE            20
 
 /* written by Muhamad Hudan Widzamil*/
 /* 18218003 */
