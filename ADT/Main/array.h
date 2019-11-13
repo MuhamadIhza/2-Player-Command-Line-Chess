@@ -3,6 +3,7 @@
 /* Penempatan elemen selalu rapat kiri */
 
 #include "boolean.h"
+#include "../coba/listlinier.h"
 
 #ifndef ARRAY_H 
 #define ARRAY_H
@@ -16,10 +17,15 @@
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
 typedef char ElType;
+typedef struct{
+	char Isi[IdxMax-IdxMin+1];
+	int x;
+	int y;
+} ElTipe;
 
 typedef struct 
 {
-	ElType TI [IdxMax-IdxMin+1]; /* memori tempat penyimpan elemen (container) */
+	ElTipe TI; /* memori tempat penyimpan elemen (container) */
 	int Neff; /* banyaknya elemen efektif */
 } TabInt;
 
@@ -67,7 +73,7 @@ void SetTab (TabInt Tin, TabInt *Tout);
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl (TabInt *T, IdxType i, ElType v);
+void SetEl (TabInt *T, IdxType i, infotype v);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */

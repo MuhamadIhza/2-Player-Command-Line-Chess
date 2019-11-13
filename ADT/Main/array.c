@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "array.h"
+#include "listlinier.h"
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
@@ -50,8 +51,10 @@ void SetTab (TabInt Tin, TabInt *Tout){
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl (TabInt *T, IdxType i, ElType v){
-    (*T).TI[i]=v;
+void SetEl (TabInt *T, IdxType i, infotype v){
+    (*T).TI.Isi[i]=v.Infobidak;
+    (*T).TI.x = v.X;
+    (*T).TI.y = v.Y;
 }
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */

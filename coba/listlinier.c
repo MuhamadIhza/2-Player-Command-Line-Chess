@@ -11,7 +11,7 @@
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L)
+boolean IsEmptyList (List L)
 /* Mengirim true jika list kosong */
 {
 	return First(L)==Nil;
@@ -56,7 +56,7 @@ address Search (List L, infotype X)
 	P = First(L);
 	boolean found = false;
 	while ((P!=Nil)&&(!found)) {
-		if (X=Info(P)) {
+		if (X.Infobidak=Infobidak(P)) {
 			found = true;
 		} else {
 			P = Next(P);
@@ -132,7 +132,7 @@ void InsertLast (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 {
-	if (IsEmpty(*L)) {
+	if (IsEmptyList(*L)) {
 		InsertFirst(L,P);
 	} else {
 		address Last;
@@ -161,12 +161,12 @@ void DelP (List *L, infotype X)
 /* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
 {
-	if (!IsEmpty(*L)) {
+	if (!IsEmptyList(*L)) {
 		address P,Prec;
 		boolean found = false;
 		P = First(*L);
 		while (!found) {
-			if (Info(P)==X) {
+			if (Infobidak(P)==X.Infobidak) {
 				found = true;
 			} else {
 				Prec = P;
@@ -223,12 +223,12 @@ void PrintInfo (List L)
 {
 	printf("[");
 	address P = First(L);
-	if (! IsEmpty(L)) {
-		printf("%d",Info(P));
+	if (! IsEmptyList(L)) {
+		printf("%c",Infobidak(P));
 		P = Next(P);
 	}
 	while(P!=Nil) {
-		printf(",%d",Info(P));
+		printf(",%c",Infobidak(P));
 		P = Next(P);
 	}
 	printf("]");
@@ -249,9 +249,9 @@ void PrintBoard (List L)
 	
 	int count = 1;
 	while(P!=Nil) {
-		if (Info(P)!='_')
+		if (Infobidak(P) != '_')
 		{
-			printf("|%c|",Info(P));
+			printf("|%c|",Infobidak(P));
 		}else
 		{
 			printf("| |");
@@ -268,7 +268,7 @@ void PrintBoard (List L)
 	}
 	printf("\n");
 }
-int NbElmt (List L)
+int NbElmtList (List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {
 	int num = 0;
@@ -280,32 +280,7 @@ int NbElmt (List L)
 	return num;
 }
 /*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
-infotype Max (List L)
-/* Mengirimkan nilai Info(P) yang maksimum */
-{
-	/*if (!IsEmpty(L)) {
-		infotype Maks;
-		address P = First(L);
-		Maks = Info(P);
-		while (P!=Nil) {
-			P = Next(P);
-			if (Info(P)>Maks) {
-				Maks = Info(P);
-			}
-		}
-		return Maks;
-	}*/
-	infotype maks;
-	address P = First(L);
-	maks = Info(P);
-	while (Next(P)!=Nil) {
-		P = Next(P);
-		if (Info(P)>maks) {
-			maks = Info(P);
-		}
-	}
-	return maks;
-}
+
 /****************** PROSES TERHADAP LIST ******************/
 void Konkat1 (List *L1, List *L2, List *L3)
 /* I.S. L1 dan L2 sembarang */
@@ -316,7 +291,7 @@ void Konkat1 (List *L1, List *L2, List *L3)
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
 {
 	address Last;
-	if (IsEmpty(*L1)) {
+	if (IsEmptyList(*L1)) {
 		First(*L3)=First(*L2);
 		CreateEmpty(L2);
 	} else {
