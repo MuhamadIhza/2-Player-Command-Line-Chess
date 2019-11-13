@@ -35,7 +35,7 @@ IdxType GetLastIdx (TabInt T){
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
 ElType GetElmt (TabInt T, IdxType i){
-    return T.TI[i];
+    return T.TI[i].Isi;
 }
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 /* Mengirimkan elemen tabel yang ke-i */
@@ -45,16 +45,16 @@ ElType GetElmt (TabInt T, IdxType i){
 void SetTab (TabInt Tin, TabInt *Tout){
     (*Tout).Neff=Tin.Neff;
     for(int i=IdxMin;i<=Tin.Neff;i++){
-        (*Tout).TI[i]=Tin.TI[i];
+        (*Tout).TI[i].Isi=Tin.TI[i].Isi;
     }
 }
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
 void SetEl (TabInt *T, IdxType i, infotype v){
-    (*T).TI.Isi[i]=v.Infobidak;
-    (*T).TI.x = v.X;
-    (*T).TI.y = v.Y;
+    (*T).TI[i].Isi = v.Infobidak;
+    (*T).TI[i].x = v.X;
+    (*T).TI[i].y = v.Y;
 }
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */

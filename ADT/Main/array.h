@@ -3,7 +3,7 @@
 /* Penempatan elemen selalu rapat kiri */
 
 #include "boolean.h"
-#include "../coba/listlinier.h"
+#include "listlinier.h"
 
 #ifndef ARRAY_H 
 #define ARRAY_H
@@ -18,16 +18,18 @@
 typedef int IdxType;
 typedef char ElType;
 typedef struct{
-	char Isi[IdxMax-IdxMin+1];
+	char Isi;
 	int x;
 	int y;
 } ElTipe;
 
+
 typedef struct 
 {
-	ElTipe TI; /* memori tempat penyimpan elemen (container) */
+	ElTipe TI[IdxMax-IdxMin+1]; /* memori tempat penyimpan elemen (container) */
 	int Neff; /* banyaknya elemen efektif */
 } TabInt;
+
 
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */
