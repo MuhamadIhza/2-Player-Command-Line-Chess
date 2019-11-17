@@ -21,7 +21,7 @@ int main(){
 
 void main_menu(){
   int selection;
-  char username1,username2;
+  char username1[20],username2[20];
   printf("-------------------------------------------------------\n");
   printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
   printf("-------------------------------------------------------\n\n");
@@ -40,7 +40,7 @@ void main_menu(){
   scanf("%d",&selection);
   if (selection == 1) {
     printf("Masukkan username player 1 : ");
-    scanf("%c \n\n",&username1);
+    scanf("%s",username1);
     printf("Masukkan username player 2 : ");
-    scanf("%c \n",&username2);}
+    scanf("%s",username2);}
 }
