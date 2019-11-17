@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "leaderboard.h"
 
 char filename[63],*pemain,*sscore;
@@ -7,7 +8,7 @@ static FILE *file;
 
 void addtolb(char* pemain,int score){
     file = fopen("../../Data/Leaderboard.csv", "a");
-    fprintf(file, "%s %d\n",pemain,score);
+    fprintf(file, "%s,%d\n",pemain,score);
 }
 
 void printlb(){
@@ -15,29 +16,27 @@ void printlb(){
     infotype X;
 
     STARTKATA("../../Data/Leaderboard.csv");
+    CreateEmpty(&Q);
 
     while (CC!=EOF) {
-        X.nama = CKata.TabKata;
+        strcpy(X.nama,CKata.TabKata);
         ADVKATA();
         X.score = toint(CKata.TabKata);
         ADVKATA();
         Add(&Q,X);
-        printf("%s\n",InfoHead(Q).nama);
+        printf("%s\n",X.nama);
     }
 
     printf("+-----------------------------------------------------+\n");
     printf("|                   Leaderboard                       |\n");
-<<<<<<< HEAD
     printf("-------------------------------------------------------\n\n");
     int i=1;
+    printf(" No | \t Score \t\t Nama \n");
+
     while (!IsEmpty(Q)){
         Del(&Q,&X);
-        printf(" %d | \t %d \t %s \n", i, X.score, X.nama);
-=======
-    printf("+-----------------------------------------------------+\n\n");
-    for (int i=0;i<=Q.MaxEl;i++){
-        printf("\t %d | \t %d \t %s \n", i, Q.T[i].prio, Q.T[i].info);
->>>>>>> b6c27f2fa2acbab843c4bbb985354cea1e9e0aaa
+        printf(" %d  | \t  %d \t %s \n", i, X.score, X.nama);
+        i++;
     }
     printf("_______________________________________________________\n\n");
 

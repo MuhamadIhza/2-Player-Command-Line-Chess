@@ -21,16 +21,20 @@ int main(){
 
 void main_menu(){
   int selection;
-  char username1,username2;
+  char username1[20],username2[20];
   printf("-------------------------------------------------------\n");
   printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-  printf("-------------------------------------------------------\n\n");
-  printf("              ___        ___ _____ _____               \n");
-  printf("             |    |___| |___ |___  |___                \n");
-  printf("             |___ |   | |___ ____| ____|               \n\n");
-  printf("            /////////////////////////////              \n\n");
-  printf("                     © CGI 2019                        \n\n");
-  printf("-------------------------------------------------------\n");
+  printf("|-----------------------------------------------------|\n");
+  printf("|                                                     |\n");
+  printf("|             ___        ___ _____ _____              |\n");
+  printf("|            |    |___| |___ |___  |___               |\n");
+  printf("|            |___ |   | |___ ____| ____|              |\n");
+  printf("|                                                     |\n");
+  printf("|           /////////////////////////////             |\n");
+  printf("|                                                     |\n");
+  printf("|                    © CGI 2019                       |\n");
+  printf("|                                                     |\n");
+  printf("|-----------------------------------------------------|\n");
   printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
   printf("-------------------------------------------------------\n\n");
   printf("Select menu below\n");
@@ -40,7 +44,7 @@ void main_menu(){
   scanf("%d",&selection);
   if (selection == 1) {
     printf("Masukkan username player 1 : ");
-    scanf("%c \n\n",&username1);
+    scanf("%s",username1);
     printf("Masukkan username player 2 : ");
-    scanf("%c \n",&username2);}
+    scanf("%s",username2);}
 }
