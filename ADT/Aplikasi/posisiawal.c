@@ -114,7 +114,7 @@ void PrintArray(TabInt *T)
             for (j=0;j<8;j++){
             printf ("|");
             if ((((i)/2) == (*T).TI[k].y) && (j == (*T).TI[k].x)){
-                if (j == 7) printf (" %c |");
+                if (j == 7) printf (" %c |",(*T).TI[k].Isi);
                 else printf(" %c ",(*T).TI[k].Isi);}
             else {
                 if (j == 7) printf ("   |");
