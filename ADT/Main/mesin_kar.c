@@ -3,7 +3,7 @@
 char CC;
 boolean EOP;
 static FILE *pita;
-static int retval;
+//static int retval;
 
 void START(char* filename)
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
@@ -26,7 +26,8 @@ F.S. : CC adalah karakter berikutnya dari CC yang lama,
 CC mungkin = MARK
 Jika CC = MARK maka EOP akan menyala (true) */
 {
-    retval = fscanf(pita,"%c",&CC);
+    //retval = fscanf(pita,"%c",&CC);
+    CC = fgetc(pita);
     EOP = (CC==MARK);
     if (EOP) fclose(pita);
 }

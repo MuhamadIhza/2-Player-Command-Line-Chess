@@ -1,96 +1,103 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "prioqueue.h"
+#include "boolean.h"
+#include <stdlib.h>
 
-/* ********* Prototype ********* */
-boolean IsEmpty (Queue Q)
-/* Mengirim true jika Q kosong: lihat definisi di atas */
+/* Prototype manajemen memori */
+void Alokasi (address *P, infotype X)
+/* I.S. Sembarang */
+/* F.S. Alamat P dialokasi, jika berhasil maka Info(P)=X dan Next(P)=Nil */
+/*      P=Nil jika alokasi gagal */
 {
-    return (Head(Q)==Nil && Tail(Q)==Nil);
+    *P=(address) malloc (sizeof(infotype));
+    if (*P!=Nil){
+        Info(*P).score=X.score;
+        int i=0;
+        while(X.nama[i]!='\0'){
+            Info(*P).nama[i]=X.nama[i];
+            i++;
+        }
+        Next(*P)=Nil;
+    } else *P = Nil;
 }
-boolean IsFull (Queue Q)
-/* Mengirim true jika tabel penampung elemen Q sudah penuh */
-/* yaitu mengandung elemen sebanyak MaxEl */
+void Dealokasi (address  P)
+/* I.S. P adalah hasil alokasi, P != Nil */
+/* F.S. Alamat P didealokasi, dikembalikan ke sistem */
 {
-    return (NBElmt(Q)==MaxEl(Q));
+    free (P);
 }
-int NBElmt (Queue Q)
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
+boolean IsEmpty (PrioQueue Q)
+/* Mengirim true jika Q kosong: HEAD(Q)=Nil and TAIL(Q)=Nil */
 {
-    if (Head(Q)==Nil && Tail(Q)==Nil) return 0;
-    else return (((Tail(Q)-Head(Q))%MaxEl(Q))+1);
+    return (Head(Q)==Nil);
 }
-
-/* *** Kreator *** */
-void CreateEmpty (Queue * Q, int Max)
+int NbElmt(PrioQueue Q)
+/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong */
+/*** Kreator ***/
+{
+    int count=0;
+    if(!IsEmpty(Q)){
+        address P=Head(Q);
+        count++;
+        while(Next(P)!=Nil){
+            count++;
+            P=Next(P);
+        }
+    }
+    return count;
+}
+void CreateEmpty(PrioQueue * Q)
 /* I.S. sembarang */
-/* F.S. Sebuah Q kosong terbentuk dan salah satu kondisi sbb: */
-/* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */
-/* atau : jika alokasi gagal, Q kosong dg MaxEl=0 */
-/* Proses : Melakukan alokasi, membuat sebuah Q kosong */
+/* F.S. Sebuah Q kosong terbentuk */
+/*** Primitif Add/Delete ***/
 {
     Head(*Q)=Nil;
-    Tail(*Q)=Nil;
-    MaxEl(*Q)=Max;
-    (*Q).T = (infotype *) malloc ((Max+1)*sizeof(infotype));
 }
-
-/* *** Destruktor *** */
-void DeAlokasi(Queue * Q)
-/* Proses: Mengembalikan memori Q */
-/* I.S. Q pernah dialokasi */
-/* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
+void Add (PrioQueue * Q, infotype X)
+/* Proses: Mengalokasi X dan menambahkan X aw==
+   jika alokasi berhasil; jika alokasi gagal Q tetap */
+/* Pada dasarnya adalah proses insert last */
+/* I.S. Q mungkin kosong */
+/* F.S. X menjadi TAIL, TAIL "maju" */
 {
-    MaxEl(*Q)=Nil;
-    free((*Q).T);
-}
+    address P,CurrP,PrevP;
+    int sec;
 
-/* *** Primitif Add/Delete *** */
-void Add (Queue * Q, infotype X)
-/* Proses: Menambahkan X pada Q dengan aturan FIFO */
-/* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
-/* F.S. X menjadi TAIL yang baru, TAIL "maju" dengan mekanisme circular buffer */
-{
-    int field,banding;
+    Alokasi(&P,X);
+    if (P!=Nil){
+        if(IsEmpty(*Q)) Head(*Q)=P;
+        else {
+            CurrP=Head(*Q);
+            PrevP = CurrP;
+			if ( Info(CurrP).score < Info(P).score ){
+                Next(P)=Head(*Q);
+                Head(*Q)=P;
 
-    if(IsEmpty(*Q)) {
-        Head(*Q)=Nil+1;
-        Tail(*Q)=Nil+1;
-        InfoTail(*Q)=X;
-    } else {
-        Tail(*Q)=(Tail(*Q) % MaxEl(*Q)) + 1;
-        field=Tail(*Q);
-        banding=((field+MaxEl(*Q)-2) % MaxEl(*Q)) + 1;
-        while( ((*Q).T[banding].prio < X.prio) && (field!=Head(*Q)) ){
-            (*Q).T[field]=(*Q).T[banding];
-            field=banding;
-            banding=((field+MaxEl(*Q)-2) % MaxEl(*Q)) + 1;
+            } else {
+                while ( Info(CurrP).score >= Info(P).score && Next(CurrP)!=Nil ){
+                    PrevP=CurrP;
+                    CurrP=Next(CurrP);
+                }
+                if (CurrP == PrevP) Next(CurrP) = P;
+                else {
+                    Next(PrevP)=P;
+                    Next(P)=CurrP;
+                }
+            }
+
+            
         }
-        (*Q).T[field]=X;
     }
 }
-void Del (Queue * Q, infotype * X)
-/* Proses: Menghapus X pada Q dengan aturan FIFO */
+void Del(PrioQueue * Q, infotype * X)
+/* Proses: Menghapus X pada bagian HEAD dari Q dan mendealokasi elemen HEAD */
+/* Pada dasarnya operasi delete first */
 /* I.S. Q tidak mungkin kosong */
-/* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer; 
-        Q mungkin kosong */
+/* F.S. X = nilai elemen HEAD pd I.S., HEAD "mundur" */
 {
-    if (Head(*Q)==Tail(*Q)) {
-        *X=InfoHead(*Q);
-        Head(*Q)=Nil;
-        Tail(*Q)=Nil;
-    } else {
-        *X=InfoHead(*Q);
-        Head(*Q)=(Head(*Q) % MaxEl(*Q)) + 1;
-    }
+    address P=Head(*Q);
+    *X=Info(P);
+    if(Next(P)==Nil) CreateEmpty(Q);
+    else Head(*Q)=Next(P);
+    Dealokasi(P);
 }
 
-void PrintQueue (Queue Q) {
-    infotype X;
-    
-    while(!IsEmpty(Q)){
-        Del(&Q,&X);
-        printf("%d %d\n",X.prio,X.info);
-    }
-    printf("#\n");
-}

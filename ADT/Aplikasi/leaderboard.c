@@ -7,29 +7,31 @@ static FILE *file;
 
 void addtolb(char* pemain,int score){
     file = fopen("../../Data/Leaderboard.csv", "a");
-    fprintf(file, "%s,%d\n",pemain,score);
+    fprintf(file, "%s %d\n",pemain,score);
 }
 
 void printlb(){
-    Queue Q;
+    PrioQueue Q;
     infotype X;
 
     STARTKATA("../../Data/Leaderboard.csv");
-    CreateEmpty(&Q,1);
-    while (CC!='\0'){
-        X.info = CKata.TabKata;
+
+    while (CC!=EOF) {
+        X.nama = CKata.TabKata;
         ADVKATA();
-        X.prio = toint(CKata.TabKata);
-        ADVKATA;
+        X.score = toint(CKata.TabKata);
+        ADVKATA();
         Add(&Q,X);
-        Q.MaxEl++;
+        printf("%s\n",InfoHead(Q).nama);
     }
 
     printf("-------------------------------------------------------\n");
     printf("|                   Leaderboard                       |\n");
     printf("-------------------------------------------------------\n\n");
-    for (int i=0;i<=Q.MaxEl;i++){
-        printf("\t %d | \t %d \t %s \n", i, Q.T[i].prio, Q.T[i].info);
+    int i=1;
+    while (!IsEmpty(Q)){
+        Del(&Q,&X);
+        printf(" %d | \t %d \t %s \n", i, X.score, X.nama);
     }
     printf("_______________________________________________________\n\n");
 
@@ -37,12 +39,11 @@ void printlb(){
 }
 
 int toint(char* x){
-    char c;
     int nilai=0;
     
-    c=GetCC();
-    while(CC!='\0'){
-        switch (CC)
+    int i=0;
+    while(x[i]!='\0'){
+        switch (x[i])
         {
         case '0':
             nilai = nilai*10 + 0;
@@ -75,6 +76,7 @@ int toint(char* x){
             nilai = nilai*10 + 9;
             break;
         }
+        i++;
     }
     return nilai;
 }

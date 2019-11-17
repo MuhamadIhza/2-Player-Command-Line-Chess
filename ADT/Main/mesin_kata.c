@@ -9,7 +9,7 @@ void Ignore_Blank()
 { I.S. : CC sembarang }
 { F.S. : CC ? BLANK atau CC = MARK }*/
 {
-    while (CC==BLANK && CC != MARK){
+    while ((CC==BLANK || CC == ',') && CC != MARK){
         ADV();
     }
 }
@@ -21,7 +21,7 @@ void STARTKATA(char* filename)
 {
     START(filename);
     Ignore_Blank();
-    if (CC==MARK || CC== BLANK) EndKata=true; 
+    if (CC==MARK || CC== BLANK || CC==',') EndKata=true; 
     else {
         EndKata=false;
         SalinKata();
@@ -45,11 +45,12 @@ void SalinKata()
          NMax, sisa "kata" dibuang; CC = BLANK atau CC = MARK; CC adalah
          karakter sesudah karakter terakhir yang diakuisisi }*/
 {
-    int i=1;
-    while (CC!=MARK && CC!=BLANK){
+    int i=0;
+    while (CC!=MARK && CC!=BLANK && CC!=','){
         CKata.TabKata[i]=CC;
         ADV();
         i +=1;
     }
-    CKata.Length=i-1;
+    CKata.Length=i;
+    CKata.TabKata[i]='\0';
 }

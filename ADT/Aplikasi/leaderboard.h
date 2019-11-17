@@ -4,7 +4,8 @@
 #include "../Main/mesin_kata.h"
 #include "../Main/prioqueue.h"
 
-void savedata();
-void bacasb();
+void addtolb(char* pemain,int score);
+void printlb();
+int toint(char* x);
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "boolean.h"
 #include <stdio.h>
-#define MARK '\0'
+#define MARK EOF
 
 /* State Mesin */
 extern char CC;

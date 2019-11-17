@@ -3,9 +3,9 @@
 
 #include "mesin_kar.h"
 
-#define NMax 50
-#define BLANK ' '
-#define MARK '\0'
+#define NMax 20
+#define BLANK '\n'
+#define MARK EOF
 
 typedef struct {
 	char TabKata[NMax+1];
