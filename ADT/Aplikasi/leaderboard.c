@@ -25,13 +25,19 @@ void printlb(){
         printf("%s\n",InfoHead(Q).nama);
     }
 
-    printf("-------------------------------------------------------\n");
+    printf("+-----------------------------------------------------+\n");
     printf("|                   Leaderboard                       |\n");
+<<<<<<< HEAD
     printf("-------------------------------------------------------\n\n");
     int i=1;
     while (!IsEmpty(Q)){
         Del(&Q,&X);
         printf(" %d | \t %d \t %s \n", i, X.score, X.nama);
+=======
+    printf("+-----------------------------------------------------+\n\n");
+    for (int i=0;i<=Q.MaxEl;i++){
+        printf("\t %d | \t %d \t %s \n", i, Q.T[i].prio, Q.T[i].info);
+>>>>>>> b6c27f2fa2acbab843c4bbb985354cea1e9e0aaa
     }
     printf("_______________________________________________________\n\n");
 
