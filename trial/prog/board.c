@@ -207,11 +207,11 @@ int main(){
   O = Search(L1,X);
   R = getPionMove(O);
   POINT Y;
-  int i = 0;
-  while ( i < R.Num)
+  int i = 1;
+  while ( i <= R.Num)
   {
-    i++;
     TulisPOINT(R.Move[i]);
+    i++;
   }
   
   printf("\n");
