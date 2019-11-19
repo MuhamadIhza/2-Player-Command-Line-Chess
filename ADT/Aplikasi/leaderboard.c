@@ -18,7 +18,7 @@ void printlb(){
     STARTKATA("../../Data/Leaderboard.csv");
     CreateEmpty(&Q);
 
-    while (CC!=EOF) {
+    while (!EndKata) {
         strcpy(X.nama,CKata.TabKata);
         ADVKATA();
         X.score = toint(CKata.TabKata);
