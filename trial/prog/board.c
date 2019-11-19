@@ -119,15 +119,16 @@ void printarray(TabEl T){
   printf("  a   b   c   d   e   f   g   h  \n");
 }
 
-Stack getPionMove(address P){
-  Stack S;
-  CreateEmptyStack(&S);
+ListPindah getPionMove(address P){
+  ListPindah S;
+  S.Num = 0;
   POINT x1;
   POINT x0;
   x0 = Lokasi(P);
   x1 = PlusDelta(x0,0,1);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    S.Num ++;
+    S.Move[S.Num] = x1;
   }
   return S;
 }
@@ -197,6 +198,22 @@ int main(){
     Pop(&S,&Z);
     TulisPOINT(Z);
   }
+  printf("\n");
+
+  ListPindah R;
+  address O;
+  X.Lokasi = MakePOINT(1,2);
+  X.Infobidak = 'p';
+  O = Search(L1,X);
+  R = getPionMove(O);
+  POINT Y;
+  int i = 0;
+  while ( i < R.Num)
+  {
+    i++;
+    TulisPOINT(R.Move[i]);
+  }
+  
   printf("\n");
 
   return 0;
