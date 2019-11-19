@@ -13,5 +13,6 @@ void initboard(List *L1,List *L2);
 TabEl board(List L1,List L2);
 void printarray(TabEl T);
 ListPindah getPionMove(address P,List *L1, List *L2);
-Stack getHorseMove(address P);
-
+ListPindah getPionMove2(address P,List *L1, List *L2);
+ListPindah getHorseMove(address P,List *L1, List *L2);
+ListPindah getKingMove(address P,List *L1, List *L2);

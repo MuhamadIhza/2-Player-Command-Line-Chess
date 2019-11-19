@@ -149,46 +149,159 @@ ListPindah getPionMove(address P,List *L1, List *L2){
   return S;
 }
 
-Stack getHorseMove(address P){
-  Stack S;
-  CreateEmptyStack(&S);
+ListPindah getPionMove2(address P,List *L1, List *L2){
+  ListPindah S;
+  S.Num = 0;
+  POINT x1,x2,x3;
+  POINT x0;
+  x0 = Lokasi(P);
+  x1 = PlusDelta(x0,0,-1);
+  if (IsPointValid(x1)) {
+    if (!(SearchEL(*L1,x1) || SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
+  }
+  x2 = PlusDelta(x0,1,-1);
+  x3 = PlusDelta(x0,-1,-1);
+  if (IsPointValid(x2)){
+    if (SearchEL(*L1,x2)){
+      S.Num ++;
+      S.Move[S.Num] = x2;      
+    }
+  }
+  if (IsPointValid(x3)){
+    if (SearchEL(*L1,x3)){
+      S.Num ++;
+      S.Move[S.Num] = x3;      
+    }
+  }
+  return S;
+}
+
+ListPindah getHorseMove(address P,List *L1, List *L2){
+  ListPindah S;
+  S.Num = 0;
   POINT x1;
   POINT x0;
   x0 = Lokasi(P);
   x1 = PlusDelta(x0,2,1);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
+
   x1 = PlusDelta(x0,2,-1);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
+
   x1 = PlusDelta(x0,-2,1);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
+
+
   x1 = PlusDelta(x0,-2,-1);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
 
   x1 = PlusDelta(x0,1,2);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
+
   x1 = PlusDelta(x0,1,-2);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
   x1 = PlusDelta(x0,-1,2);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
   x1 = PlusDelta(x0,-1,-2);
   if (IsPointValid(x1)) {
-    Push(&S,x1);
+    if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
   }
   return S;
+}
+
+ListPindah getKingMove(address P,List *L1, List *L2){
+  ListPindah S;
+  S.Num = 0;
+  POINT x0,x1;
+  x0 = Lokasi(P);
+  x1 = PlusDelta (x0,0,1);
+  if (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+     }
+  }
+
+  x1 = PlusDelta (x0,1,0);
+  if (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+     }
+  }
+
+  x1 = PlusDelta (x0,1,1);
+  if (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+     }
+  }
+
+  x1 = PlusDelta (x0,0,-1);
+  if (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+     }
+  }
+
+  x1 = PlusDelta (x0,-1,0);
+  if (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+     }
+  }
+
+  x1 = PlusDelta (x0,-1,-1);
+  if (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+     }
+  }
 }
 
 
@@ -202,31 +315,30 @@ int main(){
   printarray(T);
   address P;
   infolist X;
-  X.Lokasi = MakePOINT(4,2);
-  X.Infobidak = 'p';
+  X.Lokasi = MakePOINT(4,1);
+  X.Infobidak = 'k';
   P = Search(L1,X);
-  Lokasi(P)=MakePOINT(4,6);
+  //Lokasi(P)=MakePOINT(4,6);
+  T = board(L1,L2);
+  
+
+
+  ListPindah S;
+  address Q,tes2;
+  X.Lokasi = MakePOINT(4,1);
+  X.Infobidak = 'k';
+  P = Search(L1,X);
+  //Lokasi(P) = MakePOINT(2,5);
   T = board(L1,L2);
   printarray(T);
-
-
-  Stack S;
-  S = getHorseMove(P);
-  POINT Z;
-  while (! IsEmptyStack(S)) {
-    Pop(&S,&Z);
-    TulisPOINT(Z);
-  }
-  printf("\n");
 
   ListPindah R;
   address O,tes;
   infolist kosong;
-  X.Lokasi = MakePOINT(1,2);
-  X.Infobidak = 'p';
+  X.Lokasi = MakePOINT(4,1);
+  X.Infobidak = 'k';
   O = Search(L1,X);
-  R = getPionMove(P,&L1,&L2);
-  POINT Y;
+  R = getKingMove(P,&L1,&L2);
   int i = 1;
   while ( i <= R.Num)
   {
