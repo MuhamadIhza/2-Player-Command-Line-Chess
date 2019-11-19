@@ -191,6 +191,64 @@ Stack getHorseMove(address P){
   return S;
 }
 
+ListPindah getBishopMove(address P,List *L1, List *L2){
+  ListPindah S;
+  S.Num = 0;
+  POINT x0=Lokasi(P),x1;
+
+  x1 = PlusDelta(x0,1,1);
+  while (IsPointValid(x1)){
+    if (! (SearchEL(*L1,x1)) ){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,1,1);
+    } else if (SearchEL(*L2,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      break;
+    } else break;
+  }
+
+  x1 = PlusDelta(x0,1,-1);
+  while (IsPointValid(x1)){
+    if (! (SearchEL(*L1,x1)) ){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,1,-1);
+    } else if (SearchEL(*L2,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      break;
+    } else break;
+  }
+
+  x1 = PlusDelta(x0,-1,1);
+  while (IsPointValid(x1)){
+    if (! (SearchEL(*L1,x1)) ){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,-1,1);
+    } else if (SearchEL(*L2,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      break;
+    } else break;
+  }
+
+  x1 = PlusDelta(x0,-1,-1);
+  while (IsPointValid(x1)){
+    if (! (SearchEL(*L1,x1)) ){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,-1,-1);
+    } else if (SearchEL(*L2,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      break;
+    } else break;
+  }
+  return S;
+}
 
 
 
@@ -202,10 +260,10 @@ int main(){
   printarray(T);
   address P;
   infolist X;
-  X.Lokasi = MakePOINT(4,2);
-  X.Infobidak = 'p';
-  P = Search(L1,X);
-  Lokasi(P)=MakePOINT(4,6);
+  // X.Lokasi = MakePOINT(4,2);
+  // X.Infobidak = 'p';
+  // P = Search(L1,X);
+  // Lokasi(P)=MakePOINT(4,6);
   T = board(L1,L2);
   printarray(T);
 
@@ -225,7 +283,11 @@ int main(){
   X.Lokasi = MakePOINT(1,2);
   X.Infobidak = 'p';
   O = Search(L1,X);
-  R = getPionMove(P,&L1,&L2);
+
+  X.Lokasi = MakePOINT(3,1);
+  X.Infobidak = 'b';
+  P = Search(L1,X);
+  R = getBishopMove(P,&L1,&L2);
   POINT Y;
   int i = 1;
   while ( i <= R.Num)
