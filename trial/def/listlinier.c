@@ -64,6 +64,20 @@ address Search (List L, infolist X)
 	}
 	return P;
 }
+
+boolean SearchEL (List L, POINT X){
+	address P;
+	P = First(L);
+	boolean found = false;
+	while ((P!=Nil)&&(!found)) {
+		if (Absis(X) == Absis(Lokasi(P)) && Ordinat(X) == Ordinat(Lokasi(P))) {
+			found = true;
+		} else {
+			P = Next(P);
+		}
+	}
+	return found;
+}
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVFirst (List *L, infolist X)

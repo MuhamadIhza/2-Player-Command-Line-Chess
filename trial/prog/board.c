@@ -97,13 +97,13 @@ TabEl board(List L1,List L2){
 }
 
 void printarray(TabEl T){
-  printf("\e[1;1H\e[2J");/*clear screen*/
+  //printf("\e[1;1H\e[2J");/*clear screen*/
   printf("+-------------------------------+\n");
   for (int j = 8; j > 0; j--) {
     for (int i = 1; i < 9 ; i++) {
       if (T.TI[i][j]=='-') {
         if ((j%2==0 && i%2==1)||(j%2==1 && i%2==0)) {
-          printf("| ■ ");
+          printf("|   ");
         } else {
           printf("|   ");
         }
@@ -119,16 +119,32 @@ void printarray(TabEl T){
   printf("  a   b   c   d   e   f   g   h  \n");
 }
 
-ListPindah getPionMove(address P){
+ListPindah getPionMove(address P,List *L1, List *L2){
   ListPindah S;
   S.Num = 0;
-  POINT x1;
+  POINT x1,x2,x3;
   POINT x0;
   x0 = Lokasi(P);
   x1 = PlusDelta(x0,0,1);
   if (IsPointValid(x1)) {
-    S.Num ++;
-    S.Move[S.Num] = x1;
+    if (!(SearchEL(*L1,x1) || SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+    }
+  }
+  x2 = PlusDelta(x0,1,1);
+  x3 = PlusDelta(x0,-1,1);
+  if (IsPointValid(x2)){
+    if (SearchEL(*L2,x2)){
+      S.Num ++;
+      S.Move[S.Num] = x2;      
+    }
+  }
+  if (IsPointValid(x3)){
+    if (SearchEL(*L2,x3)){
+      S.Num ++;
+      S.Move[S.Num] = x3;      
+    }
   }
   return S;
 }
@@ -175,6 +191,9 @@ Stack getHorseMove(address P){
   return S;
 }
 
+
+
+
 int main(){
   TabEl T;
   List L1,L2;
@@ -183,10 +202,10 @@ int main(){
   printarray(T);
   address P;
   infolist X;
-  X.Lokasi = MakePOINT(7,1);
-  X.Infobidak = 'h';
+  X.Lokasi = MakePOINT(4,2);
+  X.Infobidak = 'p';
   P = Search(L1,X);
-  //Lokasi(P)=MakePOINT(4,4);
+  Lokasi(P)=MakePOINT(4,6);
   T = board(L1,L2);
   printarray(T);
 
@@ -201,18 +220,19 @@ int main(){
   printf("\n");
 
   ListPindah R;
-  address O;
+  address O,tes;
+  infolist kosong;
   X.Lokasi = MakePOINT(1,2);
   X.Infobidak = 'p';
   O = Search(L1,X);
-  R = getPionMove(O);
+  R = getPionMove(P,&L1,&L2);
   POINT Y;
   int i = 0;
   while ( i < R.Num)
-  {
-    i++;
-    TulisPOINT(R.Move[i]);
-  }
+    {
+      i++;
+      TulisPOINT(R.Move[i]);
+    }
   
   printf("\n");
 
