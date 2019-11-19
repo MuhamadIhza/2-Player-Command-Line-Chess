@@ -56,7 +56,7 @@ address Search (List L, infotype X)
 	P = First(L);
 	boolean found = false;
 	while ((P!=Nil)&&(!found)) {
-		if (X.Infobidak=Infobidak(P)) {
+		if (X.Infobidak==Infobidak(P) && (X.X == xbidak(P)) && X.Y == ybidak(P)) {
 			found = true;
 		} else {
 			P = Next(P);

@@ -14,7 +14,6 @@ Stack getPionMove(POINT x0){
     Push(&S,x1);
   }
   return S;
-}
 
 Stack getHorseMove(POINT x0){
   Stack S;

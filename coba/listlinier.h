@@ -31,6 +31,8 @@ typedef struct {
 
 #define Info(P) (P)->info
 #define Infobidak(P) P->info.Infobidak
+#define xbidak(P) P->info.X
+#define ybidak(P) P->info.Y
 #define Next(P) (P)->next
 #define First(L) (L).First
 
