@@ -76,30 +76,22 @@ void inisialisasi_papan(List *L,List *L2){
 TabInt ListToArr (List L,List L2)
 {
     TabInt T;
-    address P,P1;
-    int i,j;
-    infotype kosong;
-    inisialisasi_papan(&L,&L2);
-    MakeEmpty(&T);
-    P = First(L);
-    P1 = First(L2);
-    i = 0;
-    j = 48;
-    while (P != Nil){
-        SetEl(&T,i,Info(P));
-        P = Next(P);
-        i += 1;
+    for (int i = 0; i < 8;i++){
+        for (int j =0; j<8;j++){
+            T.TI[i][j] = '-';
+            T.Neff ++;
+        }
+
     }
-    for (i=16;i<48;i++){
-        SetEl(&T,i,kosong);
-    }
-    while (P1 != Nil){
-        SetEl(&T,j,Info(P1));
-        P1 = Next(P1);
-        j += 1;
-    }
-    return T;
+address P = First(L);
+while(P != Nil){
+    T.TI[xbidak(P)][ybidak(P)] = Infobidak(P);
+    T.Neff++;
+    P = Next(P);
 }
+
+}
+
 
 void PrintArray(TabInt *T)
 {
@@ -126,14 +118,22 @@ void PrintArray(TabInt *T)
     }
     printf("   --- --- --- --- --- --- --- ---\n");
 }
-
 int main (){
     int i;
     List bidak1,bidak2;
-    TabInt T;
+    TabInt T,T2;
+    infotype temp;
+    address P;
+    temp.Infobidak = 'p'; temp.X = 1;temp.Y = 6;
     inisialisasi_papan(&bidak1,&bidak2);
     T = ListToArr(bidak1,bidak2);
     PrintArray(&T);
+    
+    P = Search(bidak2,temp);
+    Infobidak(P) = 'N';
+    ybidak(P) = 5;
+    T2 = ListToArr(bidak1,bidak2);
+    PrintArray(&T2);
     PrintInfo(bidak1);
     printf("\n");
     PrintInfo(bidak2);
