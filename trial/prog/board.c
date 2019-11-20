@@ -382,7 +382,142 @@ ListPindah getBishopMove(address P,List *L1, List *L2){
     }
     else break;
   }
+  x1 = PlusDelta(x0,-1,-1);
+  Stop = false;
+  while (IsPointValid(x1)){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,-1,-1);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
+  }
+  return S;
+}
 
+ListPindah getQueenMove(address P,List *L1, List *L2){
+  ListPindah S;
+  S.Num = 0;
+  boolean Stop;
+  POINT x0=Lokasi(P),x1;
+  x1 = PlusDelta (x0,0,1);
+  Stop = false;
+  while (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,0,1);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+     }
+     else break;
+  }
+  x1 = PlusDelta (x0,0,-1);
+  Stop = false;
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,0,-1);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+     }
+     else break;
+  }
+  x1 = PlusDelta (x0,1,0);
+  Stop = false;
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,1,0);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+     }
+     else break;
+  }
+  x1 = PlusDelta (x0,-1,0);
+  Stop = false;
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,-1,0);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+     }
+     else break;
+  }
+  x1 = PlusDelta(x0,1,1);
+  Stop = false;
+  while (IsPointValid(x1)){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,1,1);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
+  }
+  x1 = PlusDelta(x0,1,-1);
+  Stop = false;
+  while (IsPointValid(x1)){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,1,-1);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
+  }
+  x1 = PlusDelta(x0,-1,1);
+  Stop = false;
+  while (IsPointValid(x1)){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,-1,1);
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
+  }
   x1 = PlusDelta(x0,-1,-1);
   Stop = false;
   while (IsPointValid(x1)){
@@ -468,10 +603,10 @@ void move(List *L1, List *L2){
   address P;
   infolist X;
   ListPindah R;
-  X.Lokasi = MakePOINT(3,3);
-  X.Infobidak = 'b';
+  X.Lokasi = MakePOINT(5,1);
+  X.Infobidak = 'q';
   P = Search(*L1,X);
-  R = getBishopMove(P,L1,L2);
+  R = getQueenMove(P,L1,L2);
   /* print possible moves*/
   printf("Lokasi Mungkin Pindah\n");
   int i = 1;
@@ -503,8 +638,8 @@ int main(){
   /*kalau mau mindahin bidak*/
   address Q;
   infolist Z;
-  Z.Lokasi = MakePOINT(3,1); //posisi awal
-  Z.Infobidak = 'b';  //bidak yang mau dipindah
+  Z.Lokasi = MakePOINT(5,1); //posisi awal
+  Z.Infobidak = 'q';  //bidak yang mau dipindah
   Q = Search(L1,Z);
   Lokasi(Q) = MakePOINT(3,3); //posisi akhir
 
@@ -513,9 +648,9 @@ int main(){
   infolist X;
   ListPindah R;
   X.Lokasi = MakePOINT(3,3);
-  X.Infobidak = 'b';
+  X.Infobidak = 'q';
   P = Search(L1,X);
-  R = getBishopMove(P,&L1,&L2);
+  R = getQueenMove(P,&L1,&L2);
 
   T = board(L1,L2);
   printarray(T);
