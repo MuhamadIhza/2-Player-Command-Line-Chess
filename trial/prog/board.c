@@ -440,40 +440,17 @@ int main(){
   initboard(&L1,&L2);
   T = board(L1,L2);
   printarray(T);
+  
+  /*bidak yang mau dicek*/
   address P;
   infolist X;
-  // X.Lokasi = MakePOINT(4,2);
-  // X.Infobidak = 'p';
-  // P = Search(L1,X);
-  // Lokasi(P)=MakePOINT(4,6);
-  T = board(L1,L2);
-  
-
-
-  ListPindah S;
-  address Q,tes2;
-  X.Lokasi = MakePOINT(4,1);
-  X.Infobidak = 'k';
-  P = Search(L1,X);
-  //Lokasi(P) = MakePOINT(2,5);
-  T = board(L1,L2);
-  printarray(T);
-
   ListPindah R;
-  address O,tes;
-  infolist kosong;
-  X.Lokasi = MakePOINT(4,1);
-  X.Infobidak = 'k';
-  O = Search(L1,X);
-
-  X.Lokasi = MakePOINT(3,1);
-  X.Infobidak = 'b';
+  X.Lokasi = MakePOINT(1,2);
+  X.Infobidak = 'p';
   P = Search(L1,X);
-  R = getBishopMove(P,&L1,&L2);
-  POINT Y;
-  //R = getKingMove(P,&L1,&L2);
-  //R = getRookMove(P,&L1,&L2);
-  
+  R = getPionMove(P,&L1,&L2);
+
+  /* print possible moves*/
   int i = 1;
   while ( i <= R.Num)
   {
