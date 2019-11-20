@@ -250,6 +250,73 @@ ListPindah getHorseMove(address P,List *L1, List *L2){
   return S;
 }
 
+ListPindah getRookMove(address P,List *L1, List *L2){
+  ListPindah S;
+  S.Num = 0;
+  POINT x0,x1;
+  x0 = Lokasi(P);
+  x1 = PlusDelta (x0,0,1);
+  while (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,0,1);
+     }
+     else if (SearchEL(*L2,x1)){
+       S.Num++;
+       S.Move[S.Num] = x1;
+       break;
+     }
+     else break;
+  }
+
+  x1 = PlusDelta (x0,0,-1);
+  while (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,0,-1);
+     }
+     else if (SearchEL(*L2,x1)){
+       S.Num++;
+       S.Move[S.Num] = x1;
+       break;
+     }
+     else break;
+  }
+
+  x1 = PlusDelta (x0,1,0);
+  while (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,1,0);
+     }
+     else if (SearchEL(*L2,x1)){
+       S.Num++;
+       S.Move[S.Num] = x1;
+       break;
+     }
+     else break;
+  }
+
+  x1 = PlusDelta (x0,-1,0);
+  while (IsPointValid(x1)){
+     if (!SearchEL(*L1,x1)){
+      S.Num ++;
+      S.Move[S.Num] = x1;
+      x1 = PlusDelta(x1,-1,0);
+     }
+     else if (SearchEL(*L2,x1)){
+       S.Num++;
+       S.Move[S.Num] = x1;
+       break;
+     }
+     else break;
+  }
+  return S;
+}
+
 ListPindah getBishopMove(address P,List *L1, List *L2){
   ListPindah S;
   S.Num = 0;
@@ -308,6 +375,7 @@ ListPindah getBishopMove(address P,List *L1, List *L2){
   }
   return S;
 }
+
 ListPindah getKingMove(address P,List *L1, List *L2){
   ListPindah S;
   S.Num = 0;
@@ -360,7 +428,6 @@ ListPindah getKingMove(address P,List *L1, List *L2){
       S.Move[S.Num] = x1;
      }
   }
-  return S;
 }
 
 
@@ -404,6 +471,7 @@ int main(){
   R = getBishopMove(P,&L1,&L2);
   POINT Y;
   R = getKingMove(P,&L1,&L2);
+  R = getRookMove(P,&L1,&L2);
   int i = 1;
   while ( i <= R.Num)
   {
