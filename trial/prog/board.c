@@ -442,22 +442,24 @@ int main(){
   printarray(T);
   
   /*kalau mau mindahin bidak*/
-  /*
   address Q;
   infolist Z;
-  Z.Lokasi = MakePOINT(x,y); //posisi awal
-  X.Infobidak = 'n';  //bidak yang mau dipindah
-  Q = Search(Ln,X);
-  Lokasi(Q) = MakePOINT(newX,newY); //posisi akhir
-  */
+  Z.Lokasi = MakePOINT(1,2); //posisi awal
+  Z.Infobidak = 'p';  //bidak yang mau dipindah
+  Q = Search(L1,Z);
+  Lokasi(Q) = MakePOINT(2,3); //posisi akhir
+
   /*bidak yang mau dicek*/
   address P;
   infolist X;
   ListPindah R;
-  X.Lokasi = MakePOINT(1,2);
-  X.Infobidak = 'p';
+  X.Lokasi = MakePOINT(1,1);
+  X.Infobidak = 'r';
   P = Search(L1,X);
-  R = getPionMove(P,&L1,&L2);
+  R = getRookMove(P,&L1,&L2);
+
+  T = board(L1,L2);
+  printarray(T);
 
   /* print possible moves*/
   int i = 1;
