@@ -329,58 +329,75 @@ ListPindah getRookMove(address P,List *L1, List *L2){
 ListPindah getBishopMove(address P,List *L1, List *L2){
   ListPindah S;
   S.Num = 0;
+  boolean Stop;
   POINT x0=Lokasi(P),x1;
-
+  
   x1 = PlusDelta(x0,1,1);
+  Stop = false;
   while (IsPointValid(x1)){
-    if (! (SearchEL(*L1,x1)) ){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,1,1);
-    } else if (SearchEL(*L2,x1)){
-      S.Num ++;
-      S.Move[S.Num] = x1;
-      break;
-    } else break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
   }
 
   x1 = PlusDelta(x0,1,-1);
+  Stop = false;
   while (IsPointValid(x1)){
-    if (! (SearchEL(*L1,x1)) ){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,1,-1);
-    } else if (SearchEL(*L2,x1)){
-      S.Num ++;
-      S.Move[S.Num] = x1;
-      break;
-    } else break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
   }
 
   x1 = PlusDelta(x0,-1,1);
+  Stop = false;
   while (IsPointValid(x1)){
-    if (! (SearchEL(*L1,x1)) ){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,-1,1);
-    } else if (SearchEL(*L2,x1)){
-      S.Num ++;
-      S.Move[S.Num] = x1;
-      break;
-    } else break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
   }
 
   x1 = PlusDelta(x0,-1,-1);
+  Stop = false;
   while (IsPointValid(x1)){
-    if (! (SearchEL(*L1,x1)) ){
+    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,-1,-1);
-    } else if (SearchEL(*L2,x1)){
-      S.Num ++;
-      S.Move[S.Num] = x1;
-      break;
-    } else break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
+    }
+    else break;
   }
   return S;
 }
@@ -453,19 +470,19 @@ int main(){
   /*kalau mau mindahin bidak*/
   address Q;
   infolist Z;
-  Z.Lokasi = MakePOINT(1,2); //posisi awal
-  Z.Infobidak = 'p';  //bidak yang mau dipindah
+  Z.Lokasi = MakePOINT(3,1); //posisi awal
+  Z.Infobidak = 'b';  //bidak yang mau dipindah
   Q = Search(L1,Z);
-  Lokasi(Q) = MakePOINT(2,3); //posisi akhir
+  Lokasi(Q) = MakePOINT(3,3); //posisi akhir
 
   /*bidak yang mau dicek*/
   address P;
   infolist X;
   ListPindah R;
-  X.Lokasi = MakePOINT(1,1);
-  X.Infobidak = 'r';
+  X.Lokasi = MakePOINT(3,3);
+  X.Infobidak = 'b';
   P = Search(L1,X);
-  R = getRookMove(P,&L1,&L2);
+  R = getBishopMove(P,&L1,&L2);
 
   T = board(L1,L2);
   printarray(T);
