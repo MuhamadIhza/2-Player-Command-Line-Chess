@@ -252,65 +252,74 @@ ListPindah getHorseMove(address P,List *L1, List *L2){
 
 ListPindah getRookMove(address P,List *L1, List *L2){
   ListPindah S;
+  boolean Stop;
   S.Num = 0;
   POINT x0,x1;
   x0 = Lokasi(P);
   x1 = PlusDelta (x0,0,1);
+  Stop = false;
   while (IsPointValid(x1)){
-     if (!SearchEL(*L1,x1)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,0,1);
-     }
-     else if (SearchEL(*L2,x1)){
-       S.Num++;
-       S.Move[S.Num] = x1;
-       break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
      }
      else break;
   }
 
   x1 = PlusDelta (x0,0,-1);
-  while (IsPointValid(x1)){
-     if (!SearchEL(*L1,x1)){
+  Stop = false;
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,0,-1);
-     }
-     else if (SearchEL(*L2,x1)){
-       S.Num++;
-       S.Move[S.Num] = x1;
-       break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
      }
      else break;
   }
 
   x1 = PlusDelta (x0,1,0);
-  while (IsPointValid(x1)){
-     if (!SearchEL(*L1,x1)){
+  Stop = false;
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,1,0);
-     }
-     else if (SearchEL(*L2,x1)){
-       S.Num++;
-       S.Move[S.Num] = x1;
-       break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
      }
      else break;
   }
-
+  
   x1 = PlusDelta (x0,-1,0);
-  while (IsPointValid(x1)){
-     if (!SearchEL(*L1,x1)){
+  Stop = false;
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
       x1 = PlusDelta(x1,-1,0);
-     }
-     else if (SearchEL(*L2,x1)){
-       S.Num++;
-       S.Move[S.Num] = x1;
-       break;
+      if (Stop){
+        break;
+      }
+      if (SearchEL(*L2,x1)){
+        Stop = true;
+      }
      }
      else break;
   }
