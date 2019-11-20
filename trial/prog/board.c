@@ -463,21 +463,34 @@ POINT moveselector(ListPindah S,int select){
   return X;
 }
 
-void move(){
-  /*bidak yang mau dicek*/
+void move(List *L1, List *L2){
+  /*bidak yang mau dipindah*/
   address P;
   infolist X;
   ListPindah R;
   X.Lokasi = MakePOINT(3,3);
   X.Infobidak = 'b';
-  P = Search(L1,X);
-  R = getBishopMove(P,&L1,&L2);
+  P = Search(*L1,X);
+  R = getBishopMove(P,L1,L2);
+  /* print possible moves*/
+  printf("Lokasi Mungkin Pindah\n");
+  int i = 1;
+  while ( i <= R.Num)
+  {
+    printf("%d ",i);
+    TulisPOINT(R.Move[i]);
+    printf("\n");
+    i++;
+  }
+  printf("Select : ");
   /*pemindahan*/
   int select;
   scanf("%d",&select);
   POINT dest;
   dest = moveselector(R,select);
   Lokasi(P) = dest;
+  TulisPOINT(dest);
+  printf("\n");
 }
 
 int main(){
@@ -519,5 +532,6 @@ int main(){
   RYYB = moveselector(R,5);
   TulisPOINT(RYYB);
   printf("\n");
+  move(&L1,&L2);
   return 0;
 }
