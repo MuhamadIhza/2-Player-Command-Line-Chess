@@ -428,6 +428,7 @@ ListPindah getKingMove(address P,List *L1, List *L2){
       S.Move[S.Num] = x1;
      }
   }
+  return S;
 }
 
 
