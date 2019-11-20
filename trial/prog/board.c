@@ -441,6 +441,15 @@ int main(){
   T = board(L1,L2);
   printarray(T);
   
+  /*kalau mau mindahin bidak*/
+  /*
+  address Q;
+  infolist Z;
+  Z.Lokasi = MakePOINT(x,y); //posisi awal
+  X.Infobidak = 'n';  //bidak yang mau dipindah
+  Q = Search(Ln,X);
+  Lokasi(Q) = MakePOINT(newX,newY); //posisi akhir
+  */
   /*bidak yang mau dicek*/
   address P;
   infolist X;
