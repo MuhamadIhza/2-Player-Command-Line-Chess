@@ -457,6 +457,11 @@ ListPindah getKingMove(address P,List *L1, List *L2){
   return S;
 }
 
+POINT moveselector(ListPindah S,int select){
+  POINT X;
+  X = S.Move[select];
+  return X;
+}
 
 
 
@@ -494,8 +499,10 @@ int main(){
     TulisPOINT(R.Move[i]);
     i++;
   }
-  
   printf("\n");
-
+  POINT RYYB;
+  RYYB = moveselector(R,5);
+  TulisPOINT(RYYB);
+  printf("\n");
   return 0;
 }
