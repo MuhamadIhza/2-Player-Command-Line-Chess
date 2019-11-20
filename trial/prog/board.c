@@ -471,8 +471,9 @@ int main(){
   P = Search(L1,X);
   R = getBishopMove(P,&L1,&L2);
   POINT Y;
-  R = getKingMove(P,&L1,&L2);
-  R = getRookMove(P,&L1,&L2);
+  //R = getKingMove(P,&L1,&L2);
+  //R = getRookMove(P,&L1,&L2);
+  
   int i = 1;
   while ( i <= R.Num)
   {
