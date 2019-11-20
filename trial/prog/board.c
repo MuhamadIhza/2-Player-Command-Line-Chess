@@ -463,7 +463,22 @@ POINT moveselector(ListPindah S,int select){
   return X;
 }
 
-
+void move(){
+  /*bidak yang mau dicek*/
+  address P;
+  infolist X;
+  ListPindah R;
+  X.Lokasi = MakePOINT(3,3);
+  X.Infobidak = 'b';
+  P = Search(L1,X);
+  R = getBishopMove(P,&L1,&L2);
+  /*pemindahan*/
+  int select;
+  scanf("%d",&select);
+  POINT dest;
+  dest = moveselector(R,select);
+  Lokasi(P) = dest;
+}
 
 int main(){
   TabEl T;
