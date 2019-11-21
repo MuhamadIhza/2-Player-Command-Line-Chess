@@ -598,12 +598,12 @@ POINT moveselector(ListPindah S,int select){
   return X;
 }
 
-void move(List *L1, List *L2){
+void move(List *L1, List *L2,TabEl *T){
   /*bidak yang mau dipindah*/
   address P;
   infolist X;
   ListPindah R;
-  TabEl T;
+  //TabEl T;
   printf("input bidak yang mau dipindah :\n");
   scanf("%c",&(X.Infobidak));
   printf("input titik awal x<spasi>y :\n");
@@ -657,9 +657,9 @@ void move(List *L1, List *L2){
     Lokasi(P) = dest;
     TulisPOINT(dest);
     printf("\n");
-    T = board(*L1,*L2);
+    *T = board(*L1,*L2);
     printf("Pasca pindah\n");
-    printarray(T);
+    printarray(*T);
   }else
   {
     printf("tidak bisa dipindah\n");
@@ -674,7 +674,7 @@ int main(){
   List L1,L2;
   initboard(&L1,&L2);
   T = board(L1,L2);
-  printarray(T);
+  //printarray(T);
   
   /*kalau mau mindahin bidak*/
   address Q;
@@ -708,6 +708,6 @@ int main(){
   RYYB = moveselector(R,5);
   TulisPOINT(RYYB);
   printf("\n");
-  move(&L1,&L2);
+  move(&L1,&L2,&T);
   return 0;
 }
