@@ -604,10 +604,38 @@ void move(List *L1, List *L2){
   infolist X;
   ListPindah R;
   TabEl T;
-  X.Lokasi = MakePOINT(2,1);
-  X.Infobidak = 'h';
+  printf("input bidak yang mau dipindah :\n");
+  scanf("%c",&(X.Infobidak));
+  printf("input titik awal x<spasi>y :\n");
+  int inputx,inputy;
+  scanf("%d %d",&inputx,&inputy);
+  X.Lokasi = MakePOINT(inputx,inputy);
+  
   P = Search(*L1,X);
-  R = getHorseMove(P,L1,L2);
+  switch (X.Infobidak)
+  {
+  case 'p':
+    R = getPionMove(P,L1,L2);
+    break;
+  case 'r':
+    R = getRookMove(P,L1,L2);
+    break;
+  case 'h':
+    R = getHorseMove(P,L1,L2);
+    break;
+  case 'b':
+    R = getBishopMove(P,L1,L2);
+    break;
+  case 'k':
+    R = getKingMove(P,L1,L2);
+    break;
+  case 'q':
+    R = getQueenMove(P,L1,L2);
+    break;
+  default:
+    printf("notdefined\n");
+    break;
+  }
   /* print possible moves*/
   if (R.Num!=0)
   {
@@ -632,7 +660,11 @@ void move(List *L1, List *L2){
     T = board(*L1,*L2);
     printf("Pasca pindah\n");
     printarray(T);
+  }else
+  {
+    printf("tidak bisa dipindah\n");
   }
+  
   
   printf("\n");
 }
