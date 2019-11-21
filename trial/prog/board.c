@@ -604,9 +604,9 @@ void move(List *L1, List *L2,TabEl *T){
   infolist X;
   ListPindah R;
   //TabEl T;
-  printf("input bidak yang mau dipindah :\n");
-  scanf("%c",&(X.Infobidak));
-  printf("input titik awal x<spasi>y :\n");
+  printf("input bidak yang mau dipindah :");
+  scanf(" %c",&(X.Infobidak));
+  printf("input titik awal x<spasi>y :");
   int inputx,inputy;
   scanf("%d %d",&inputx,&inputy);
   X.Lokasi = MakePOINT(inputx,inputy);
@@ -708,6 +708,7 @@ int main(){
   RYYB = moveselector(R,5);
   TulisPOINT(RYYB);
   printf("\n");
+  move(&L1,&L2,&T);
   move(&L1,&L2,&T);
   return 0;
 }
