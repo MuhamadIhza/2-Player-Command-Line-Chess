@@ -603,10 +603,11 @@ void move(List *L1, List *L2){
   address P;
   infolist X;
   ListPindah R;
-  X.Lokasi = MakePOINT(5,1);
-  X.Infobidak = 'q';
+  TabEl T;
+  X.Lokasi = MakePOINT(3,1);
+  X.Infobidak = 'b';
   P = Search(*L1,X);
-  R = getQueenMove(P,L1,L2);
+  R = getBishopMove(P,L1,L2);
   /* print possible moves*/
   printf("Lokasi Mungkin Pindah\n");
   int i = 1;
@@ -626,6 +627,10 @@ void move(List *L1, List *L2){
   Lokasi(P) = dest;
   TulisPOINT(dest);
   printf("\n");
+  T = board(*L1,*L2);
+  printf("Pasca pindah\n");
+  printarray(T);
+  printf("\n");
 }
 
 int main(){
@@ -638,19 +643,19 @@ int main(){
   /*kalau mau mindahin bidak*/
   address Q;
   infolist Z;
-  Z.Lokasi = MakePOINT(5,1); //posisi awal
-  Z.Infobidak = 'q';  //bidak yang mau dipindah
+  Z.Lokasi = MakePOINT(8,1); //posisi awal
+  Z.Infobidak = 'r';  //bidak yang mau dipindah
   Q = Search(L1,Z);
-  Lokasi(Q) = MakePOINT(3,3); //posisi akhir
+  Lokasi(Q) = MakePOINT(8,1); //posisi akhir
 
   /*bidak yang mau dicek*/
   address P;
   infolist X;
   ListPindah R;
-  X.Lokasi = MakePOINT(3,3);
-  X.Infobidak = 'q';
+  X.Lokasi = MakePOINT(8,1);
+  X.Infobidak = 'r';
   P = Search(L1,X);
-  R = getQueenMove(P,&L1,&L2);
+  R = getRookMove(P,&L1,&L2);
 
   T = board(L1,L2);
   printarray(T);
