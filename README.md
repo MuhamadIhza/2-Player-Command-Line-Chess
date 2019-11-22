@@ -7,9 +7,7 @@
 
 ## Progress Report
 ### Leaderboard
-berhasil input data ke csv
-berhasil baca data 
-masih gagal print data untuk baris terakhir
+Done (y)
 
 compile test : 
 gcc -o test drivertest.c leaderboard.c ../Main/prioqueue.c ../Main/mesin_kar.c ../Main/mesin_kata.c

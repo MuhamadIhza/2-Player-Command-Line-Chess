@@ -7,7 +7,7 @@ int score;
 static FILE *file;
 
 void addtolb(char* pemain,int score){
-    file = fopen("../../Data/Leaderboard.csv", "a");
+    file = fopen("../../Data/Leaderboard.txt", "a");
     fprintf(file, "%s,%d\n",pemain,score);
 }
 
@@ -15,7 +15,7 @@ void printlb(){
     PrioQueue Q;
     infotype X;
 
-    STARTKATA("../../Data/Leaderboard.csv");
+    STARTKATA("../../Data/Leaderboard.txt");
     CreateEmpty(&Q);
 
     while (!EndKata) {
@@ -24,21 +24,20 @@ void printlb(){
         X.score = toint(CKata.TabKata);
         ADVKATA();
         Add(&Q,X);
-        printf("%s\n",X.nama);
     }
 
-    printf("+-----------------------------------------------------+\n");
-    printf("|                   Leaderboard                       |\n");
-    printf("-------------------------------------------------------\n\n");
+    printf("+------------------------+\n");
+    printf("|       Leaderboard      |\n");
+    printf(" ------------------------ \n");
     int i=1;
-    printf(" No | \t Score \t\t Nama \n");
+    printf("| No | \t Score \t Nama \t |\n");
 
     while (!IsEmpty(Q)){
         Del(&Q,&X);
-        printf(" %d  | \t  %d \t %s \n", i, X.score, X.nama);
+        printf("| %d  | \t  %d \t %s \t |\n", i, X.score, X.nama);
         i++;
     }
-    printf("_______________________________________________________\n\n");
+    printf("+ ---------------------- +\n\n");
 
 
 }

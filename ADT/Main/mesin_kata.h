@@ -3,7 +3,7 @@
 
 #include "mesin_kar.h"
 
-#define NMax 20
+#define NMax 3
 #define BLANK '\n'
 #define MARK EOF
 

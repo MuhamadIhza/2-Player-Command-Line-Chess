@@ -1,0 +1,6 @@
+Ihz,110
+Isl,999
+abc,26
+Hdn,121
+cde,25
+fgh,109

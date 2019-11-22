@@ -51,6 +51,6 @@ void SalinKata()
         ADV();
         i +=1;
     }
-    CKata.Length=i;
-    CKata.TabKata[i]='\0';
+    //CKata.Length=i;
+    CKata.TabKata[3]='\0';
 }

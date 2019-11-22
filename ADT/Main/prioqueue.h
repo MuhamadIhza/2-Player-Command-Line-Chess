@@ -12,7 +12,7 @@
 
 /* Deklarasi infotype */
 typedef struct {
-	char nama[21];          /* nama player */
+	char nama[4];          /* nama player */
 	int score; /* score player */
 } infotype;
 

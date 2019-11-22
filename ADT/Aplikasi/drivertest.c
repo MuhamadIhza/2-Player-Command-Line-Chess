@@ -3,8 +3,9 @@
 #include "leaderboard.h"
 
 int main(){
-    // addtolb("Ihzaimba",120);
-    // addtolb("Hudanmastah",121);
+    // addtolb("Ihz",120);
+    // addtolb("Hdn",121);
+    // addtolb("Isl",999);
 
     printlb();
 

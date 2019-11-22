@@ -16,6 +16,7 @@ void Alokasi (address *P, infotype X)
             Info(*P).nama[i]=X.nama[i];
             i++;
         }
+        Info(*P).nama[3]='\0';
         Next(*P)=Nil;
     } else *P = Nil;
 }
@@ -77,7 +78,7 @@ void Add (PrioQueue * Q, infotype X)
                     PrevP=CurrP;
                     CurrP=Next(CurrP);
                 }
-                if (CurrP == PrevP) Next(CurrP) = P;
+                if (CurrP == PrevP || Next(CurrP)==Nil ) Next(CurrP) = P;
                 else {
                     Next(PrevP)=P;
                     Next(P)=CurrP;
