@@ -796,6 +796,7 @@ void move2(List *L1, List *L2,TabEl *T){
   infolist X;
   ListPindah R;
   ListPossible S;
+  int pilihan;
   S = pawnavail2(*L1,*L2);
   printf("Bidak yang mungkin pindah\n");
   for (int j = 1; j <= S.PNum; j++)
@@ -852,6 +853,15 @@ void move2(List *L1, List *L2,TabEl *T){
     scanf("%d",&select);
     POINT dest;
     dest = moveselector(R,select);
+    if ( X.Infobidak = 'p' && Ordinat(dest) == 1){
+      printf("Selamat,pion anda dapat dipromosikan, silahkan pilih transformasi bidak anda : ");
+      printf("1.Benteng \n 2.Kuda \n 3.Mentri \n 4.Ratu \n");
+      scanf("%d", &pilihan);
+      if (pilihan == 1) Infobidak(P) = 'R';
+      else if (pilihan == 2)  Infobidak(P) = 'H';
+      else if (pilihan == 3)  Infobidak(P) = 'B';
+      else if (pilihan == 4)  Infobidak(P) = 'Q';
+    }
     Lokasi(P) = dest;
     TulisPOINT(dest);
     infolist delEl;
