@@ -78,6 +78,22 @@ boolean SearchEL (List L, POINT X){
 	}
 	return found;
 }
+char SearchbyLocation(List L,POINT X){
+	char bidak;
+	address P = First(L);
+	boolean found = false;
+	while (P!=Nil && !found)
+	{
+		if (Absis(X) == Absis(Lokasi(P)) && Ordinat(X) == Ordinat(Lokasi(P)))
+		{
+			found = true;
+			bidak = Infobidak(P);
+		}
+		P = Next(P);
+	}
+	
+	return bidak;
+}
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVFirst (List *L, infolist X)
