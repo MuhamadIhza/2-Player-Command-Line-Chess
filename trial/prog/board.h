@@ -32,5 +32,7 @@ ListPindah getQueenMove(address P,List *L1, List *L2);
 POINT moveselector(ListPindah S,int select);
 infolist possiblepawn(ListPossible S,int select);
 void move(List *L1, List *L2,TabEl *T);
+void move2(List *L1, List *L2,TabEl *T);
 ListPossible pawnavail(List L1,List L2);
+ListPossible pawnavail2(List L1,List L2);
 #endif
