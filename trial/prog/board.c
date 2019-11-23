@@ -597,6 +597,11 @@ POINT moveselector(ListPindah S,int select){
   X = S.Move[select];
   return X;
 }
+infolist possiblepawn(ListPossible S,int select){
+  infolist X;
+  X = S.PPawn[select];
+  return X;
+}
 
 void move(List *L1, List *L2,TabEl *T){
   /*bidak yang mau dipindah*/
