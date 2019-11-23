@@ -615,7 +615,7 @@ void move(List *L1, List *L2,TabEl *T){
   int inputx,inputy;
   scanf("%d %d",&inputx,&inputy);
   X.Lokasi = MakePOINT(inputx,inputy);
-  
+
   P = Search(*L1,X);
   switch (X.Infobidak)
   {
@@ -669,7 +669,7 @@ void move(List *L1, List *L2,TabEl *T){
     
     printf("\n");
     *T = board(*L1,*L2);
-    printf("Pasca pindah\n");
+    printf("Bidak %c telah pindah ke %d,%d\n",X.Infobidak,dest.X,dest.Y);
     printarray(*T);
   }else
   {
