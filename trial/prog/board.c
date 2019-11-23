@@ -661,6 +661,27 @@ void move(List *L1, List *L2,TabEl *T){
     dest = moveselector(R,select);
     Lokasi(P) = dest;
     TulisPOINT(dest);
+    infolist delEl;
+    if (SearchEL(*L2,dest))
+    {
+      printf("hapus bidak\n");
+      boolean elToDel = false;
+      address delAddr = First(*L2);
+      while (delAddr!=Nil&&!elToDel)
+      {
+        if (Absis(Lokasi(delAddr))==Absis(dest)&&Ordinat(Lokasi(delAddr))==Ordinat(dest));
+        {
+          delEl.Infobidak = Infobidak(delAddr);
+          delEl.Lokasi = Lokasi(delAddr);
+          elToDel = true;
+        }
+        delAddr = Next(delAddr);
+      }
+      TulisPOINT(delEl.Lokasi);
+      printf(" %c\n",delEl.Infobidak);
+      DelP(L2,delEl);
+    }
+    
     printf("\n");
     *T = board(*L1,*L2);
     printf("Pasca pindah\n");
@@ -713,6 +734,7 @@ int main(){
   RYYB = moveselector(R,5);
   TulisPOINT(RYYB);
   printf("\n");
+  move(&L1,&L2,&T);
   move(&L1,&L2,&T);
   move(&L1,&L2,&T);
   return 0;
