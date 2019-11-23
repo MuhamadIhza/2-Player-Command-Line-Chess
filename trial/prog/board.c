@@ -664,22 +664,6 @@ void move(List *L1, List *L2,TabEl *T){
     infolist delEl;
     if (SearchEL(*L2,dest))
     {
-      printf("hapus bidak\n");
-      /*boolean elToDel = false;
-      address delAddr = First(*L2);
-      while (delAddr!=Nil&&!elToDel)
-      {
-        if (Absis(Lokasi(delAddr))==Absis(dest)&&Ordinat(Lokasi(delAddr))==Ordinat(dest));
-        {
-          delEl.Infobidak = Infobidak(delAddr);
-          delEl.Lokasi = Lokasi(delAddr);
-          elToDel = true;
-        }
-        delAddr = Next(delAddr);
-      }
-      TulisPOINT(delEl.Lokasi);
-      printf(" %c\n",delEl.Infobidak);
-      DelP(L2,delEl);*/
       DelPoint(L2,dest);
     }
     
