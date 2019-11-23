@@ -182,7 +182,7 @@ void DelP (List *L, infolist X)
 		boolean found = false;
 		P = First(*L);
 		while (!found) {
-			if (Infobidak(P)==X.Infobidak) {
+			if (Infobidak(P)==X.Infobidak && Absis(Lokasi(P))==Absis(X.Lokasi)&& Ordinat(Lokasi(P))==Ordinat(X.Lokasi)) {
 				found = true;
 			} else {
 				Prec = P;
