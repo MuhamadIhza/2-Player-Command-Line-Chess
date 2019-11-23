@@ -1,4 +1,5 @@
 #include "board.h"
+
 void initboard(List *L1,List *L2){
   CreateEmptyList(L1);
   infolist bidak;
@@ -669,8 +670,8 @@ void move(List *L1, List *L2,TabEl *T){
   printf("Bidak yang mungkin pindah\n");
   for (int j = 1; j <= S.PNum; j++)
   {
-    printf("%d",j);
-    printf(" %c",S.PPawn[j].Infobidak);
+    printf("%d.",j);
+    printf("%c",S.PPawn[j].Infobidak);
     TulisPOINT(S.PPawn[j].Lokasi);
     printf("\n");
   }
@@ -710,7 +711,7 @@ void move(List *L1, List *L2,TabEl *T){
     int i = 1;
     while ( i <= R.Num && R.Num!=0)
     {
-      printf("%d ",i);
+      printf("%d.",i);
       TulisPOINT(R.Move[i]);
       printf("\n");
       i++;
@@ -761,8 +762,8 @@ void move2(List *L1, List *L2,TabEl *T){
   printf("Bidak yang mungkin pindah\n");
   for (int j = 1; j <= S.PNum; j++)
   {
-    printf("%d",j);
-    printf(" %c",S.PPawn[j].Infobidak);
+    printf("%d.",j);
+    printf("%c",S.PPawn[j].Infobidak);
     TulisPOINT(S.PPawn[j].Lokasi);
     printf("\n");
   }
@@ -802,7 +803,7 @@ void move2(List *L1, List *L2,TabEl *T){
     int i = 1;
     while ( i <= R.Num && R.Num!=0)
     {
-      printf("%d ",i);
+      printf("%d.",i);
       TulisPOINT(R.Move[i]);
       printf("\n");
       i++;
@@ -879,14 +880,18 @@ int main(){
   printf("\n");
   POINT RYYB;
   RYYB = moveselector(R,5);
-  TulisPOINT(RYYB);
   printf("\n");
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
+  Queue Q1;
+  inisialisasi_Urutan(&Q1);
+  while (!(IsEmptyQueue(Q1))){
+        if(InfoHead(Q1) == '1'){
+            printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
+            move(&L1,&L2,&T);
+        } else {
+            printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
+            move2(&L1,&L2,&T);
+        }
+        Del(&Q1,&InfoHead(Q1));
+  }
   return 0;
 }

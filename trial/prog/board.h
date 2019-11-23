@@ -5,6 +5,7 @@
 #include "../def/array.h"
 #include "../def/point.h"
 #include "../def/stack.h"
+#include "giliran.h"
 #include <stdio.h>
 
 typedef struct {
