@@ -847,40 +847,13 @@ int main(){
   List L1,L2;
   initboard(&L1,&L2);
   T = board(L1,L2);
-  //printarray(T);
-  
-  /*kalau mau mindahin bidak*/
-  address Q;
-  infolist Z;
-  Z.Lokasi = MakePOINT(4,2); //posisi awal
-  Z.Infobidak = 'p';  //bidak yang mau dipindah
-  Q = Search(L1,Z);
-  Lokasi(Q) = MakePOINT(4,2); //posisi akhir
-
-  /*bidak yang mau dicek*/
-  address P;
-  infolist X;
-  ListPindah R;
-  X.Lokasi = MakePOINT(8,1);
-  X.Infobidak = 'r';
-  P = Search(L1,X);
-  R = getRookMove(P,&L1,&L2);
-
-  T = board(L1,L2);
   printarray(T);
-
-  /* print possible moves*/
-  int i = 1;
-  while ( i <= R.Num)
-  {
-    TulisPOINT(R.Move[i]);
-    i++;
-  }
-  printf("\n");
-  POINT RYYB;
-  RYYB = moveselector(R,5);
-  TulisPOINT(RYYB);
-  printf("\n");
+  
+  POINT testsbl = MakePOINT(4,2);
+  char tescharsbl = SearchbyLocation(L1,testsbl);
+  printf("nih ketemu %c\n",tescharsbl);
+  
+  
   move(&L1,&L2,&T);
   move(&L1,&L2,&T);
   move(&L1,&L2,&T);
