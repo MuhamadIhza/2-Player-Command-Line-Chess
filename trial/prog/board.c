@@ -603,19 +603,75 @@ infolist possiblepawn(ListPossible S,int select){
   return X;
 }
 
+ListPossible pawnavail(List L1,List L2){
+  ListPossible S;
+  address P;
+  S.PNum = 0;
+  P = First(L1);
+  while (P!=Nil)
+  {
+    ListPindah R;
+    switch (Infobidak(P))
+    {
+    case 'p':
+      R = getPionMove(P,&L1,&L2);
+      break;
+    case 'r':
+      R = getRookMove(P,&L1,&L2);
+      break;
+    case 'h':
+      R = getHorseMove(P,&L1,&L2);
+      break;
+    case 'b':
+      R = getBishopMove(P,&L1,&L2);
+      break;
+    case 'k':
+      R = getKingMove(P,&L1,&L2);
+      break;
+    case 'q':
+      R = getQueenMove(P,&L1,&L2);
+      break;
+    default:
+      //printf("notdefined\n");
+      break;
+    }
+    if (R.Num>0)
+    {
+      S.PNum++;
+      S.PPawn[S.PNum]=Info(P);
+    }
+    
+    P = Next(P);
+  }
+  return S;
+}
+
 void move(List *L1, List *L2,TabEl *T){
   /*bidak yang mau dipindah*/
   address P;
   infolist X;
   ListPindah R;
   //TabEl T;
-  printf("input bidak yang mau dipindah :");
+  /*printf("input bidak yang mau dipindah :");
   scanf(" %c",&(X.Infobidak));
   printf("input titik awal x<spasi>y :");
   int inputx,inputy;
   scanf("%d %d",&inputx,&inputy);
-  X.Lokasi = MakePOINT(inputx,inputy);
-
+  X.Lokasi = MakePOINT(inputx,inputy);*/
+  ListPossible S;
+  S = pawnavail(*L1,*L2);
+  printf("Bidak yang mungkin pindah\n");
+  for (int j = 1; j <= S.PNum; j++)
+  {
+    printf("%d",j);
+    printf(" %c",S.PPawn[j].Infobidak);
+    TulisPOINT(S.PPawn[j].Lokasi);
+    printf("\n");
+  }
+  printf("input select :");
+  int select1;
+  scanf(" %d",&select1);
+  X = possiblepawn(S,select1);
   P = Search(*L1,X);
   switch (X.Infobidak)
   {
