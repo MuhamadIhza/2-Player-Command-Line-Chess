@@ -109,6 +109,7 @@ void DelP (List *L, infolist X);
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
+void DelPoint (List *L, POINT X);
 void DelLast (List *L, address *P);
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */

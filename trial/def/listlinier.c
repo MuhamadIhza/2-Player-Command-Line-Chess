@@ -199,6 +199,30 @@ void DelP (List *L, infolist X)
 		}
 	}
 }
+void DelPoint (List *L, POINT X)
+{
+	if (!IsEmptyList(*L)) {
+		address P,Prec;
+		boolean found = false;
+		P = First(*L);
+		while (!found) {
+			if (Absis(Lokasi(P))==Absis(X)&& Ordinat(Lokasi(P))==Ordinat(X)) {
+				found = true;
+			} else {
+				Prec = P;
+				P = Next(P);
+			}
+
+		}
+		if (P == First(*L)) {
+				DelFirst(L,&P);
+				Dealokasi(&P);
+		}else if (P!=Nil) {
+			DelAfter(L,&P,Prec);
+			Dealokasi(&P);
+		}
+	}
+}
 void DelLast (List *L, address *P)
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
