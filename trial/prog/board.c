@@ -416,111 +416,96 @@ ListPindah getQueenMove(address P,List *L1, List *L2){
      if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,0,-1);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
+      x1 = PlusDelta(x1,0,-1);
      }
      else break;
   }
+
   x1 = PlusDelta (x0,1,0);
   Stop = false;
   while (IsPointValid(x1) && (!Stop)){
      if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,1,0);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
+      x1 = PlusDelta(x1,1,0);
      }
      else break;
   }
+
   x1 = PlusDelta (x0,-1,0);
   Stop = false;
   while (IsPointValid(x1) && (!Stop)){
      if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,-1,0);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
+      x1 = PlusDelta(x1,-1,0);
      }
      else break;
   }
+
   x1 = PlusDelta(x0,1,1);
   Stop = false;
-  while (IsPointValid(x1)){
-    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,1,1);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
-    }
-    else break;
+      x1 = PlusDelta(x1,1,1);
+     }
+     else break;
   }
+
   x1 = PlusDelta(x0,1,-1);
   Stop = false;
-  while (IsPointValid(x1)){
-    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,1,-1);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
-    }
-    else break;
+      x1 = PlusDelta(x1,1,-1);
+     }
+     else break;
   }
+
   x1 = PlusDelta(x0,-1,1);
   Stop = false;
-  while (IsPointValid(x1)){
-    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,-1,1);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
-    }
-    else break;
+      x1 = PlusDelta(x1,-1,1);
+     }
+     else break;
   }
+
   x1 = PlusDelta(x0,-1,-1);
   Stop = false;
-  while (IsPointValid(x1)){
-    if (!(SearchEL(*L1,x1)) || (SearchEL(*L2,x1))){
+  while (IsPointValid(x1) && (!Stop)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       S.Num ++;
       S.Move[S.Num] = x1;
-      x1 = PlusDelta(x1,-1,-1);
-      if (Stop){
-        break;
-      }
       if (SearchEL(*L2,x1)){
         Stop = true;
       }
-    }
-    else break;
+      x1 = PlusDelta(x1,-1,-1);
+     }
+     else break;
   }
   return S;
 }
