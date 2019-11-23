@@ -660,7 +660,7 @@ ListPossible pawnavail2(List L1,List L2){
   }
   return S;
 }
-void move(List *L1, List *L2,TabEl *T){
+void move(List *L1, List *L2,TabEl *T,int *poinP1){
   /*bidak yang mau dipindah*/
   address P;
   infolist X;
@@ -745,16 +745,62 @@ void move(List *L1, List *L2,TabEl *T){
       else if (pilihan == 4)  Infobidak(P) = 'q';
     }
     Lokasi(P) = dest;
-    TulisPOINT(dest);
-    infolist delEl;
     if (SearchEL(*L2,dest))
     {
+      switch (SearchbyLocation(*L2,dest))
+      {
+      case 'P':
+        (*poinP1) +=1;
+        break;
+      case 'R':
+        (*poinP1) += 4;
+        break;
+      case 'H':
+        (*poinP1) += 2;
+        break;
+      case 'B':
+        (*poinP1) += 4;
+        break;
+      case 'Q':
+        (*poinP1) += 8;
+        break;  
+      case 'K':
+        (*poinP1) += 10;
+        break;  
+      default:
+        break;
+      }
+      printf("Poin P1 terkini : %d",*poinP1);
       DelPoint(L2,dest);
     }
     
     printf("\n");
     *T = board(*L1,*L2);
-    printf("Bidak %c telah pindah ke %d,%d\n",X.Infobidak,dest.X,dest.Y);
+    printf("Bidak ");
+    switch (Infobidak(P))
+      {
+      case 'p':
+        printf("pion ");
+        break;
+      case 'r':
+        printf("benteng ");
+        break;
+      case 'h':
+        printf("kuda ");
+        break;
+      case 'b':
+        printf("menteri ");
+        break;
+      case 'q':
+        printf("ratu ");
+        break;  
+      case 'k':
+        printf("raja ");
+        break;  
+      default:
+        break;
+      }
+    printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
     printarray(*T);
   }else
   {
@@ -763,7 +809,7 @@ void move(List *L1, List *L2,TabEl *T){
   
   printf("\n");
 }
-void move2(List *L1, List *L2,TabEl *T){
+void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   /*bidak yang mau dipindah*/
   address P;
   infolist X;
@@ -848,16 +894,62 @@ void move2(List *L1, List *L2,TabEl *T){
       else if (pilihan == 4)  Infobidak(P) = 'Q';
     }
     Lokasi(P) = dest;
-    TulisPOINT(dest);
-    infolist delEl;
     if(SearchEL(*L1,dest))
     {
+      switch (SearchbyLocation(*L1,dest))
+      {
+      case 'p':
+        (*poinP2) +=1;
+        break;
+      case 'r':
+        (*poinP2) += 4;
+        break;
+      case 'h':
+        (*poinP2) += 2;
+        break;
+      case 'b':
+        (*poinP2) += 4;
+        break;
+      case 'q':
+        (*poinP2) += 8;
+        break;  
+      case 'k':
+        (*poinP2) += 10;
+        break;  
+      default:
+        break;
+      }
+      printf("Poin P2 terkini : %d",*poinP2);
       DelPoint(L1,dest);
     }
     
     printf("\n");
     *T = board(*L1,*L2);
-    printf("Bidak %c telah pindah ke %d,%d\n",X.Infobidak,dest.X,dest.Y);
+    printf("Bidak ");
+    switch (Infobidak(P))
+      {
+      case 'P':
+        printf("pion ");
+        break;
+      case 'R':
+        printf("benteng ");
+        break;
+      case 'H':
+        printf("kuda ");
+        break;
+      case 'B':
+        printf("menteri ");
+        break;
+      case 'Q':
+        printf("ratu ");
+        break;  
+      case 'K':
+        printf("raja ");
+        break;  
+      default:
+        break;
+      }
+    printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
     printarray(*T);
   }else
   {
@@ -873,7 +965,8 @@ int main(){
   initboard(&L1,&L2);
   T = board(L1,L2);
   printarray(T);
-
+  int poinP1 =0;
+  int poinP2 =0;
   /* print possible moves*/
   printf("\n");
   Queue Q1;
@@ -881,10 +974,10 @@ int main(){
   while (!(IsEmptyQueue(Q1))){
         if(InfoHead(Q1) == '1'){
             printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
-            move(&L1,&L2,&T);
+            move(&L1,&L2,&T,&poinP1);
         } else {
             printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
-            move2(&L1,&L2,&T);
+            move2(&L1,&L2,&T,&poinP2);
         }
         Del(&Q1,&InfoHead(Q1));
   }
