@@ -34,14 +34,9 @@ boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2);
 
 POINT moveselector(ListPindah S,int select);
 infolist possiblepawn(ListPossible S,int select);
-<<<<<<< HEAD
-void move(List *L1, List *L2,TabEl *T);
-void move2(List *L1, List *L2,TabEl *T);
-void ShowSpecialMove(List *L1, List *L2, TabEl *T);
-=======
 void move(List *L1, List *L2,TabEl *T,int *poinP1);
 void move2(List *L1, List *L2,TabEl *T,int *poinP2);
->>>>>>> e10f729050bba627af1a1d510fc95110fbc07d2b
+void ShowSpecialMove(List *L1, List *L2, TabEl *T);
 ListPossible pawnavail(List L1,List L2);
 ListPossible pawnavail2(List L1,List L2);
 #endif

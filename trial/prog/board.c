@@ -1118,22 +1118,6 @@ int main(){
   int poinP2 =0;
   /* print possible moves*/
   printf("\n");
-<<<<<<< HEAD
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  move(&L1,&L2,&T);
-  ShowSpecialMove(&L1,&L2,&T);
-  
-=======
   Queue Q1;
   inisialisasi_Urutan(&Q1);
   while (!(IsEmptyQueue(Q1))){
@@ -1146,6 +1130,7 @@ int main(){
         }
         Del(&Q1,&InfoHead(Q1));
   }
->>>>>>> e10f729050bba627af1a1d510fc95110fbc07d2b
+  ShowSpecialMove(&L1,&L2,&T);
+
   return 0;
 }
