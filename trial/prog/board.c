@@ -214,7 +214,6 @@ ListPindah getHorseMove(address P,List *L1, List *L2){
       S.Move[S.Num] = x1;
     }
   }
-
   x1 = PlusDelta(x0,-2,1);
   if (IsPointValid(x1)) {
     if (!SearchEL(*L1,x1)){
@@ -759,9 +758,19 @@ void move(List *L1, List *L2,TabEl *T){
     printf("Select : ");
     /*pemindahan*/
     int select;
+    int pilihan;
     scanf("%d",&select);
     POINT dest;
     dest = moveselector(R,select);
+    if ( X.Infobidak = 'p' && Ordinat(dest) == 8){
+      printf("Selamat,pion anda dapat dipromosikan, silahkan pilih transformasi bidak anda : ");
+      printf("1.Benteng \n 2.Kuda \n 3.Mentri \n 4.Ratu \n");
+      scanf("%d", &pilihan);
+      if (pilihan == 1) Infobidak(P) = 'r';
+      else if (pilihan == 2)  Infobidak(P) = 'h';
+      else if (pilihan == 3)  Infobidak(P) = 'b';
+      else if (pilihan == 4)  Infobidak(P) = 'q';
+    }
     Lokasi(P) = dest;
     TulisPOINT(dest);
     infolist delEl;
@@ -778,7 +787,6 @@ void move(List *L1, List *L2,TabEl *T){
   {
     printf("tidak bisa dipindah\n");
   }
-  
   
   printf("\n");
 }
@@ -904,6 +912,8 @@ int main(){
   TulisPOINT(RYYB);
   printf("\n");
   move(&L1,&L2,&T);
-  move2(&L1,&L2,&T);
+  move(&L1,&L2,&T);
+  move(&L1,&L2,&T);
+  move(&L1,&L2,&T);
   return 0;
 }
