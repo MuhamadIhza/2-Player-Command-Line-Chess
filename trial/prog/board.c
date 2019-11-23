@@ -122,7 +122,7 @@ void printarray(TabEl T){
 ListPindah getPionMove(address P,List *L1, List *L2){
   ListPindah S;
   S.Num = 0;
-  POINT x1,x2,x3;
+  POINT x1,x2,x3,x4;
   POINT x0;
   x0 = Lokasi(P);
   x1 = PlusDelta(x0,0,1);
@@ -146,13 +146,20 @@ ListPindah getPionMove(address P,List *L1, List *L2){
       S.Move[S.Num] = x3;      
     }
   }
+  x4 = PlusDelta(x0,0,2);
+  if (IsPointValid(x4) && Ordinat(Lokasi(P)) == 2) {
+    if (!(SearchEL(*L1,x1) || SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x4;
+    }
+  }
   return S;
 }
 
 ListPindah getPionMove2(address P,List *L1, List *L2){
   ListPindah S;
   S.Num = 0;
-  POINT x1,x2,x3;
+  POINT x1,x2,x3,x4;
   POINT x0;
   x0 = Lokasi(P);
   x1 = PlusDelta(x0,0,-1);
@@ -173,7 +180,14 @@ ListPindah getPionMove2(address P,List *L1, List *L2){
   if (IsPointValid(x3)){
     if (SearchEL(*L1,x3)){
       S.Num ++;
-      S.Move[S.Num] = x3;      
+      S.Move[S.Num] = x4;      
+    }
+  }
+  x4 = PlusDelta(x0,0,2);
+  if (IsPointValid(x4) && Ordinat(Lokasi(P)) == 7) {
+    if (!(SearchEL(*L1,x1) || SearchEL(*L2,x1))){
+      S.Num ++;
+      S.Move[S.Num] = x1;
     }
   }
   return S;
@@ -833,7 +847,7 @@ void move2(List *L1, List *L2,TabEl *T){
     Lokasi(P) = dest;
     TulisPOINT(dest);
     infolist delEl;
-    if (SearchEL(*L1,dest))
+    if(SearchEL(*L1,dest))
     {
       DelPoint(L1,dest);
     }
