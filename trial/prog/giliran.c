@@ -9,7 +9,7 @@ void inisialisasi_Urutan(Queue *Q1) {
     int i;
     a = '1';
     b = '2';
-    CreateEmpty(Q1,50);
+    CreateEmpty(Q1,100);
     for (i = 1;i < MaxElQueue(*Q1);i++){
         if (i % 2 == 1){
             Add(Q1,a);

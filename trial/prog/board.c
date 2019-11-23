@@ -678,6 +678,10 @@ void move(List *L1, List *L2,TabEl *T){
   printf("input select :");
   int select1;
   scanf(" %d",&select1);
+  while (select1 <1 || select1 > S.PNum) {
+    printf("Input tidak valid, masukkan kembali nomor bidak yang anda ingin gerakkan : \n");
+    scanf(" %d",&select1);
+  }
   X = possiblepawn(S,select1);
   P = Search(*L1,X);
   switch (X.Infobidak)
@@ -721,12 +725,20 @@ void move(List *L1, List *L2,TabEl *T){
     int select;
     int pilihan;
     scanf("%d",&select);
+    while (select < 1 || select > R.Num){
+          printf("Input tidak valid, masukkan kembali nomor lokasi yang anda inginkan : \n");
+          scanf(" %d",&select);
+    }
     POINT dest;
     dest = moveselector(R,select);
     if ( X.Infobidak = 'p' && Ordinat(dest) == 8){
       printf("Selamat,pion anda dapat dipromosikan, silahkan pilih transformasi bidak anda : ");
       printf("1.Benteng \n 2.Kuda \n 3.Mentri \n 4.Ratu \n");
       scanf("%d", &pilihan);
+      while (pilihan < 1 || pilihan > 4){
+        printf("Pilihan yang anda masukkan tidak valid, silahkan pilih kembali ! ");
+        scanf("%d",&pilihan);
+      }
       if (pilihan == 1) Infobidak(P) = 'r';
       else if (pilihan == 2)  Infobidak(P) = 'h';
       else if (pilihan == 3)  Infobidak(P) = 'b';
@@ -770,6 +782,10 @@ void move2(List *L1, List *L2,TabEl *T){
   printf("input select :");
   int select1;
   scanf(" %d",&select1);
+  while (select1 <1 || select1 > S.PNum) {
+    printf("Input tidak valid, masukkan kembali nomor bidak yang anda ingin gerakkan : \n");
+    scanf(" %d",&select1);
+  }
   X = possiblepawn(S,select1);
   P = Search(*L2,X);
   switch (X.Infobidak)
@@ -812,12 +828,20 @@ void move2(List *L1, List *L2,TabEl *T){
     /*pemindahan*/
     int select;
     scanf("%d",&select);
+    while (select < 1 || select > R.Num){
+          printf("Input tidak valid, masukkan kembali nomor lokasi yang anda inginkan : \n");
+          scanf(" %d",&select);
+    }
     POINT dest;
     dest = moveselector(R,select);
     if ( X.Infobidak = 'p' && Ordinat(dest) == 1){
       printf("Selamat,pion anda dapat dipromosikan, silahkan pilih transformasi bidak anda : ");
       printf("1.Benteng \n 2.Kuda \n 3.Mentri \n 4.Ratu \n");
       scanf("%d", &pilihan);
+      while (pilihan < 1 || pilihan > 4){
+        printf("Pilihan yang anda masukkan tidak valid, silahkan pilih kembali ! ");
+        scanf("%d",&pilihan);
+      }
       if (pilihan == 1) Infobidak(P) = 'R';
       else if (pilihan == 2)  Infobidak(P) = 'H';
       else if (pilihan == 3)  Infobidak(P) = 'B';
@@ -851,15 +875,6 @@ int main(){
   printarray(T);
 
   /* print possible moves*/
-  int i = 1;
-  while ( i <= R.Num)
-  {
-    TulisPOINT(R.Move[i]);
-    i++;
-  }
-  printf("\n");
-  POINT RYYB;
-  RYYB = moveselector(R,5);
   printf("\n");
   Queue Q1;
   inisialisasi_Urutan(&Q1);
