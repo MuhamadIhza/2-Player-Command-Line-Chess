@@ -919,7 +919,6 @@ void move(List *L1, List *L2,TabEl *T,int *poinP1){
       default:
         break;
       }
-      printf("Poin P1 terkini : %d",*poinP1);
       DelPoint(L2,dest);
     }
     
@@ -950,6 +949,7 @@ void move(List *L1, List *L2,TabEl *T,int *poinP1){
         break;
       }
     printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
+    printf("Poin P1 terkini : %d\n",*poinP1);
     printarray(*T);
   }else
   {
@@ -1068,7 +1068,6 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
       default:
         break;
       }
-      printf("Poin P2 terkini : %d",*poinP2);
       DelPoint(L1,dest);
     }
     
@@ -1099,6 +1098,7 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
         break;
       }
     printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
+    printf("Poin P2 terkini : %d\n",*poinP2);
     printarray(*T);
   }else
   {
