@@ -706,7 +706,7 @@ void ShowSpecialMove(List *L1, List *L2, TabEl *T){
   printf("1. Castling\n");
   scanf("%d", &pilihan);
   if (pilihan == 1){
-    Castling(K, RK, RQ, &L1, &L2);
+    Castling(K, RK, RQ, L1, L2);
     printarray(*T);
   }
   //}
@@ -1108,17 +1108,17 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   
   printf("\n");
 }
-int main(){
+/*int main(){
   TabEl T;
   List L1,L2;
+  int poinP1 =0;
+  int poinP2 =0;
+  Queue Q1;
+  
   initboard(&L1,&L2);
   T = board(L1,L2);
   printarray(T);
-  int poinP1 =0;
-  int poinP2 =0;
-  /* print possible moves*/
   printf("\n");
-  Queue Q1;
   inisialisasi_Urutan(&Q1);
   while (!(IsEmptyQueue(Q1))){
         if(InfoHead(Q1) == '1'){
@@ -1133,4 +1133,4 @@ int main(){
   ShowSpecialMove(&L1,&L2,&T);
 
   return 0;
-}
+}*/
