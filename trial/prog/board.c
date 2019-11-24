@@ -1378,6 +1378,175 @@ boolean isCheck(address P,List *L1, List *L2){
   }
   return check;
 }
+
+boolean isCheck2(address P,List *L1, List *L2){
+  boolean check=false;
+  char c;
+  POINT x0=Lokasi(P),x1;
+  
+  x1 = PlusDelta(x0,0,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,0,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,0,-1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,0,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,0);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,1,0);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,0);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,-1,0);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,1,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,-1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,1,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,-1,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,-1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,-1,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+
+  x1 = PlusDelta(x0,-2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  return check;
+}
 /*int main(){
   TabEl T;
   List L1,L2;
