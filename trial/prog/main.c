@@ -24,6 +24,7 @@ int main(){
   printf("3. Exit\n");
   printf("Input : ");
   int selection;
+  boolean gamestop = false;
   scanf("%d",&selection);
   while (selection<1 || selection>3)
   {
@@ -46,7 +47,7 @@ int main(){
     printarray(T);
     printf("\n");
     inisialisasi_Urutan(&Q1);
-    while (!(IsEmptyQueue(Q1))){
+    while (!(IsEmptyQueue(Q1))||!gamestop){
       printf("Masukkan command : ");
       scanf("%s",cmdinput);
       while ((strcmp(cmdinput,"MOVE")!=0)&&(strcmp(cmdinput,"SPECIAL_MOVE")!=0)&&(strcmp(cmdinput,"UNDO")!=0))
@@ -61,9 +62,18 @@ int main(){
         if(InfoHead(Q1) == '1'){
             printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
             move(&L1,&L2,&T,&poinP1);
+            if (!SearchBidak(L1,'k')||!SearchBidak(L2,'K'))
+            {
+              gamestop = true;
+            }
+            
         } else { /*(InfoHead(Q1) == '2')*/
             printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
             move2(&L1,&L2,&T,&poinP2);
+            if (!SearchBidak(L1,'k')||!SearchBidak(L2,'K'))
+            {
+              gamestop = true;
+            }
         }
         Del(&Q1,&InfoHead(Q1));
       } else if (strcmp(cmdinput,"SPECIAL_MOVE")==0)

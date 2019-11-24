@@ -78,6 +78,19 @@ boolean SearchEL (List L, POINT X){
 	}
 	return found;
 }
+boolean SearchBidak (List L, char X){
+	address P;
+	P = First(L);
+	boolean found = false;
+	while ((P!=Nil)&&(!found)) {
+		if (X == Infobidak(P)) {
+			found = true;
+		} else {
+			P = Next(P);
+		}
+	}
+	return found;
+}
 char SearchbyLocation(List L,POINT X){
 	char bidak;
 	address P = First(L);

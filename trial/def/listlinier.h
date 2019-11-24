@@ -64,6 +64,7 @@ address Search (List L, infolist X);
 /* Jika tidak ada, mengirimkan Nil */
 
 boolean SearchEL (List L, POINT X);
+boolean SearchBidak (List L, char X);
 char SearchbyLocation(List L,POINT X);
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/

@@ -820,9 +820,59 @@ void move(List *L1, List *L2,TabEl *T,int *poinP1){
   for (int j = 1; j <= S.PNum; j++)
   {
     printf("%d.",j);
-    printf("%c",S.PPawn[j].Infobidak);
-    TulisPOINT(S.PPawn[j].Lokasi);
-    printf("\n");
+    switch (S.PPawn[j].Infobidak)
+      {
+      case 'p':
+        printf("Pion ");
+        break;
+      case 'r':
+        printf("Benteng ");
+        break;
+      case 'h':
+        printf("Kuda ");
+        break;
+      case 'b':
+        printf("Menteri ");
+        break;
+      case 'q':
+        printf("Ratu ");
+        break;  
+      case 'k':
+        printf("Raja ");
+        break;  
+      default:
+        break;
+      }
+    switch (Absis(S.PPawn[j].Lokasi))
+      {
+      case 1:
+        printf("A,");
+        break;
+      case 2:
+        printf("B,");
+        break;
+      case 3:
+        printf("C,");
+        break;
+      case 4:
+        printf("D,");
+        break;
+      case 5:
+        printf("E,");
+        break;  
+      case 6:
+        printf("F,");
+        break;  
+      case 7:
+        printf("G,");
+        break;
+      case 8:
+        printf("H,");
+        break;    
+      default:
+        break;
+      }
+    printf("%d\n",Ordinat(S.PPawn[j].Lokasi));
   }
   printf("input select :");
   int select1;
@@ -970,9 +1020,60 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   for (int j = 1; j <= S.PNum; j++)
   {
     printf("%d.",j);
-    printf("%c",S.PPawn[j].Infobidak);
-    TulisPOINT(S.PPawn[j].Lokasi);
-    printf("\n");
+    switch (S.PPawn[j].Infobidak)
+      {
+      case 'P':
+        printf("Pion ");
+        break;
+      case 'R':
+        printf("Benteng ");
+        break;
+      case 'H':
+        printf("Kuda ");
+        break;
+      case 'B':
+        printf("Menteri ");
+        break;
+      case 'Q':
+        printf("Ratu ");
+        break;  
+      case 'K':
+        printf("Raja ");
+        break;  
+      default:
+        break;
+      }
+    switch (Absis(S.PPawn[j].Lokasi))
+      {
+      case 1:
+        printf("A,");
+        break;
+      case 2:
+        printf("B,");
+        break;
+      case 3:
+        printf("C,");
+        break;
+      case 4:
+        printf("D,");
+        break;
+      case 5:
+        printf("E,");
+        break;  
+      case 6:
+        printf("F,");
+        break;  
+      case 7:
+        printf("G,");
+        break;
+      case 8:
+        printf("H,");
+        break;    
+      default:
+        break;
+      }
+
+    printf("%d\n",Ordinat(S.PPawn[j].Lokasi));
   }
   printf("input select :");
   int select1;
