@@ -67,12 +67,20 @@ int main(){
         if(InfoHead(Q1) == '1'){
             printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
             move(&L1,&L2,&T,&poinP1);
-        } else {
+        } else { /*(InfoHead(Q1) == '2')*/
             printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
             move2(&L1,&L2,&T,&poinP2);
         }
         Del(&Q1,&InfoHead(Q1));
+      } else if (strcmp(cmdinput,"SPECIAL_MOVE")==0)
+      {
+        /* code */
+      }else /*UNDO*/
+      {
+        /* code */
       }
+      
+      
     }
 
   }
