@@ -14,6 +14,7 @@
 typedef struct{
 	POINT Lokasi;
 	char Infobidak;
+	int CountMove;
 } infolist;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist {
@@ -33,6 +34,7 @@ typedef struct {
 #define Infobidak(P) P->info.Infobidak
 #define Next(P) (P)->next
 #define First(L) (L).First
+#define CountMove(P) (P)->info.CountMove
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
