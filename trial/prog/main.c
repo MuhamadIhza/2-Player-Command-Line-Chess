@@ -6,13 +6,6 @@
 /* 18218003 */
 /* Information Systems and Technology ITB 2018 */
 
-//void main_menu();
-
-/*int main(){
-  main_menu();
-  return 0;
-}*/
-
 int main(){
   printf("-------------------------------------------------------\n");
   printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -28,10 +21,11 @@ int main(){
   printf("Select menu below\n");
   printf("1. New Game\n");
   printf("2. Leaderboard\n");
+  printf("3. Exit\n");
   printf("Input : ");
   int selection;
   scanf("%d",&selection);
-  while (selection<1 || selection>2)
+  while (selection<1 || selection>3)
   {
     printf("Input not valid \n");
     printf("Input : ");
@@ -78,13 +72,16 @@ int main(){
       }else /*UNDO*/
       {
         /* code */
-      }
-      
-      
+      } 
     }
+    main();/*balik lagi ke awal*/
 
+  }else if (selection==2)
+  {
+    /* code */
+  }else
+  {
+    printf("Thank you for playing\n© CGI 2019\n");
+    return 0;
   }
-  
-  
-  return 0;
 }
