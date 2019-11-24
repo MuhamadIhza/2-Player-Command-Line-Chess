@@ -47,7 +47,7 @@ int main(){
     printarray(T);
     printf("\n");
     inisialisasi_Urutan(&Q1);
-    while (!(IsEmptyQueue(Q1))||!gamestop){
+    while (!(IsEmptyQueue(Q1))&&!gamestop){
       printf("Masukkan command : ");
       scanf("%s",cmdinput);
       while ((strcmp(cmdinput,"MOVE")!=0)&&(strcmp(cmdinput,"SPECIAL_MOVE")!=0)&&(strcmp(cmdinput,"UNDO")!=0))
@@ -84,6 +84,9 @@ int main(){
         /* code */
       } 
     }
+    printf("Game telah berakhir\n");
+    printf("Poin Player 1 : %d\n",poinP1);
+    printf("Poin Player 2 : %d\n",poinP2);
     main();/*balik lagi ke awal*/
 
   }else if (selection==2)
