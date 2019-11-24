@@ -181,14 +181,14 @@ ListPindah getPionMove2(address P,List *L1, List *L2){
   if (IsPointValid(x3)){
     if (SearchEL(*L1,x3)){
       S.Num ++;
-      S.Move[S.Num] = x4;      
+      S.Move[S.Num] = x3;      
     }
   }
-  x4 = PlusDelta(x0,0,2);
+  x4 = PlusDelta(x0,0,-2);
   if (IsPointValid(x4) && Ordinat(Lokasi(P)) == 7) {
-    if (!(SearchEL(*L1,x1) || SearchEL(*L2,x1))){
+    if (!(SearchEL(*L1,x4) || SearchEL(*L2,x4))){
       S.Num ++;
-      S.Move[S.Num] = x1;
+      S.Move[S.Num] = x4;
     }
   }
   return S;
