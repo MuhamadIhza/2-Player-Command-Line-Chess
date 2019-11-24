@@ -1,6 +1,7 @@
 #include "prioqueue.h"
 #include "boolean.h"
 #include <stdlib.h>
+#include <string.h>
 
 /* Prototype manajemen memori */
 void Alokasi (address *P, infotype X)
@@ -69,23 +70,44 @@ void Add (PrioQueue * Q, infotype X)
         else {
             CurrP=Head(*Q);
             PrevP = CurrP;
-			if ( Info(CurrP).score < Info(P).score ){
+            int i=0;
+            
+            if ( Info(CurrP).score < Info(P).score ){
                 Next(P)=Head(*Q);
                 Head(*Q)=P;
+                PrevP=P;
+                CurrP=Next(P);
 
             } else {
-                while ( Info(CurrP).score >= Info(P).score && Next(CurrP)!=Nil ){
+                while ( Info(CurrP).score > Info(P).score && Next(CurrP)!=Nil && (strcmp(Info(P).nama,Info(PrevP).nama)!=0)){
                     PrevP=CurrP;
                     CurrP=Next(CurrP);
                 }
-                if (CurrP == PrevP || Next(CurrP)==Nil ) Next(CurrP) = P;
+                i=0;
+                while (( Info(CurrP).score == Info(P).score) && (Next(CurrP)!=Nil) && (strcmp(Info(P).nama,Info(CurrP).nama)>0) ){
+                    PrevP=CurrP;
+                    CurrP=Next(CurrP);
+                }
+                if (strcmp(Info(P).nama,Info(CurrP).nama)==0 ) {
+                    if ( Info(CurrP).score > Info(P).score ) Dealokasi(P);
+                    else Info(CurrP).score=Info(P).score;
+                }
+                else if ( Next(CurrP)==Nil && Info(CurrP).score > Info(P).score ) Next(CurrP) = P;
                 else {
                     Next(PrevP)=P;
                     Next(P)=CurrP;
+                    PrevP=P;
                 }
             }
-
-            
+            while ( Next(CurrP)!=Nil ){
+                if (strcmp(Info(P).nama,Info(CurrP).nama)==0) {
+                    Next(PrevP)=Next(CurrP);
+                    Dealokasi(CurrP);
+                    break;
+                }
+                PrevP=CurrP;
+                CurrP=Next(CurrP);
+            }            
         }
     }
 }
