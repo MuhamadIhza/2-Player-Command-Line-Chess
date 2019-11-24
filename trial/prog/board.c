@@ -1163,6 +1163,8 @@ boolean isCheck(address P,List *L1, List *L2){
   }
 
   x1 = PlusDelta(x0,1,1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
   while (IsPointValid(x1) && (!check)){
      if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       if (SearchEL(*L2,x1)){
@@ -1187,6 +1189,8 @@ boolean isCheck(address P,List *L1, List *L2){
   }
 
   x1 = PlusDelta(x0,-1,1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
   while (IsPointValid(x1) && (!check)){
      if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
       if (SearchEL(*L2,x1)){
@@ -1208,6 +1212,68 @@ boolean isCheck(address P,List *L1, List *L2){
       x1 = PlusDelta(x1,-1,-1);
      }
      else break;
+  }
+
+  x1 = PlusDelta(x0,2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+
+  x1 = PlusDelta(x0,-2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
   }
   return check;
 }
