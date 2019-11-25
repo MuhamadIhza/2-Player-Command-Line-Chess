@@ -1,0 +1,20 @@
+Skema Checkmate
+1
+MOVE
+5
+1
+MOVE
+3
+1
+MOVE
+5
+1
+MOVE
+10
+1
+MOVE
+5
+1
+
+
+Skema 

@@ -624,7 +624,7 @@ boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2){
   Stop = false;
   CanCastRK = false;
   RKing = Lokasi(RK); RQueen = Lokasi(RQ);
-  Check = isCheck(K, L1, L2);
+  Check = IsCheck(K, L1, L2);
   while ((!Stop) && (Absis(x1) != Absis(RKing))){
     x1 = PlusDelta(x1,1,0);
     if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RKing)) && (!Check)){
@@ -661,7 +661,7 @@ void Castling(address K, address RK, address RQ, List *L1, List *L2){
   POINT x1=Lokasi(K), RKing, RQueen, xK, xRK, xRQ;
   Stop = false;
   CanCastRK = false;
-  Check = isCheck(K, L1, L2);
+  Check = IsCheck(K, L1, L2);
   RKing = Lokasi(RK); RQueen = Lokasi(RQ);
   while ((!Stop) && (Absis(x1) != Absis(RKing))){
     x1 = PlusDelta(x1,1,0);
@@ -741,7 +741,7 @@ void Castling2(address K, address RK, address RQ, List *L1, List *L2){
   POINT x1=Lokasi(K), RKing, RQueen, xK, xRK, xRQ;
   Stop = false;
   CanCastRK = false;
-  Check = isCheck(K, L1, L2);
+  Check = IsCheck(K, L1, L2);
   RKing = Lokasi(RK); RQueen = Lokasi(RQ);
   while ((!Stop) && (Absis(x1) != Absis(RKing))){
     x1 = PlusDelta(x1,1,0);
