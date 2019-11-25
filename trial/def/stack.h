@@ -8,15 +8,15 @@ dan ukuran sama
 TOP adalah alamat elemen puncak*/
 
 #include "../def/point.h"
+#include "../def/array.h"
 #define false 0
 #define true 1
 //#define Nil 0
-#define MaxEl 10
+#define MaxEl 200
 
 typedef int bool;
-typedef POINT infostack;
+typedef TabEl infostack;
 typedef int saddress;
-
 typedef struct {
     infostack T[MaxEl];
     saddress TOP;
@@ -36,10 +36,10 @@ void CreateEmptyStack(Stack *S);
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmptyStack(Stack S);
+bool IsEmptyStack(Stack S);
 /* Mengirim true jika Stack kosong*/
 /* Ciri stack kosong : TOP bernilai Nil */
-boolean IsFull(Stack S);
+bool IsFullStack(Stack S);
 /* Mengirim true jika stack S penuh */
 /* Ciri stack penuh : TOP bernilai MaxEl */
 

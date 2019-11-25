@@ -6,42 +6,45 @@
 #include <stdlib.h>
 
 #include "../def/point.h"
+#include "../def/listlinier.h"
 /* Konstanta */
 #define Nil NULL
 
 /* Deklarasi infostack */
-typedef POINT infostack;
+typedef List infostack;
 
 /* Stack dengan representasi berkait dengan pointer */
-typedef struct tElmtStack *address;
+typedef struct tElmtStack *saddress;
 typedef struct tElmtStack {
   infostack Info;
-  address Next;
+  saddress Next;
 } ElmtStack;
 
 /* Type stack dengan ciri TOP : */
 typedef struct {
-  address TOP;  /* alamat TOP: elemen puncak */
+  saddress TOP;  /* alamat TOP: elemen puncak */
 } Stack;
 
 /* Selektor */
 #define Top(S) (S).TOP
 #define InfoTop(S) (S).TOP->Info
-#define Next(P) (P)->Next
-#define Info(P) (P)->Info
+#define NextStack(P) (P)->Next
+#define InfoStack(P) (P)->Info
 
 /* Prototype manajemen memori */
-void AlokasiStack (address *P, infostack X);
+void AlokasiStack (saddress *P, infostack X);
 /* I.S. Sembarang */
 /* F.S. Alamat P diAlokasiStack, jika berhasil maka Info(P)=X dan
         Next(P)=Nil */
 /*      P=Nil jika AlokasiStack gagal */
-void DeAlokasiStack (address P);
+void DeAlokasiStack (saddress P);
 /* I.S. P adalah hasil AlokasiStack, P != Nil */
 /* F.S. Alamat P dideAlokasiStack, dikembalikan ke sistem */
 
 /* ********* PROTOTYPE REPRESENTASI LOJIK STACK ***************/
-boolean IsEmpty (Stack S);
+boolean IsEmptyStack (Stack S);
+
+int NbElmtStack (Stack S);
 /* Mengirim true jika Stack kosong: TOP(S) = Nil */
 void CreateEmptyStack (Stack * S);
 /* I.S. sembarang */

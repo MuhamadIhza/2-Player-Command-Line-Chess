@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 /* Prototype manajemen memori */
-void AlokasiStack (address *P, infostack X)
+void AlokasiStack (saddress *P, infostack X)
 /* I.S. Sembarang */
 /* F.S. Alamat P diAlokasiStack, jika berhasil maka Info(P)=X dan
         Next(P)=Nil */
@@ -15,18 +15,18 @@ void AlokasiStack (address *P, infostack X)
 {
   (*P) = (ElmtStack*)malloc(sizeof(ElmtStack));
   if (*P!=Nil) {
-    Info(*P)=X;
-    Next(*P)=Nil;
+    InfoStack(*P)=X;
+    NextStack(*P)=Nil;
   }
 }
-void DeAlokasiStack (address P)
+void DeAlokasiStack (saddress P)
 /* I.S. P adalah hasil AlokasiStack, P != Nil */
 /* F.S. Alamat P dideAlokasiStack, dikembalikan ke sistem */
 {
   free(P);
 }
 /* ********* PROTOTYPE REPRESENTASI LOJIK STACK ***************/
-boolean IsEmpty (Stack S)
+boolean IsEmptyStack (Stack S)
 /* Mengirim true jika Stack kosong: TOP(S) = Nil */
 {
   return Top(S)==Nil;
@@ -44,10 +44,10 @@ void Push (Stack * S, infostack X)
 /*      jika tidak, S tetap */
 /* Pada dasarnya adalah operasi Insert First pada list linier */
 {
-  address P;
+  saddress P;
 	AlokasiStack(&P,X);
 	if (P!=Nil) {
-		Next(P)= Top(*S);
+		NextStack(P)= Top(*S);
     Top(*S)= P;
 	}
 }
@@ -58,10 +58,21 @@ void Pop (Stack * S, infostack * X)
 /*      elemen TOP yang lama dideAlokasiStack */
 /* Pada dasarnya adalah operasi Delete First pada list linier */
 {
-  address P;
+  saddress P;
 	P = Top(*S);
-  Top(*S) = Next(Top(*S));
-  Next(P)=Nil;
-	(*X) = Info(P);
+  Top(*S) = NextStack(Top(*S));
+  NextStack(P)=Nil;
+	(*X) = InfoStack(P);
 	DeAlokasiStack(P);
+}
+
+int NbElmtStack (Stack S)
+{
+  saddress P;
+  int count = 0;
+  P = Top(S);
+  while (!IsEmptyStack && P != Nil){
+      count++;
+      P = NextStack(P); 
+  } return count;
 }
