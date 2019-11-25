@@ -7,7 +7,7 @@ int score;
 static FILE *file;
 
 void addtolb(char* pemain,int score){
-    file = fopen("Data/Leaderboard.txt", "a+");    
+    file = fopen("Leaderboard.txt", "a+");    
     fprintf(file, "%s,%d\n", pemain, score);              // menuliskan data ke file external leaderboard
     fclose(file);
 }
@@ -16,7 +16,7 @@ void printlb(){
     PrioQueue Q;
     infotypePQ X;
 
-    STARTKATA("Data/Leaderboard.txt");
+    STARTKATA("Leaderboard.txt");
     CreateEmptyPQ(&Q);
 
     while (!EndKata) {
