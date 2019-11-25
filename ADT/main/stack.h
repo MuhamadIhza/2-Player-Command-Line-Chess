@@ -15,7 +15,11 @@ TOP adalah alamat elemen puncak*/
 #define MaxEl 200
 
 typedef int bool;
-typedef TabEl infostack;
+typedef struct{
+    TabEl T;
+    int Poin1;
+    int Poin2;
+}infostack;
 typedef int saddress;
 typedef struct {
     infostack T[MaxEl];

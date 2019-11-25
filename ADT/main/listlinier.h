@@ -62,7 +62,10 @@ address Search (List L, infolist X);
 /* Mencari apakah ada elemen list dengan Info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
-
+address SearchKing (List L);
+/* Mencari apakah ada elemen list dengan Infobidak(P)= 'K' atau 'k */
+/* Jika ada, mengirimkan address elemen tersebut. */
+/* Jika tidak ada, mengirimkan Nil */
 boolean SearchEL (List L, POINT X);
 /* Mencari apakah ada elemen list dengan Lokasi(P)= X */
 /* Jika ada, mengirimkan true. */
