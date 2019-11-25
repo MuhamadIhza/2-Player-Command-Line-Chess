@@ -44,9 +44,9 @@ void initboard(List *L1,List *L2){
   InsVFirst(L2,bidak);
   bidak.Lokasi = MakePOINT(6,8);bidak.Infobidak = 'B';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(5,8);bidak.Infobidak = 'K';bidak.CountMove = 0;
+  bidak.Lokasi = MakePOINT(5,8);bidak.Infobidak = 'Q';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(4,8);bidak.Infobidak = 'Q';bidak.CountMove = 0;
+  bidak.Lokasi = MakePOINT(4,8);bidak.Infobidak = 'K';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
   bidak.Lokasi = MakePOINT(3,8);bidak.Infobidak = 'B';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
