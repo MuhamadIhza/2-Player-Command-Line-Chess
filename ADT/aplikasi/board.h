@@ -12,11 +12,12 @@ typedef struct {
   POINT Move[30];
   int Num;
 } ListPindah;
+/* Array untuk menyimpan gerakan yang mungkin dilakukan bidak*/
 typedef struct {
   infolist PPawn[16];
   int PNum;
 }ListPossible;
-
+/* Array untuk menyimpan bidak yang mungkin bergerak*/
 
 
 void initboard(List *L1,List *L2);
@@ -63,13 +64,17 @@ void ShowSpecialMove2(List *L1, List *L2, TabEl *T);
 /* Menampilkan gerakan khusus yang dapat dilakukan untuk List 2. */
 
 boolean IsCheck(address P,List *teman, List *musuh);
+/*Pengecekan skak pada P1/putih*/
 boolean IsCheck2(address P,List *teman, List *musuh);
+/*Pengecekan skak pada P2/hitam*/
 boolean IsCheckMate(address P,List *teman, List *musuh);
+/*Pengecekan kondisi skakmat*/
 
 /*Selektor*/
 POINT moveselector(ListPindah S,int select);
+/*Selektor terhadap ListPindah*/
 infolist possiblepawn(ListPossible S,int select);
-
+/*Selektor terhadap ListPossible*/
 /*Prosedur gerak*/
 void move(List *L1, List *L2,TabEl *T,int *poinP1);
 /*Prosedur gerak untuk P1*/
