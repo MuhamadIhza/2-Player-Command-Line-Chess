@@ -41,6 +41,8 @@ int main(){
     int poinP2 =0;
     Queue Q1;
     char cmdinput[15];
+    Stack S;
+    CreateEmptyStack(&S);
     initboard(&L1,&L2);
     T = board(L1,L2);
     printf("\nRunning a new game\n");
@@ -60,6 +62,7 @@ int main(){
       
       if (strcmp(cmdinput,"MOVE")==0)
       {
+        Push(&S,T);
         if(InfoHead(Q1) == '1'){
             printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
             move(&L1,&L2,&T,&poinP1);
@@ -82,7 +85,40 @@ int main(){
         /* code */
       }else /*UNDO*/
       {
-        /* code */
+        if (IsEmptyStack((S))){
+        printf("Perintah Undo belum dapat dijalankan.\n");
+        }else
+        {
+          if (S.TOP == 1)
+          {
+            Pop(&S,&T);
+            TabToList(T,&L1,&L2);
+            if (InfoHead(Q1) == '1')
+            {
+              Add(&Q1,'1');
+            }else
+            {
+              Add(&Q1,'2');
+            }
+            
+          }else
+          {
+            Pop(&S,&T);
+            Pop(&S,&T);
+            TabToList(T,&L1,&L2);
+            if (InfoHead(Q1) == '1')
+            {
+              Add(&Q1,'1');
+              Add(&Q1,'2');
+            }else
+            {
+              Add(&Q1,'2');
+              Add(&Q1,'1');
+            }
+          }
+          printarray(T);          
+        }
+        
       } 
     }
     printf("Game telah berakhir\n");

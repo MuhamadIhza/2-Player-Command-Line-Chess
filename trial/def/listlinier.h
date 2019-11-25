@@ -1,7 +1,7 @@
 /* File : listlinier.h */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
 /* Representasi address dengan pointer */
-/* infolist adalah integer */
+/* infolist adalah infobidak, lokasi, dan counter gerak */
 
 #ifndef listlinier_H
 #define listlinier_H
@@ -64,8 +64,18 @@ address Search (List L, infolist X);
 /* Jika tidak ada, mengirimkan Nil */
 
 boolean SearchEL (List L, POINT X);
+/* Mencari apakah ada elemen list dengan Lokasi(P)= X */
+/* Jika ada, mengirimkan true. */
+/* Jika tidak ada, mengirimkan false */
+
 boolean SearchBidak (List L, char X);
+/* Mencari apakah ada elemen list dengan Infobidak(P)= X */
+/* Jika ada, mengirimkan true. */
+/* Jika tidak ada, mengirimkan false */
 char SearchbyLocation(List L,POINT X);
+/* Mencari apakah ada elemen list dengan Lokasi(P)= X */
+/* Jika ada, mengirimkan Infobidak(P). */
+/* diasumsikan pasti ditemukan */
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVFirst (List *L, infolist X);
@@ -114,6 +124,7 @@ void DelP (List *L, infolist X);
 /* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
 void DelPoint (List *L, POINT X);
+/* Menghapus elemen list dengan Lokasi(P) = X*/
 void DelLast (List *L, address *P);
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
@@ -133,12 +144,6 @@ void PrintInfo (List L);
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 
-void PrintBoard (List L);
-/* I.S. List mungkin kosong */
-/* F.S. Jika list tidak kosong, iai list dicetak ke kanan: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika list kosong : menulis [] */
-/* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 int NbElmtList (List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
@@ -146,13 +151,6 @@ int NbElmtList (List L);
 infolist Max (List L);
 /* Mengirimkan nilai Info(P) yang maksimum */
 
-/****************** PROSES TERHADAP LIST ******************/
-void Konkat1 (List *L1, List *L2, List *L3);
-/* I.S. L1 dan L2 sembarang */
-/* F.S. L1 dan L2 kosong, L3 adalah hasil konkatenasi L1 & L2 */
-/* Konkatenasi dua buah list : L1 dan L2    */
-/* menghasilkan L3 yang baru (dengan elemen list L1 dan L2) */
-/* dan L1 serta L2 menjadi list kosong.*/
-/* Tidak ada alokasi/dealokasi pada prosedur ini */
+
 
 #endif

@@ -12,20 +12,19 @@ void CreateEmptyStack(Stack *S)
 
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmptyStack(Stack S)
+bool IsEmptyStack(Stack S)
 /* Mengirim true jika Stack kosong*/
 /* Ciri stack kosong : TOP bernilai Nil */
 {
     return (S.TOP == 0);
 }
 
-boolean IsFull(Stack S)
+bool IsFullStack(Stack S)
 /* Mengirim true jika stack S penuh */
 /* Ciri stack penuh : TOP bernilai MaxEl */
 {
-    return (S.TOP==MaxEl);
+    return (S.TOP == MaxEl);
 }
-
 
 /* ********** Operator Dasar Stack ********* */
 void Push(Stack *S, infostack X)
@@ -34,13 +33,13 @@ void Push(Stack *S, infostack X)
 /*F.S. X menjadi element TOP yang baru, TOP bertambah 1 */
 {
     (*S).TOP+=1;
-    (*S).T[(*S).TOP]=X;
+    (*S).T[(*S).TOP-1]=X;
 }
 void Pop (Stack *S, infostack *X)
 /* Menghapus X dari Stack S. */
 /* I.S. S tidak kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 {
-    *X = (*S).T[(*S).TOP];
+    (*X) = (*S).T[(*S).TOP-1];
     (*S).TOP-=1;
 }

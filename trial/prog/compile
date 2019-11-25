@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -o main main.c board.c  ../def/listlinier.c ../def/point.c ../def/stack.c giliran.c ../def/queue.c

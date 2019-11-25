@@ -20,23 +20,50 @@ typedef struct {
 
 
 void initboard(List *L1,List *L2);
+/*Menginisialisasi kondisi awal permainan 
+  dengan mengisi L1 dan L2 dengan bidak yang sesuai*/
 TabEl board(List L1,List L2);
+/* Memindahkan infobidak L1 dan L2 ke tempat yang sesuai
+   agar mudah dicetak menjadi papan(peta)*/
 void printarray(TabEl T);
+/* Mencetak papan/peta dari array berisi bidak yang tersusun
+   menjadi papan catur yang sudah ada*/
+void TabToList(TabEl T,List *L1, List *L2);
+
+ListPossible pawnavail(List L1,List L2);
+/* Mencari bidak putih apa saja yang bisa bergerak*/
+ListPossible pawnavail2(List L1,List L2);
+/* Mencari bidak hitam apa saja yang bisa bergerak*/
+
 ListPindah getPionMove(address P,List *L1, List *L2);
-ListPindah getBishopMove(address P,List *L1, List *L2);
+/* Mencari kemungkinan gerak pion putih*/
 ListPindah getPionMove2(address P,List *L1, List *L2);
+/* Mencari kemungkinan gerak pion hitam*/
+ListPindah getBishopMove(address P,List *L1, List *L2);
+/* Mencari kemungkinan pindah gerak menteri*/
 ListPindah getHorseMove(address P,List *L1, List *L2);
-ListPindah getKingMove(address P,List *L1, List *L2);
+/* Mencari kemungkinan pindah gerak kuda*/
 ListPindah getRookMove(address P,List *L1, List *L2);
+/* Mencari kemungkinan pindah gerak benteng*/
 ListPindah getQueenMove(address P,List *L1, List *L2);
+/* Mencari kemungkinan pindah gerak ratu*/
+ListPindah getKingMove(address P,List *L1, List *L2);
+/* Mencari kemungkinan pindah gerak raja*/
+
+
 void Castling(address K, address RK, address RQ, List *L1, List *L2);
 boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2);
+void ShowSpecialMove(List *L1, List *L2, TabEl *T);
 
+/*Selektor*/
 POINT moveselector(ListPindah S,int select);
 infolist possiblepawn(ListPossible S,int select);
+
+/*Prosedur gerak*/
 void move(List *L1, List *L2,TabEl *T,int *poinP1);
+/*Prosedur gerak untuk P1*/
 void move2(List *L1, List *L2,TabEl *T,int *poinP2);
-void ShowSpecialMove(List *L1, List *L2, TabEl *T);
-ListPossible pawnavail(List L1,List L2);
-ListPossible pawnavail2(List L1,List L2);
+/*Prosedur gerak untuk P2*/
+
+
 #endif

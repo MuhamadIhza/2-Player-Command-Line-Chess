@@ -44,9 +44,9 @@ void initboard(List *L1,List *L2){
   InsVFirst(L2,bidak);
   bidak.Lokasi = MakePOINT(6,8);bidak.Infobidak = 'B';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(5,8);bidak.Infobidak = 'K';bidak.CountMove = 0;
+  bidak.Lokasi = MakePOINT(5,8);bidak.Infobidak = 'Q';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(4,8);bidak.Infobidak = 'Q';bidak.CountMove = 0;
+  bidak.Lokasi = MakePOINT(4,8);bidak.Infobidak = 'K';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
   bidak.Lokasi = MakePOINT(3,8);bidak.Infobidak = 'B';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
@@ -95,6 +95,58 @@ TabEl board(List L1,List L2){
     Q = Next(Q);
   }
   return T;
+}
+
+void TabToList(TabEl T,List *L1, List *L2)
+{
+  infolist X;
+  CreateEmptyList(L1);
+  CreateEmptyList(L2);
+  for (int i = 1; i < 9; i++) {
+    for (int j = 1; j < 9; j++) {
+      X.Infobidak = T.TI[i][j];
+      X.Lokasi.X = i;
+      X.Lokasi.Y = j;
+  switch (X.Infobidak){
+    case 'p' :
+      InsVFirst(L1,X);
+      break;
+    case 'k' :
+      InsVFirst(L1,X);
+      break;
+    case 'q' :
+      InsVFirst(L1,X);
+      break;
+    case 'h' :
+      InsVFirst(L1,X);
+      break;
+    case 'r' :
+      InsVFirst(L1,X);
+      break;
+    case 'b' :
+      InsVFirst(L1,X);
+      break;
+    case 'P' :
+      InsVFirst(L2,X);
+      break;
+    case 'K' :
+      InsVFirst(L2,X);
+      break;
+    case 'Q' :
+      InsVFirst(L2,X);
+      break;
+    case 'H' :
+      InsVFirst(L2,X);
+      break;
+    case 'R' :
+      InsVFirst(L2,X);
+      break;
+    case 'B' :
+      InsVFirst(L2,X);
+      break;
+      }
+    }
+  }
 }
 
 void printarray(TabEl T){
@@ -1080,7 +1132,7 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   scanf(" %d",&select1);
   while (select1 <1 || select1 > S.PNum) {
     printf("Input tidak valid, masukkan kembali nomor bidak yang anda ingin gerakkan : \n");
-    scanf(" %d",&select1);
+    scanf("%d",&select1);
   }
   X = possiblepawn(S,select1);
   P = Search(*L2,X);
@@ -1205,8 +1257,6 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   {
     printf("tidak bisa dipindah\n");
   }
-  
-  
   printf("\n");
 }
 
@@ -1523,7 +1573,6 @@ boolean isCheck2(address P,List *L1, List *L2){
       if ( c=='H' ) check = true;
     }
   }
-
   x1 = PlusDelta(x0,1,-2);
   if (IsPointValid(x1)) {
     if (!SearchEL(*L1,x1)){
@@ -1547,29 +1596,72 @@ boolean isCheck2(address P,List *L1, List *L2){
   }
   return check;
 }
-/*int main(){
+int main(){
   TabEl T;
   List L1,L2;
+  Queue Q1;
+  Stack S;
+  int pilihanmenu;
   int poinP1 =0;
   int poinP2 =0;
-  Queue Q1;
-  
   initboard(&L1,&L2);
   T = board(L1,L2);
   printarray(T);
   printf("\n");
+  CreateEmptyStack(&S);
   inisialisasi_Urutan(&Q1);
-  while (!(IsEmptyQueue(Q1))){
+  printf("%d\n",NBElmt(Q1));
+  do {
+  printf("Giliran Player %c untuk bermain!\n",InfoHead(Q1));
+  printf(" 1.Bergerak\n 2.Undo\n 3.Special Move\n Pilih Opsi yang anda inginkan : \n");
+  scanf("%d",&pilihanmenu);
+  if (pilihanmenu == 1){
+        Push(&S,T);
         if(InfoHead(Q1) == '1'){
-            printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
             move(&L1,&L2,&T,&poinP1);
         } else {
-            printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
             move2(&L1,&L2,&T,&poinP2);
         }
         Del(&Q1,&InfoHead(Q1));
+        printf("%d\n",NBElmt(Q1));
+        printf("%d\n",S.TOP);
   }
-  ShowSpecialMove(&L1,&L2,&T);
-
+  else if (pilihanmenu == 2){
+    if (IsEmptyStack((S))){
+        printf("Perintah Undo belum dapat dijalankan.\n");
+    }else {
+        if(S.TOP == 1){
+            Pop(&S,&T);
+            TabToList (T,&L1,&L2);
+            if (InfoHead(Q1) == '1'){
+                Add(&Q1,'1');
+            }else {
+                Add(&Q1,'2');
+          } 
+            }
+        else {
+            Pop(&S,&T);
+            Pop(&S,&T);
+            TabToList(T,&L1,&L2);
+            if (InfoHead(Q1) == '1'){
+                Add(&Q1,'1');
+                Add(&Q1,'2');
+            }else {
+                Add(&Q1,'2');
+                Add(&Q1,'1');
+            } 
+        }
+        printarray(T);
+        printf("%d\n",NBElmt(Q1));
+        printf("%d\n",S.TOP);
+  }
+} else if (pilihanmenu == 3){
+    ShowSpecialMove(&L1,&L2,&T);
+} else {
+  printf ("Opsi yang anda pilih tidak valid. \n");
+}
+  } while (!IsEmptyQueue(Q1));
   return 0;
-}*/
+}
+  
+  

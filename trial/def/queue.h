@@ -48,7 +48,7 @@ void CreateEmpty (Queue * Q, int Max);
 /* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */
 /* atau : jika alokasi gagal, Q kosong dg MaxEl=0 */
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
-
+int Count (Queue Q);
 /* *** Destruktor *** */
 void DeAlokasi(Queue * Q);
 /* Proses: Mengembalikan memori Q */
