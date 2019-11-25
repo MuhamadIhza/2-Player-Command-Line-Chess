@@ -151,8 +151,6 @@ int NbElmtList (List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 /*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
-infolist Max (List L);
-/* Mengirimkan nilai Info(P) yang maksimum */
 
 
 

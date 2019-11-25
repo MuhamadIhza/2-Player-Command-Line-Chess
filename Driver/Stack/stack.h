@@ -7,8 +7,8 @@ Deklarasi stack yang diimplementasi dengan tabel kontigu alokasi statik
 dan ukuran sama
 TOP adalah alamat elemen puncak*/
 
-#include "../main/point.h"
-#include "../main/array.h"
+#include "point.h"
+#include "array.h"
 #define false 0
 #define true 1
 //#define Nil 0
