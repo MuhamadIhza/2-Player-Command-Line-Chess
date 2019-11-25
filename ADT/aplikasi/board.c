@@ -1758,7 +1758,6 @@ boolean isCheck2(address P,List *L1, List *L2){
   move(&L1,&L2,&T,&poinP1);
   move(&L1,&L2,&T,&poinP1);
   move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
   ShowSpecialMove(&L1,&L2,&T);
   return 0;
 }*/
