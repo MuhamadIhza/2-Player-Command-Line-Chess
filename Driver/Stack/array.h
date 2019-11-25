@@ -3,7 +3,6 @@
 /* Penempatan elemen selalu rapat kiri */
 
 #include "boolean.h"
-#include "listlinier.h"
 #ifndef ARRAY_H
 #define ARRAY_H
 

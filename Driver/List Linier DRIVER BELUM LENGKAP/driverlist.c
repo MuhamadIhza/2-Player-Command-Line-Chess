@@ -1,5 +1,5 @@
 #include "listlinier.h"
-
+#include <stdio.h>
 int main(){
 
     List L;
