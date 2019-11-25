@@ -62,8 +62,9 @@ void ShowSpecialMove(List *L1, List *L2, TabEl *T);
 void ShowSpecialMove2(List *L1, List *L2, TabEl *T);
 /* Menampilkan gerakan khusus yang dapat dilakukan untuk List 2. */
 
-boolean isCheck(address P,List *L1, List *L2);
-boolean isCheck2(address P,List *L1, List *L2);
+boolean IsCheck(address P,List *teman, List *musuh);
+boolean IsCheck2(address P,List *teman, List *musuh);
+boolean IsCheckMate(address P,List *teman, List *musuh);
 
 /*Selektor*/
 POINT moveselector(ListPindah S,int select);

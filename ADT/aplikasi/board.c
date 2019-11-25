@@ -1402,7 +1402,7 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   printf("\n");
 }
 
-boolean isCheck(address P,List *L1, List *L2){
+boolean IsCheck(address P,List *L1, List *L2){
   boolean check=false;
   char c;
   POINT x0=Lokasi(P),x1;
@@ -1571,7 +1571,7 @@ boolean isCheck(address P,List *L1, List *L2){
   return check;
 }
 
-boolean isCheck2(address P,List *L1, List *L2){
+boolean IsCheck2(address P,List *L1, List *L2){
   boolean check=false;
   char c;
   POINT x0=Lokasi(P),x1;
@@ -1738,27 +1738,72 @@ boolean isCheck2(address P,List *L1, List *L2){
   }
   return check;
 }
-/*int main(){
-  TabEl T;
-  List L1,L2;
-  Queue Q1;
-  Stack S;
-  int pilihanmenu;
-  int poinP1 =0;
-  int poinP2 =0;
-  initboard(&L1,&L2);
-  T = board(L1,L2);
-  printarray(T);
-  printf("\n");
-  CreateEmptyStack(&S);
-  move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
-  move(&L1,&L2,&T,&poinP1);
-  ShowSpecialMove(&L1,&L2,&T);
-  return 0;
-}*/
-  
+
+boolean IsCheckMate(address P,List *teman, List *musuh){
+  boolean cek = true;
+  address Pcek=P;;
+
+  if (IsCheck(P,teman,musuh)){
+    POINT x0=Lokasi(P),x1;
+
+    x1 = PlusDelta(x0,0,1);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,1,1);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,1,0);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,1,-1);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,0,-1);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,-1,-1);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,-1,0);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    x1 = PlusDelta(x0,-1,1);
+    if (IsPointValid(x1) && cek) {
+      Lokasi(Pcek)=x1;
+      if ( !(IsCheck(Pcek,teman,musuh)) ) cek = false; 
+      Lokasi(Pcek)=x0;
+    }
+
+    
+    
+
+  }
+}
