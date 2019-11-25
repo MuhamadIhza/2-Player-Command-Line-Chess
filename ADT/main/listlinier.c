@@ -60,6 +60,20 @@ address Search (List L, infolist X)
 	}
 	return P;
 }
+address SearchKing (List L)
+{
+	address P;
+	P = First(L);
+	boolean found = false;
+	while ((P!=Nil)&&(!found)) {
+		if (Infobidak(P)=='K'||Infobidak(P)=='k') {
+			found = true;
+		} else {
+			P = Next(P);
+		}
+	}
+	return P;
+}
 
 boolean SearchEL (List L, POINT X){
 	address P;

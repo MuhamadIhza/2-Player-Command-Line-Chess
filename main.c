@@ -75,6 +75,7 @@ int main(){
               gamestop = true;
             }
             
+            
         } else { /*(InfoHead(Q1) == '2')*/
             printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
             move2(&L1,&L2,&T,&poinP2);
@@ -82,6 +83,7 @@ int main(){
             {
               gamestop = true;
             }
+          
         }
         Del(&Q1,&InfoHead(Q1));
       } else if (strcmp(cmdinput,"SPECIAL_MOVE")==0)
@@ -110,28 +112,11 @@ int main(){
         Del(&Q1,&InfoHead(Q1));
       }else /*UNDO*/
       {
-        if (IsEmptyStack((S))){
+        if (IsEmptyStack((S))||S.TOP == 1){
         printf("Perintah Undo belum dapat dijalankan.\n");
         }else
         {
-          if (S.TOP == 1)
-          {
-            infostack outputstack;
-            Pop(&S,&outputstack);
-            T = outputstack.T;
-            poinP1 = outputstack.Poin1;
-            poinP2 = outputstack.Poin2;
-            TabToList(T,&L1,&L2);
-            if (InfoHead(Q1) == '1')
-            {
-              Add(&Q1,'1');
-            }else
-            {
-              Add(&Q1,'2');
-            }
-            
-          }else
-          {
+          
             infostack outputstack;
             Pop(&S,&outputstack);
             T = outputstack.T;
@@ -153,7 +138,7 @@ int main(){
             }
           }
           printarray(T);          
-        }
+        
         
       } 
     }
