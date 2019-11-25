@@ -74,13 +74,24 @@ int main(){
             {
               gamestop = true;
             }
-            
+            if (IsCheckMate(SearchKing(L2),&L2,&L1))
+            {
+              printf("Skakmat\n");
+              poinP1+=20;
+              gamestop = true;
+            }
             
         } else { /*(InfoHead(Q1) == '2')*/
             printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
             move2(&L1,&L2,&T,&poinP2);
             if (!SearchBidak(L1,'k')||!SearchBidak(L2,'K'))
             {
+              gamestop = true;
+            }
+            if (IsCheckMate(SearchKing(L1),&L1,&L2))
+            {
+              printf("Skakmat\n");
+              poinP2+=20;
               gamestop = true;
             }
           
@@ -100,6 +111,8 @@ int main(){
             {
               gamestop = true;
             }
+            
+      
             
         } else { /*(InfoHead(Q1) == '2')*/
             printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
