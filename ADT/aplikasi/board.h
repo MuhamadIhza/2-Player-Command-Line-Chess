@@ -1,10 +1,10 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "../def/listlinier.h"
-#include "../def/array.h"
-#include "../def/point.h"
-#include "../def/stack.h"
+#include "../main/listlinier.h"
+#include "../main/array.h"
+#include "../main/point.h"
+#include "../main/stack.h"
 #include "giliran.h"
 #include <stdio.h>
 

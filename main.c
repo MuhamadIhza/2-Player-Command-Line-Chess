@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "board.h"
-#include "../../ADT/Aplikasi/externalfile.h"
+#include "ADT/aplikasi/board.h"
+#include "ADT/aplikasi/externalfile.h"
 #include <string.h>
 
 /* written by Muhamad Hudan Widzamil*/
