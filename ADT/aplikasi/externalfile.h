@@ -1,8 +1,8 @@
 #ifndef __SCORE_BOARD__
 #define __SCORE_BOARD__
 
-#include "../Main/mesin_kata.h"
-#include "../Main/prioqueue.h"
+#include "../main/mesin_kata.h"
+#include "../main/prioqueue.h"
 
 /*------------------- LEADERBOARD -------------------------*/
 /* Menambahkan Nama Pemain dan Score ke dalam Leaderboard */ 

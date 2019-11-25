@@ -1,3 +1,3 @@
 #! /bin/bash
 
-gcc -Wall -o AIChess main.c ADT/Main/array.c ADT/Main/listlinier.c ADT/Main/mesin_kar.c ADT/Main/array.c ADT/Main/mesin_kata.c ADT/Main/queue.c ADT/Main/stack.c ADT/Aplikasi/leaderboard.c
+gcc -o main main.c ADT/aplikasi/board.c  ADT/main/listlinier.c ADT/main/point.c ADT/main/stack.c ADT/aplikasi/giliran.c ADT/main/queue.c ADT/main/prioqueue.c ADT/main/mesin_kar.c ADT/main/mesin_kata.c

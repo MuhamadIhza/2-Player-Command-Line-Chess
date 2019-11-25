@@ -1,4 +1,4 @@
-#include "../def/queue.h"
+#include "../main/queue.h"
 #include "board.h"
 #include <stdio.h>
 
