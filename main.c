@@ -62,7 +62,11 @@ int main(){
       
       if (strcmp(cmdinput,"MOVE")==0)
       {
-        Push(&S,T);
+        infostack inputstack;
+        inputstack.Poin1 = poinP1;
+        inputstack.Poin2 = poinP2;
+        inputstack.T = T;
+        Push(&S,inputstack);
         if(InfoHead(Q1) == '1'){
             printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
             move(&L1,&L2,&T,&poinP1);
@@ -82,7 +86,11 @@ int main(){
         Del(&Q1,&InfoHead(Q1));
       } else if (strcmp(cmdinput,"SPECIAL_MOVE")==0)
       {
-        Push(&S,T);
+        infostack inputstack;
+        inputstack.Poin1 = poinP1;
+        inputstack.Poin2 = poinP2;
+        inputstack.T = T;
+        Push(&S,inputstack);
         if(InfoHead(Q1) == '1'){
             printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
             ShowSpecialMove(&L1,&L2,&T);
@@ -108,7 +116,11 @@ int main(){
         {
           if (S.TOP == 1)
           {
-            Pop(&S,&T);
+            infostack outputstack;
+            Pop(&S,&outputstack);
+            T = outputstack.T;
+            poinP1 = outputstack.Poin1;
+            poinP2 = outputstack.Poin2;
             TabToList(T,&L1,&L2);
             if (InfoHead(Q1) == '1')
             {
@@ -120,8 +132,15 @@ int main(){
             
           }else
           {
-            Pop(&S,&T);
-            Pop(&S,&T);
+            infostack outputstack;
+            Pop(&S,&outputstack);
+            T = outputstack.T;
+            poinP1 = outputstack.Poin1;
+            poinP2 = outputstack.Poin2;
+            Pop(&S,&outputstack);
+            T = outputstack.T;
+            poinP1 = outputstack.Poin1;
+            poinP2 = outputstack.Poin2;
             TabToList(T,&L1,&L2);
             if (InfoHead(Q1) == '1')
             {
