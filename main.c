@@ -42,11 +42,20 @@ int main(){
     Queue Q1;
     char cmdinput[15];
     Stack S;
+    char player1[10],player2[10];
+
+
     CreateEmptyStack(&S);
     initboard(&L1,&L2);
     T = board(L1,L2);
+
     printf("\nRunning a new game\n");
-    printf("Kondisi awal papan\n");  
+    printf("\nMasukkan nama Player 1 : ");
+    scanf("%s",player1);
+    printf("Masukkan nama Player 2 : ");
+    scanf("%s",player2);
+
+    printf("\nKondisi awal papan\n");  
     printarray(T);
     printf("\n");
     inisialisasi_Urutan(&Q1);
@@ -156,14 +165,16 @@ int main(){
       } 
     }
     printf("Game telah berakhir\n");
-    printf("Poin Player 1 : %d\n",poinP1);
-    printf("Poin Player 2 : %d\n",poinP2);
-    main();/*balik lagi ke awal*/
+    printf("Poin Player 1 (%s) : %d\n",player1,poinP1);
+    printf("Poin Player 2 (%s) : %d\n",player2,poinP2);
+    addtolb(player1,poinP1);
+    addtolb(player2,poinP2);
+    main();   /*balik lagi ke awal*/
 
   }else if (selection==2)
   {
     printlb();
-    main();
+    main();   /*balik lagi ke awal*/
   }else
   {
     printf("Thank you for playing\n© CGI 2019\n");
