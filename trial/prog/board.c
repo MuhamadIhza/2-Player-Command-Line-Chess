@@ -1596,7 +1596,7 @@ boolean isCheck2(address P,List *L1, List *L2){
   }
   return check;
 }
-int main(){
+/*int main(){
   TabEl T;
   List L1,L2;
   Queue Q1;
@@ -1607,7 +1607,6 @@ int main(){
   initboard(&L1,&L2);
   T = board(L1,L2);
   printarray(T);
-  /* print possible moves*/
   printf("\n");
   CreateEmptyStack(&S);
   inisialisasi_Urutan(&Q1);
@@ -1664,5 +1663,5 @@ int main(){
   } while (!IsEmptyQueue(Q1));
   return 0;
 }
-  
+  */
   
