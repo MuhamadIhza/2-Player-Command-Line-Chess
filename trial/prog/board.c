@@ -3,73 +3,73 @@
 void initboard(List *L1,List *L2){
   CreateEmptyList(L1);
   infolist bidak;
-  bidak.Lokasi = MakePOINT(8,1);bidak.Infobidak = 'r';
+  bidak.Lokasi = MakePOINT(8,1);bidak.Infobidak = 'r';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(7,1);bidak.Infobidak = 'h';
+  bidak.Lokasi = MakePOINT(7,1);bidak.Infobidak = 'h';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(6,1);bidak.Infobidak = 'b';
+  bidak.Lokasi = MakePOINT(6,1);bidak.Infobidak = 'b';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(5,1);bidak.Infobidak = 'q';
+  bidak.Lokasi = MakePOINT(5,1);bidak.Infobidak = 'q';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(4,1);bidak.Infobidak = 'k';
+  bidak.Lokasi = MakePOINT(4,1);bidak.Infobidak = 'k';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(3,1);bidak.Infobidak = 'b';
+  bidak.Lokasi = MakePOINT(3,1);bidak.Infobidak = 'b';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(2,1);bidak.Infobidak = 'h';
+  bidak.Lokasi = MakePOINT(2,1);bidak.Infobidak = 'h';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(1,1);bidak.Infobidak = 'r';
+  bidak.Lokasi = MakePOINT(1,1);bidak.Infobidak = 'r';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
 
-  bidak.Lokasi = MakePOINT(8,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(8,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(7,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(7,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(6,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(6,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(5,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(5,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(4,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(4,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(3,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(3,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(2,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(2,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(1,2);bidak.Infobidak = 'p';
+  bidak.Lokasi = MakePOINT(1,2);bidak.Infobidak = 'p';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
 
   CreateEmptyList(L2);
-  bidak.Lokasi = MakePOINT(8,8);bidak.Infobidak = 'R';
+  bidak.Lokasi = MakePOINT(8,8);bidak.Infobidak = 'R';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(7,8);bidak.Infobidak = 'H';
+  bidak.Lokasi = MakePOINT(7,8);bidak.Infobidak = 'H';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(6,8);bidak.Infobidak = 'B';
+  bidak.Lokasi = MakePOINT(6,8);bidak.Infobidak = 'B';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(5,8);bidak.Infobidak = 'K';
+  bidak.Lokasi = MakePOINT(5,8);bidak.Infobidak = 'K';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(4,8);bidak.Infobidak = 'Q';
+  bidak.Lokasi = MakePOINT(4,8);bidak.Infobidak = 'Q';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(3,8);bidak.Infobidak = 'B';
+  bidak.Lokasi = MakePOINT(3,8);bidak.Infobidak = 'B';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(2,8);bidak.Infobidak = 'H';
+  bidak.Lokasi = MakePOINT(2,8);bidak.Infobidak = 'H';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(1,8);bidak.Infobidak = 'R';
+  bidak.Lokasi = MakePOINT(1,8);bidak.Infobidak = 'R';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
 
-  bidak.Lokasi = MakePOINT(8,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(8,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(7,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(7,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(6,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(6,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(5,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(5,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(4,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(4,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(3,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(3,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(2,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(2,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
-  bidak.Lokasi = MakePOINT(1,7);bidak.Infobidak = 'P';
+  bidak.Lokasi = MakePOINT(1,7);bidak.Infobidak = 'P';bidak.CountMove = 0;
   InsVFirst(L2,bidak);
 }
 
@@ -236,9 +236,9 @@ ListPindah getPionMove2(address P,List *L1, List *L2){
       S.Move[S.Num] = x3;      
     }
   }
-  x4 = PlusDelta(x0,0,2);
+  x4 = PlusDelta(x0,0,-2);
   if (IsPointValid(x4) && Ordinat(Lokasi(P)) == 7) {
-    if (!(SearchEL(*L1,x1) || SearchEL(*L2,x1))){
+    if (!(SearchEL(*L1,x4) || SearchEL(*L2,x4))){
       S.Num ++;
       S.Move[S.Num] = x4;
     }
@@ -618,6 +618,155 @@ ListPindah getKingMove(address P,List *L1, List *L2){
   return S;
 }
 
+boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2){
+  boolean Stop, CanCastRK, CanCastRQ;
+  POINT x0=Lokasi(K), x1, RKing, RQueen, xK, xRK, xRQ;
+  x1 = PlusDelta(x0,0,0);
+  Stop = false;
+  CanCastRK = false;
+  RKing = Lokasi(RK); RQueen = Lokasi(RQ);
+  while (IsPointValid(x1) && (!Stop)){
+    while (Absis(x1) != Absis(RKing)){
+      x1 = PlusDelta(x0,0,1);
+      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+        Stop = true;
+      }
+    }
+  }
+  if (!Stop && (CountMove(RK) == 0) && (CountMove(K) == 0)){
+    CanCastRK = true;
+  }
+
+  x0=Lokasi(K);
+  x1 = PlusDelta(x0,0,0);
+  Stop = false;
+  CanCastRQ = false;
+  while (IsPointValid(x1) && (!Stop)){
+    while (Absis(x1) != Absis(RQueen)){
+      x1 = PlusDelta(x0,0,1);
+      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+        Stop = true;
+      }
+    }
+  }
+
+  if (!Stop && (CountMove(RQ) == 0) && (CountMove(K) == 0)){
+    CanCastRQ = true;
+  }
+
+  if (CanCastRQ || CanCastRK){
+    return true;
+  }
+  else return false;
+}
+
+void Castling(address K, address RK, address RQ, List *L1, List *L2){
+  boolean Stop, CanCastRK, CanCastRQ;
+  POINT x0=Lokasi(K), x1, RKing, RQueen, xK, xRK, xRQ;
+  x1 = PlusDelta(x0,0,0);
+  Stop = false;
+  CanCastRK = false;
+  RKing = Lokasi(RK); RQueen = Lokasi(RQ);
+  while (IsPointValid(x1) && (!Stop)){
+    while (Absis(x1) != Absis(RKing)){
+      x1 = PlusDelta(x0,0,1);
+      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+        Stop = true;
+      }
+    }
+  }
+  if (!Stop && (CountMove(RK) == 0) && (CountMove(K) == 0)){
+    CanCastRK = true;
+  }
+
+  x0=Lokasi(K);
+  x1 = PlusDelta(x0,0,0);
+  Stop = false;
+  CanCastRQ = false;
+  while (IsPointValid(x1) && (!Stop)){
+    while (Absis(x1) != Absis(RQueen)){
+      x1 = PlusDelta(x0,0,1);
+      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+        Stop = true;
+      }
+    }
+  }
+
+  if (!Stop && (CountMove(RQ) == 0) && (CountMove(K) == 0)){
+    CanCastRQ = true;
+  }  
+
+  int pilihan;
+  xK = Lokasi(K);
+  xRK = Lokasi(RK);
+  xRQ = Lokasi(RQ);
+  if (CanCastRK && CanCastRQ){
+    printf("Pilihan Castling yang tersedia: \n");
+    printf("1. Castling King\n");
+    printf("2. Castling Queen\n");
+    scanf("%d", &pilihan);
+    if (pilihan == 1){
+      xK = PlusDelta(xK, 2, 0);
+      xRK = PlusDelta(xRK, -2, 0);
+      Lokasi(K) = xK; Lokasi(RK) = xRK;
+    }
+    else if (pilihan == 2){
+      xK = PlusDelta(xK, -2, 0);
+      xRQ = PlusDelta(xRK, 3, 0);
+      Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+    }
+  }
+  else if (CanCastRK){
+    xK = PlusDelta(xK, 2, 0);
+    xRK = PlusDelta(xRK, -2, 0);
+    Lokasi(K) = xK; Lokasi(RK) = xRK;
+  }
+  else if (CanCastRK){
+    xK = PlusDelta(xK, -2, 0);
+    xRQ = PlusDelta(xRK, 3, 0);
+    Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+  }
+}
+
+void ShowSpecialMove(List *L1, List *L2, TabEl *T){
+  int pilihan;
+  boolean cek;
+  /*search address king*/
+  address K;
+  infolist king;
+  king.Lokasi = MakePOINT(4,1); 
+  king.Infobidak = 'k';  
+  K = Search(*L1,king);
+
+  /*search address rook kanan*/
+  address RK;
+  infolist RookKing;
+  RookKing.Lokasi = MakePOINT(8,1); 
+  RookKing.Infobidak = 'r';  
+  RK = Search(*L1,RookKing);
+
+  /*search address rook kiri*/
+  address RQ;
+  infolist RookQueen;
+  RookQueen.Lokasi = MakePOINT(1,1); 
+  RookQueen.Infobidak = 'r';  
+  RQ = Search(*L1,RookQueen);
+
+  // cek = CanCastling(K,RK,RQ,L1,L2);
+  // if(cek){
+  printf("Pilihan Special Move yang tersedia: \n");
+  printf("1. Castling\n");
+  scanf("%d", &pilihan);
+  if (pilihan == 1){
+    Castling(K, RK, RQ, L1, L2);
+    printarray(*T);
+  }
+  //}
+  //else{
+    //printf("Tidak ada Special Move yang tersedia.\n");;
+  //}
+}
+
 POINT moveselector(ListPindah S,int select){
   POINT X;
   X = S.Move[select];
@@ -712,7 +861,7 @@ ListPossible pawnavail2(List L1,List L2){
   }
   return S;
 }
-void move(List *L1, List *L2,TabEl *T){
+void move(List *L1, List *L2,TabEl *T,int *poinP1){
   /*bidak yang mau dipindah*/
   address P;
   infolist X;
@@ -723,9 +872,59 @@ void move(List *L1, List *L2,TabEl *T){
   for (int j = 1; j <= S.PNum; j++)
   {
     printf("%d.",j);
-    printf("%c",S.PPawn[j].Infobidak);
-    TulisPOINT(S.PPawn[j].Lokasi);
-    printf("\n");
+    switch (S.PPawn[j].Infobidak)
+      {
+      case 'p':
+        printf("Pion ");
+        break;
+      case 'r':
+        printf("Benteng ");
+        break;
+      case 'h':
+        printf("Kuda ");
+        break;
+      case 'b':
+        printf("Menteri ");
+        break;
+      case 'q':
+        printf("Ratu ");
+        break;  
+      case 'k':
+        printf("Raja ");
+        break;  
+      default:
+        break;
+      }
+    switch (Absis(S.PPawn[j].Lokasi))
+      {
+      case 1:
+        printf("A,");
+        break;
+      case 2:
+        printf("B,");
+        break;
+      case 3:
+        printf("C,");
+        break;
+      case 4:
+        printf("D,");
+        break;
+      case 5:
+        printf("E,");
+        break;  
+      case 6:
+        printf("F,");
+        break;  
+      case 7:
+        printf("G,");
+        break;
+      case 8:
+        printf("H,");
+        break;    
+      default:
+        break;
+      }
+    printf("%d\n",Ordinat(S.PPawn[j].Lokasi));
   }
   printf("input select :");
   int select1;
@@ -797,16 +996,62 @@ void move(List *L1, List *L2,TabEl *T){
       else if (pilihan == 4)  Infobidak(P) = 'q';
     }
     Lokasi(P) = dest;
-    TulisPOINT(dest);
-    infolist delEl;
     if (SearchEL(*L2,dest))
     {
+      switch (SearchbyLocation(*L2,dest))
+      {
+      case 'P':
+        (*poinP1) +=1;
+        break;
+      case 'R':
+        (*poinP1) += 4;
+        break;
+      case 'H':
+        (*poinP1) += 2;
+        break;
+      case 'B':
+        (*poinP1) += 4;
+        break;
+      case 'Q':
+        (*poinP1) += 8;
+        break;  
+      case 'K':
+        (*poinP1) += 10;
+        break;  
+      default:
+        break;
+      }
       DelPoint(L2,dest);
     }
     
     printf("\n");
     *T = board(*L1,*L2);
-    printf("Bidak %c telah pindah ke %d,%d\n",X.Infobidak,dest.X,dest.Y);
+    printf("Bidak ");
+    switch (Infobidak(P))
+      {
+      case 'p':
+        printf("pion ");
+        break;
+      case 'r':
+        printf("benteng ");
+        break;
+      case 'h':
+        printf("kuda ");
+        break;
+      case 'b':
+        printf("menteri ");
+        break;
+      case 'q':
+        printf("ratu ");
+        break;  
+      case 'k':
+        printf("raja ");
+        break;  
+      default:
+        break;
+      }
+    printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
+    printf("Poin P1 terkini : %d\n",*poinP1);
     printarray(*T);
   }else
   {
@@ -815,7 +1060,7 @@ void move(List *L1, List *L2,TabEl *T){
   
   printf("\n");
 }
-void move2(List *L1, List *L2,TabEl *T){
+void move2(List *L1, List *L2,TabEl *T,int *poinP2){
   /*bidak yang mau dipindah*/
   address P;
   infolist X;
@@ -827,9 +1072,60 @@ void move2(List *L1, List *L2,TabEl *T){
   for (int j = 1; j <= S.PNum; j++)
   {
     printf("%d.",j);
-    printf("%c",S.PPawn[j].Infobidak);
-    TulisPOINT(S.PPawn[j].Lokasi);
-    printf("\n");
+    switch (S.PPawn[j].Infobidak)
+      {
+      case 'P':
+        printf("Pion ");
+        break;
+      case 'R':
+        printf("Benteng ");
+        break;
+      case 'H':
+        printf("Kuda ");
+        break;
+      case 'B':
+        printf("Menteri ");
+        break;
+      case 'Q':
+        printf("Ratu ");
+        break;  
+      case 'K':
+        printf("Raja ");
+        break;  
+      default:
+        break;
+      }
+    switch (Absis(S.PPawn[j].Lokasi))
+      {
+      case 1:
+        printf("A,");
+        break;
+      case 2:
+        printf("B,");
+        break;
+      case 3:
+        printf("C,");
+        break;
+      case 4:
+        printf("D,");
+        break;
+      case 5:
+        printf("E,");
+        break;  
+      case 6:
+        printf("F,");
+        break;  
+      case 7:
+        printf("G,");
+        break;
+      case 8:
+        printf("H,");
+        break;    
+      default:
+        break;
+      }
+
+    printf("%d\n",Ordinat(S.PPawn[j].Lokasi));
   }
   printf("input select :");
   int select1;
@@ -900,16 +1196,62 @@ void move2(List *L1, List *L2,TabEl *T){
       else if (pilihan == 4)  Infobidak(P) = 'Q';
     }
     Lokasi(P) = dest;
-    TulisPOINT(dest);
-    infolist delEl;
     if(SearchEL(*L1,dest))
     {
+      switch (SearchbyLocation(*L1,dest))
+      {
+      case 'p':
+        (*poinP2) +=1;
+        break;
+      case 'r':
+        (*poinP2) += 4;
+        break;
+      case 'h':
+        (*poinP2) += 2;
+        break;
+      case 'b':
+        (*poinP2) += 4;
+        break;
+      case 'q':
+        (*poinP2) += 8;
+        break;  
+      case 'k':
+        (*poinP2) += 10;
+        break;  
+      default:
+        break;
+      }
       DelPoint(L1,dest);
     }
     
     printf("\n");
     *T = board(*L1,*L2);
-    printf("Bidak %c telah pindah ke %d,%d\n",X.Infobidak,dest.X,dest.Y);
+    printf("Bidak ");
+    switch (Infobidak(P))
+      {
+      case 'P':
+        printf("pion ");
+        break;
+      case 'R':
+        printf("benteng ");
+        break;
+      case 'H':
+        printf("kuda ");
+        break;
+      case 'B':
+        printf("menteri ");
+        break;
+      case 'Q':
+        printf("ratu ");
+        break;  
+      case 'K':
+        printf("raja ");
+        break;  
+      default:
+        break;
+      }
+    printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
+    printf("Poin P2 terkini : %d\n",*poinP2);
     printarray(*T);
   }else
   {
@@ -917,7 +1259,345 @@ void move2(List *L1, List *L2,TabEl *T){
   }
   printf("\n");
 }
-int main(){
+
+boolean isCheck(address P,List *L1, List *L2){
+  boolean check=false;
+  char c;
+  POINT x0=Lokasi(P),x1;
+  
+  x1 = PlusDelta(x0,0,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,0,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,0,-1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,0,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,0);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,1,0);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,0);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,-1,0);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,1,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,-1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,1,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,-1,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,-1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,-1,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+
+  x1 = PlusDelta(x0,-2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  return check;
+}
+
+boolean isCheck2(address P,List *L1, List *L2){
+  boolean check=false;
+  char c;
+  POINT x0=Lokasi(P),x1;
+  
+  x1 = PlusDelta(x0,0,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,0,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,0,-1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,0,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,0);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,1,0);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,0);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='R') check = true;
+      }
+      x1 = PlusDelta(x1,-1,0);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,1,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,1,-1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,1,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,1);
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,-1,1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,-1,-1);
+  c = SearchbyLocation(*L2,x1);
+  if (c=='P') check = true;
+  while (IsPointValid(x1) && (!check)){
+     if (!SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
+      if (SearchEL(*L2,x1)){
+        c = SearchbyLocation(*L2,x1);
+        if (c=='Q' || c=='B') check = true;
+      }
+      x1 = PlusDelta(x1,-1,-1);
+     }
+     else break;
+  }
+
+  x1 = PlusDelta(x0,2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-2,1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+
+  x1 = PlusDelta(x0,-2,-1);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+
+  x1 = PlusDelta(x0,1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  x1 = PlusDelta(x0,-1,-2);
+  if (IsPointValid(x1)) {
+    if (!SearchEL(*L1,x1)){
+      c = SearchbyLocation(*L2,x1);
+      if ( c=='H' ) check = true;
+    }
+  }
+  return check;
+}
+/*int main(){
   TabEl T;
   List temp,temp1,temp2;
   List L1,L2;
@@ -930,6 +1610,14 @@ int main(){
   /* print possible moves*/
   printf("\n");
   CreateEmptyStack(&S);
+  int poinP1 =0;
+  int poinP2 =0;
+  Queue Q1;
+  
+  initboard(&L1,&L2);
+  T = board(L1,L2);
+  printarray(T);
+  printf("\n");
   inisialisasi_Urutan(&Q1);
   printf("%d\n",NBElmt(Q1));
   initboard(&temp1,&temp2);
@@ -984,3 +1672,7 @@ int main(){
   return 0;
 }
   
+  ShowSpecialMove(&L1,&L2,&T);
+
+  return 0;
+}*/

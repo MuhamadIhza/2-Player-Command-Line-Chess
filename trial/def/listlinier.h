@@ -14,6 +14,7 @@
 typedef struct{
 	POINT Lokasi;
 	char Infobidak;
+	int CountMove;
 } infolist;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist {
@@ -33,6 +34,7 @@ typedef struct {
 #define Infobidak(P) P->info.Infobidak
 #define Next(P) (P)->next
 #define First(L) (L).First
+#define CountMove(P) (P)->info.CountMove
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
@@ -62,6 +64,7 @@ address Search (List L, infolist X);
 /* Jika tidak ada, mengirimkan Nil */
 
 boolean SearchEL (List L, POINT X);
+boolean SearchBidak (List L, char X);
 char SearchbyLocation(List L,POINT X);
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/

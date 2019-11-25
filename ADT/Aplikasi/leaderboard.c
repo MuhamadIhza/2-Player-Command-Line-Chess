@@ -30,11 +30,12 @@ void printlb(){
     printf("|       Leaderboard      |\n");
     printf(" ------------------------ \n");
     int i=1;
-    printf("| No | \t Score \t Nama \t |\n");
+    printf("|  No\t|  Nama\t Score \t |\n");
+    printf(" ------------------------ \n");
 
     while (!IsEmpty(Q)){
         Del(&Q,&X);
-        printf("| %d  | \t  %d \t %s \t |\n", i, X.score, X.nama);
+        printf("|  %d \t|  %s \t %d \t |\n", i, X.nama, X.score);
         i++;
     }
     printf("+ ---------------------- +\n\n");
