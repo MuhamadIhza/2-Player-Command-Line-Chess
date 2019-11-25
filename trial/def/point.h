@@ -41,7 +41,9 @@ void TulisPOINT (POINT P);
 
 /* *** Kelompok operasi relasional terhadap POINT *** */
 boolean EQ (POINT P1, POINT P2);
+/*Mengembalikan apakah P1 dan P2 sama, jika sama true, selain itu false*/
 boolean IsPointValid (POINT P);
+/*Memeriksa apakah point P masih dalam jangkauan papan yang valid yaitu antara 1-8*/
 POINT PlusDelta (POINT P, int deltaX, int deltaY);
 /* Mengirim salinan P yang absisnya adalah Absis(P) + deltaX dan ordinatnya adalah Ordinat(P) + deltaY */
 

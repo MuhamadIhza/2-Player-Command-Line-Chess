@@ -1,10 +1,6 @@
-/* File : listlinier.h */
-/* NIM / Nama : 18218003 / Muhamad Hudan Widzamil
-	Tanggal 		: 23 Oktober 2019
-	Topik 			: ADT List */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
 /* Representasi address dengan pointer */
-/* infolist adalah integer */
+/* infolist adalah infobidak, lokasi, dan counter gerak */
 #include "listlinier.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -302,41 +298,7 @@ void PrintInfo (List L)
 	}
 	printf("]");
 }
-void PrintBoard (List L)
-/* I.S. List mungkin kosong */
-/* F.S. Jika list tidak kosong, iai list dicetak ke kanan: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika list kosong : menulis [] */
-/* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
-{
-	address P = First(L);
-	for (int i = 1; i <= 8; i++)
-	{
-		printf(" %d ",i);
-	}
-	printf("\n");
 
-	int count = 1;
-	while(P!=Nil) {
-		if (Infobidak(P) != '_')
-		{
-			printf("|%c|",Infobidak(P));
-		}else
-		{
-			printf("| |");
-		}
-		if(count%8==0){
-			printf("\n");
-		}
-		count++;
-		P = Next(P);
-	}
-	for (int i = 1; i <= 8; i++)
-	{
-		printf(" %d ",i);
-	}
-	printf("\n");
-}
 int NbElmtList (List L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 {
@@ -350,27 +312,4 @@ int NbElmtList (List L)
 }
 /*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
 
-/****************** PROSES TERHADAP LIST ******************/
-void Konkat1 (List *L1, List *L2, List *L3)
-/* I.S. L1 dan L2 sembarang */
-/* F.S. L1 dan L2 kosong, L3 adalah hasil konkatenasi L1 & L2 */
-/* Konkatenasi dua buah list : L1 dan L2    */
-/* menghasilkan L3 yang baru (dengan elemen list L1 dan L2) */
-/* dan L1 serta L2 menjadi list kosong.*/
-/* Tidak ada alokasi/dealokasi pada prosedur ini */
-{
-	address Last;
-	if (IsEmptyList(*L1)) {
-		First(*L3)=First(*L2);
-		CreateEmptyList(L2);
-	} else {
-		First(*L3)=First(*L1);
-		Last = First(*L1);
-		while (Next(Last)!=Nil) {
-			Last = Next(Last);
-		}
-		Next(Last) = First(*L2);
-		CreateEmptyList(L1);
-		CreateEmptyList(L2);
-	}
-}
+
