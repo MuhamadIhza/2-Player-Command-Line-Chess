@@ -88,9 +88,6 @@ int main(){
         Del(&Q1,&InfoHead(Q1));
       } else if (strcmp(cmdinput,"SPECIAL_MOVE")==0)
       {
-<<<<<<< HEAD
-        /* code */
-=======
         infostack inputstack;
         inputstack.Poin1 = poinP1;
         inputstack.Poin2 = poinP2;
@@ -113,7 +110,6 @@ int main(){
             }
         }
         Del(&Q1,&InfoHead(Q1));
->>>>>>> 79603e2d9d1d8798e51065a99457dc9920086e04
       }else /*UNDO*/
       {
         if (IsEmptyStack((S))||S.TOP == 1){
