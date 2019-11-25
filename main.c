@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "ADT/aplikasi/board.h"
-//#include "ADT/aplikasi/externalfile.h"
+#include "ADT/aplikasi/externalfile.h"
 #include <string.h>
 
 /* written by Muhamad Hudan Widzamil*/
@@ -82,24 +82,7 @@ int main(){
         Del(&Q1,&InfoHead(Q1));
       } else if (strcmp(cmdinput,"SPECIAL_MOVE")==0)
       {
-        Push(&S,T);
-        if(InfoHead(Q1) == '1'){
-            printf("Giliran Player 1 untuk memindahkan bidaknya !\n");
-            ShowSpecialMove(&L1,&L2,&T);
-            if (!SearchBidak(L1,'k')||!SearchBidak(L2,'K'))
-            {
-              gamestop = true;
-            }
-            
-        } else { /*(InfoHead(Q1) == '2')*/
-            printf("Giliran Player 2 untuk memindahkan bidaknya !\n");
-            ShowSpecialMove2(&L1,&L2,&T);
-            if (!SearchBidak(L1,'k')||!SearchBidak(L2,'K'))
-            {
-              gamestop = true;
-            }
-        }
-        Del(&Q1,&InfoHead(Q1));
+        /* code */
       }else /*UNDO*/
       {
         if (IsEmptyStack((S))){
@@ -145,7 +128,8 @@ int main(){
 
   }else if (selection==2)
   {
-    //printlb();
+    printlb();
+    main();
   }else
   {
     printf("Thank you for playing\n© CGI 2019\n");

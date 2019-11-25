@@ -2,59 +2,60 @@
 #include "boolean.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 /* Prototype manajemen memori */
-void Alokasi (address *P, infotype X)
+void AlokasiPQ (addressPQ *P, infotypePQ X)
 /* I.S. Sembarang */
-/* F.S. Alamat P dialokasi, jika berhasil maka Info(P)=X dan Next(P)=Nil */
+/* F.S. Alamat P dialokasi, jika berhasil maka InfoPQ(P)=X dan NextPQ(P)=Nil */
 /*      P=Nil jika alokasi gagal */
 {
-    *P=(address) malloc (sizeof(infotype));
+    *P=(addressPQ) malloc (sizeof(infotypePQ));
     if (*P!=Nil){
-        Info(*P).score=X.score;
+        InfoPQ(*P).score=X.score;
         int i=0;
         while(X.nama[i]!='\0'){
-            Info(*P).nama[i]=X.nama[i];
+            InfoPQ(*P).nama[i]=X.nama[i];
             i++;
         }
-        Info(*P).nama[3]='\0';
-        Next(*P)=Nil;
+        InfoPQ(*P).nama[3]='\0';
+        NextPQ(*P)=Nil;
     } else *P = Nil;
 }
-void Dealokasi (address  P)
+void DealokasiPQ (addressPQ  P)
 /* I.S. P adalah hasil alokasi, P != Nil */
 /* F.S. Alamat P didealokasi, dikembalikan ke sistem */
 {
     free (P);
 }
-boolean IsEmpty (PrioQueue Q)
-/* Mengirim true jika Q kosong: HEAD(Q)=Nil and TAIL(Q)=Nil */
+boolean IsEmptyPQ (PrioQueue Q)
+/* Mengirim true jika Q kosong: HEADPQ(Q)=Nil and TAIL(Q)=Nil */
 {
-    return (Head(Q)==Nil);
+    return (HeadPQ(Q)==Nil);
 }
-int NbElmt(PrioQueue Q)
+int NbElmtPQ(PrioQueue Q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong */
 /*** Kreator ***/
 {
     int count=0;
-    if(!IsEmpty(Q)){
-        address P=Head(Q);
+    if(!IsEmptyPQ(Q)){
+        addressPQ P=HeadPQ(Q);
         count++;
-        while(Next(P)!=Nil){
+        while(NextPQ(P)!=Nil){
             count++;
-            P=Next(P);
+            P=NextPQ(P);
         }
     }
     return count;
 }
-void CreateEmpty(PrioQueue * Q)
+void CreateEmptyPQ(PrioQueue * Q)
 /* I.S. sembarang */
 /* F.S. Sebuah Q kosong terbentuk */
 /*** Primitif Add/Delete ***/
 {
-    Head(*Q)=Nil;
+    HeadPQ(*Q)=Nil;
 }
-void Add (PrioQueue * Q, infotype X)
+void AddPQ (PrioQueue * Q, infotypePQ X)
 /* Proses: Mengalokasi X dan menambahkan X
    jika alokasi berhasil; jika alokasi gagal Q tetap
    sesuai urutan score dan abjad
@@ -63,66 +64,89 @@ void Add (PrioQueue * Q, infotype X)
 /* I.S. Q mungkin kosong */
 /* F.S. X menjadi TAIL, TAIL "maju" */
 {
-    address P,CurrP,PrevP;
+    addressPQ P,CurrP,PrevP;
     int sec;
 
-    Alokasi(&P,X);
+    AlokasiPQ(&P,X);
     if (P!=Nil){
-        if(IsEmpty(*Q)) Head(*Q)=P;
+        if(IsEmptyPQ(*Q)) HeadPQ(*Q)=P;
         else { // !IsEmpty(*Q)
-            CurrP=Head(*Q);
+            CurrP=HeadPQ(*Q);
             PrevP = CurrP;
             int i=0;
             
-            if ( Info(CurrP).score < Info(P).score ){   // case input score terbesar
-                Next(P)=Head(*Q);
-                Head(*Q)=P;
+            if ( InfoPQ(CurrP).score < InfoPQ(P).score ){   // case input score terbesar
+                NextPQ(P)=HeadPQ(*Q);
+                HeadPQ(*Q)=P;
                 PrevP=P;
-                CurrP=Next(P);
+                CurrP=NextPQ(P);
 
-            } else { // !( Info(CurrP).score < Info(P).score )      // case input bukan score terbesar
-                while ( Info(CurrP).score > Info(P).score && Next(CurrP)!=Nil && (strcmp(Info(P).nama,Info(PrevP).nama)!=0)){
+            } else { // !( InfoPQ(CurrP).score < InfoPQ(P).score )      // case input bukan score terbesar
+                while ( InfoPQ(CurrP).score > InfoPQ(P).score && NextPQ(CurrP)!=Nil && (strcmp(InfoPQ(P).nama,InfoPQ(PrevP).nama)!=0)){
                     PrevP=CurrP;
-                    CurrP=Next(CurrP);
+                    CurrP=NextPQ(CurrP);
                 }
                 i=0;
-                while (( Info(CurrP).score == Info(P).score) && (Next(CurrP)!=Nil) && (strcmp(Info(P).nama,Info(CurrP).nama)>0) ){  // case memiliki score yang sama
+                while (( InfoPQ(CurrP).score == InfoPQ(P).score) && (NextPQ(CurrP)!=Nil) && (strcmp(InfoPQ(P).nama,InfoPQ(CurrP).nama)>0) ){  // case memiliki score yang sama
                     PrevP=CurrP;
-                    CurrP=Next(CurrP);
+                    CurrP=NextPQ(CurrP);
                 }
-                if (strcmp(Info(P).nama,Info(CurrP).nama)==0 ) {
-                    if ( Info(CurrP).score > Info(P).score ) Dealokasi(P);  // Mengabaikan data nama yang sama dengan score yang lebih kecil
-                    else /* !( Info(CurrP).score > Info(P).score ) */ Info(CurrP).score=Info(P).score;
+                if (strcmp(InfoPQ(P).nama,InfoPQ(CurrP).nama)==0 ) {
+                    if ( InfoPQ(CurrP).score > InfoPQ(P).score ) DealokasiPQ(P);  // Mengabaikan data nama yang sama dengan score yang lebih kecil
+                    else /* !( InfoPQ(CurrP).score > InfoPQ(P).score ) */ InfoPQ(CurrP).score=InfoPQ(P).score;
                 }
-                else if ( Next(CurrP)==Nil && Info(CurrP).score > Info(P).score ) Next(CurrP) = P;
-                else { /* !( Next(CurrP)==Nil && Info(CurrP).score > Info(P).score ) */
-                    Next(PrevP)=P;
-                    Next(P)=CurrP;
+                else if ( NextPQ(CurrP)==Nil && InfoPQ(CurrP).score > InfoPQ(P).score ) NextPQ(CurrP) = P;
+                else { /* !( NextPQ(CurrP)==Nil && InfoPQ(CurrP).score > InfoPQ(P).score ) */
+                    NextPQ(PrevP)=P;
+                    NextPQ(P)=CurrP;
                     PrevP=P;
                 }
             }
-            while ( Next(CurrP)!=Nil ){
-                if (strcmp(Info(P).nama,Info(CurrP).nama)==0) {     // Menghapus nama yang sama dengan score yang lebih kecil
-                    Next(PrevP)=Next(CurrP);
-                    Dealokasi(CurrP);
+            while ( NextPQ(CurrP)!=Nil ){
+                if (strcmp(InfoPQ(P).nama,InfoPQ(CurrP).nama)==0) {     // Menghapus nama yang sama dengan score yang lebih kecil
+                    NextPQ(PrevP)=NextPQ(CurrP);
+                    DealokasiPQ(CurrP);
                     break;
                 }
                 PrevP=CurrP;
-                CurrP=Next(CurrP);
+                CurrP=NextPQ(CurrP);
             }            
         }
     }
 }
-void Del(PrioQueue * Q, infotype * X)
-/* Proses: Menghapus X pada bagian HEAD dari Q dan mendealokasi elemen HEAD */
+void DelPQ(PrioQueue * Q, infotypePQ * X)
+/* Proses: Menghapus X pada bagian HEADPQ dari Q dan mendealokasi elemen HEADPQ */
 /* Pada dasarnya operasi delete first */
 /* I.S. Q tidak mungkin kosong */
-/* F.S. X = nilai elemen HEAD pd I.S., HEAD "mundur" */
+/* F.S. X = nilai elemen HEADPQ pd I.S., HEADPQ "mundur" */
 {
-    address P=Head(*Q);
-    *X=Info(P);
-    if(Next(P)==Nil) CreateEmpty(Q);
-    else Head(*Q)=Next(P);
-    Dealokasi(P);
+    addressPQ P=HeadPQ(*Q);
+    *X=InfoPQ(P);
+    if(NextPQ(P)==Nil) CreateEmptyPQ(Q);
+    else HeadPQ(*Q)=NextPQ(P);
+    DealokasiPQ(P);
 }
 
+// int main(){
+//     PrioQueue Q;
+//     infotypePQ X,Y;
+//     char c[4]="iza",d[4]="uwu",e[4]="hmm";
+
+//     CreateEmptyPQ(&Q);
+//     strcpy(X.nama,c);
+//     X.score=20;
+//     AddPQ(&Q,X);
+//     strcpy(X.nama,d);
+//     X.score=9;
+//     AddPQ(&Q,X);
+//     strcpy(X.nama,e);
+//     X.score=90;
+//     AddPQ(&Q,X);
+
+//     DelPQ(&Q,&Y);
+//     printf("%s %d\n",Y.nama,Y.score);
+//     DelPQ(&Q,&Y);
+//     printf("%s %d\n",Y.nama,Y.score);
+//     DelPQ(&Q,&Y);
+//     printf("%s %d\n",Y.nama,Y.score);
+// }

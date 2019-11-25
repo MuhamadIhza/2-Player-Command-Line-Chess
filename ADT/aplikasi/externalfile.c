@@ -7,23 +7,23 @@ int score;
 static FILE *file;
 
 void addtolb(char* pemain,int score){
-    file = fopen("../../Data/Leaderboard.txt", "a");    
+    file = fopen("Data/Leaderboard.txt", "a");    
     fprintf(file, "%s,%d\n",pemain,score);              // menuliskan data ke file external leaderboard
 }
 
 void printlb(){
     PrioQueue Q;
-    infotype X;
+    infotypePQ X;
 
-    STARTKATA("../../Data/Leaderboard.txt");
-    CreateEmpty(&Q);
+    STARTKATA("Data/Leaderboard.txt");
+    CreateEmptyPQ(&Q);
 
     while (!EndKata) {
         strcpy(X.nama,CKata.TabKata);       // data nama pemain
         ADVKATA();
         X.score = toint(CKata.TabKata);     // data score pemain
         ADVKATA();
-        Add(&Q,X);                          // menambahkan data ke Priority Queue
+        AddPQ(&Q,X);                          // menambahkan data ke Priority Queue
     }
 
     printf("+------------------------+\n");
@@ -33,8 +33,8 @@ void printlb(){
     printf("|  No\t|  Nama\t Score \t |\n");
     printf(" ------------------------ \n");
 
-    while (!IsEmpty(Q)){
-        Del(&Q,&X);
+    while (!IsEmptyPQ(Q)){
+        DelPQ(&Q,&X);
         printf("|  %d \t|  %s \t %d \t |\n", i, X.nama, X.score);      // iterasi print data
         i++;
     }

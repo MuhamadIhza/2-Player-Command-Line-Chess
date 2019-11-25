@@ -1,3 +1,3 @@
 #! /bin/bash
 
-gcc -o main main.c ADT/aplikasi/board.c  ADT/main/listlinier.c ADT/main/point.c ADT/main/stack.c ADT/aplikasi/giliran.c ADT/main/queue.c ADT/main/prioqueue.c ADT/main/mesin_kar.c ADT/main/mesin_kata.c
+gcc -o main main.c ADT/aplikasi/board.c  ADT/aplikasi/giliran.c ADT/aplikasi/externalfile.c ADT/main/listlinier.c ADT/main/point.c ADT/main/stack.c ADT/main/queue.c ADT/main/prioqueue.c ADT/main/mesin_kar.c ADT/main/mesin_kata.c
