@@ -702,6 +702,8 @@ void Castling(address K, address RK, address RQ, List *L1, List *L2){
       xK = PlusDelta(xK, 2, 0);
       xRK = PlusDelta(xRK, -2, 0);
       Lokasi(K) = xK; Lokasi(RK) = xRK;
+      CountMove(K)++;
+      CountMove(RK)++;
       printf("Castling berhasil dilakukan.\n");
       printf("Bidak Raja telah berpindah dari (E,1) ke (G,1).\n");
       printf("Bidak Benteng telah berpindah dari (H,1) ke (F,1).\n");
@@ -710,6 +712,8 @@ void Castling(address K, address RK, address RQ, List *L1, List *L2){
       xK = PlusDelta(xK, -2, 0);
       xRQ = PlusDelta(xRQ, 3, 0);
       Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+      CountMove(K)++;
+      CountMove(RQ)++;
       printf("Castling berhasil dilakukan.\n");
       printf("Bidak Raja telah berpindah dari (E,1) ke (C,1).\n");
       printf("Bidak Benteng telah berpindah dari (A,1) ke (D,1).\n");
@@ -719,6 +723,8 @@ void Castling(address K, address RK, address RQ, List *L1, List *L2){
     xK = PlusDelta(xK, 2, 0);
     xRK = PlusDelta(xRK, -2, 0);
     Lokasi(K) = xK; Lokasi(RK) = xRK;
+    CountMove(K)++;
+    CountMove(RK)++;
     printf("Castling berhasil dilakukan.\n");
     printf("Bidak Raja telah berpindah dari (E,1) ke (G,1).\n");
     printf("Bidak Benteng telah berpindah dari (H,1) ke (F,1).\n");
@@ -727,6 +733,8 @@ void Castling(address K, address RK, address RQ, List *L1, List *L2){
     xK = PlusDelta(xK, -2, 0);
     xRQ = PlusDelta(xRQ, 3, 0);
     Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+    CountMove(K)++;
+    CountMove(RQ)++;
     printf("Castling berhasil dilakukan.\n");
     printf("Bidak Raja telah berpindah dari (E,1) ke (C,1).\n");
     printf("Bidak Benteng telah berpindah dari (A,1) ke (D,1).\n");
@@ -741,7 +749,7 @@ void Castling2(address K, address RK, address RQ, List *L1, List *L2){
   POINT x1=Lokasi(K), RKing, RQueen, xK, xRK, xRQ;
   Stop = false;
   CanCastRK = false;
-  Check = IsCheck(K, L1, L2);
+  Check = IsCheck(K, L2, L1);
   RKing = Lokasi(RK); RQueen = Lokasi(RQ);
   while ((!Stop) && (Absis(x1) != Absis(RKing))){
     x1 = PlusDelta(x1,1,0);
@@ -782,6 +790,8 @@ void Castling2(address K, address RK, address RQ, List *L1, List *L2){
       xK = PlusDelta(xK, 2, 0);
       xRK = PlusDelta(xRK, -2, 0);
       Lokasi(K) = xK; Lokasi(RK) = xRK;
+      CountMove(K)++;
+      CountMove(RK)++;
       printf("Castling berhasil dilakukan.\n");
       printf("Bidak Raja telah berpindah dari (E,8) ke (G,8).\n");
       printf("Bidak Benteng telah berpindah dari (H,8) ke (F,8).\n");
@@ -790,6 +800,8 @@ void Castling2(address K, address RK, address RQ, List *L1, List *L2){
       xK = PlusDelta(xK, -2, 0);
       xRQ = PlusDelta(xRQ, 3, 0);
       Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+      CountMove(K)++;
+      CountMove(RQ)++;
       printf("Castling berhasil dilakukan.\n");
       printf("Bidak Raja telah berpindah dari (E,8) ke (C,8).\n");
       printf("Bidak Benteng telah berpindah dari (A,8) ke (D,8).\n");
@@ -799,6 +811,8 @@ void Castling2(address K, address RK, address RQ, List *L1, List *L2){
     xK = PlusDelta(xK, 2, 0);
     xRK = PlusDelta(xRK, -2, 0);
     Lokasi(K) = xK; Lokasi(RK) = xRK;
+    CountMove(K)++;
+    CountMove(RK)++;
     printf("Castling berhasil dilakukan.\n");
     printf("Bidak Raja telah berpindah dari (E,8) ke (G,8).\n");
     printf("Bidak Benteng telah berpindah dari (H,8) ke (F,8).\n");
@@ -807,6 +821,8 @@ void Castling2(address K, address RK, address RQ, List *L1, List *L2){
     xK = PlusDelta(xK, -2, 0);
     xRQ = PlusDelta(xRQ, 3, 0);
     Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+    CountMove(K)++;
+    CountMove(RQ)++;
     printf("Castling berhasil dilakukan.\n");
     printf("Bidak Raja telah berpindah dari (E,8) ke (C,8).\n");
     printf("Bidak Benteng telah berpindah dari (A,8) ke (D,8).\n");
@@ -1192,6 +1208,7 @@ void move(List *L1, List *L2,TabEl *T,int *poinP1){
       default:
         break;
       }
+    CountMove(P)++;
     printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
     printf("Poin P1 terkini : %d\n",*poinP1);
     printarray(*T);
@@ -1392,6 +1409,7 @@ void move2(List *L1, List *L2,TabEl *T,int *poinP2){
       default:
         break;
       }
+    CountMove(P)++;
     printf("telah pindah dari %d,%d ke %d,%d\n",Absis(X.Lokasi),Ordinat(X.Lokasi),dest.X,dest.Y);
     printf("Poin P2 terkini : %d\n",*poinP2);
     printarray(*T);
