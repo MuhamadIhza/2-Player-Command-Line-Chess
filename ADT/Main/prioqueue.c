@@ -55,8 +55,10 @@ void CreateEmpty(PrioQueue * Q)
     Head(*Q)=Nil;
 }
 void Add (PrioQueue * Q, infotype X)
-/* Proses: Mengalokasi X dan menambahkan X aw==
-   jika alokasi berhasil; jika alokasi gagal Q tetap */
+/* Proses: Mengalokasi X dan menambahkan X
+   jika alokasi berhasil; jika alokasi gagal Q tetap
+   sesuai urutan score dan abjad
+   memperbarui score bila terdapat nama yang sama */
 /* Pada dasarnya adalah proses insert last */
 /* I.S. Q mungkin kosong */
 /* F.S. X menjadi TAIL, TAIL "maju" */
@@ -67,40 +69,40 @@ void Add (PrioQueue * Q, infotype X)
     Alokasi(&P,X);
     if (P!=Nil){
         if(IsEmpty(*Q)) Head(*Q)=P;
-        else {
+        else { // !IsEmpty(*Q)
             CurrP=Head(*Q);
             PrevP = CurrP;
             int i=0;
             
-            if ( Info(CurrP).score < Info(P).score ){
+            if ( Info(CurrP).score < Info(P).score ){   // case input score terbesar
                 Next(P)=Head(*Q);
                 Head(*Q)=P;
                 PrevP=P;
                 CurrP=Next(P);
 
-            } else {
+            } else { // !( Info(CurrP).score < Info(P).score )      // case input bukan score terbesar
                 while ( Info(CurrP).score > Info(P).score && Next(CurrP)!=Nil && (strcmp(Info(P).nama,Info(PrevP).nama)!=0)){
                     PrevP=CurrP;
                     CurrP=Next(CurrP);
                 }
                 i=0;
-                while (( Info(CurrP).score == Info(P).score) && (Next(CurrP)!=Nil) && (strcmp(Info(P).nama,Info(CurrP).nama)>0) ){
+                while (( Info(CurrP).score == Info(P).score) && (Next(CurrP)!=Nil) && (strcmp(Info(P).nama,Info(CurrP).nama)>0) ){  // case memiliki score yang sama
                     PrevP=CurrP;
                     CurrP=Next(CurrP);
                 }
                 if (strcmp(Info(P).nama,Info(CurrP).nama)==0 ) {
-                    if ( Info(CurrP).score > Info(P).score ) Dealokasi(P);
-                    else Info(CurrP).score=Info(P).score;
+                    if ( Info(CurrP).score > Info(P).score ) Dealokasi(P);  // Mengabaikan data nama yang sama dengan score yang lebih kecil
+                    else /* !( Info(CurrP).score > Info(P).score ) */ Info(CurrP).score=Info(P).score;
                 }
                 else if ( Next(CurrP)==Nil && Info(CurrP).score > Info(P).score ) Next(CurrP) = P;
-                else {
+                else { /* !( Next(CurrP)==Nil && Info(CurrP).score > Info(P).score ) */
                     Next(PrevP)=P;
                     Next(P)=CurrP;
                     PrevP=P;
                 }
             }
             while ( Next(CurrP)!=Nil ){
-                if (strcmp(Info(P).nama,Info(CurrP).nama)==0) {
+                if (strcmp(Info(P).nama,Info(CurrP).nama)==0) {     // Menghapus nama yang sama dengan score yang lebih kecil
                     Next(PrevP)=Next(CurrP);
                     Dealokasi(CurrP);
                     break;

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "board.h"
+#include "../../ADT/Aplikasi/externalfile.h"
 #include <string.h>
 
 /* written by Muhamad Hudan Widzamil*/
@@ -91,7 +92,7 @@ int main(){
 
   }else if (selection==2)
   {
-    /* code */
+    printlb();
   }else
   {
     printf("Thank you for playing\n© CGI 2019\n");
