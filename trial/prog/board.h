@@ -52,8 +52,18 @@ ListPindah getKingMove(address P,List *L1, List *L2);
 
 
 void Castling(address K, address RK, address RQ, List *L1, List *L2);
+/* Memindahkan bidak dengan cara Castling untuk List 1. */
+void Castling2(address K, address RK, address RQ, List *L1, List *L2);
+/* Memindahkan bidak dengan cara Castling untuk List 2. */
 boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2);
+/* Melakukan validasi apakah gerakan Castling dapat dilakukan. */
 void ShowSpecialMove(List *L1, List *L2, TabEl *T);
+/* Menampilkan gerakan khusus yang dapat dilakukan untuk List 1. */
+void ShowSpecialMove2(List *L1, List *L2, TabEl *T);
+/* Menampilkan gerakan khusus yang dapat dilakukan untuk List 2. */
+
+boolean isCheck(address P,List *L1, List *L2);
+boolean isCheck2(address P,List *L1, List *L2);
 
 /*Selektor*/
 POINT moveselector(ListPindah S,int select);

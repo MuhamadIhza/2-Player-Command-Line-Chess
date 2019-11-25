@@ -9,9 +9,9 @@ void initboard(List *L1,List *L2){
   InsVFirst(L1,bidak);
   bidak.Lokasi = MakePOINT(6,1);bidak.Infobidak = 'b';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(5,1);bidak.Infobidak = 'q';bidak.CountMove = 0;
+  bidak.Lokasi = MakePOINT(5,1);bidak.Infobidak = 'k';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
-  bidak.Lokasi = MakePOINT(4,1);bidak.Infobidak = 'k';bidak.CountMove = 0;
+  bidak.Lokasi = MakePOINT(4,1);bidak.Infobidak = 'q';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
   bidak.Lokasi = MakePOINT(3,1);bidak.Infobidak = 'b';bidak.CountMove = 0;
   InsVFirst(L1,bidak);
@@ -619,34 +619,30 @@ ListPindah getKingMove(address P,List *L1, List *L2){
 }
 
 boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2){
-  boolean Stop, CanCastRK, CanCastRQ;
-  POINT x0=Lokasi(K), x1, RKing, RQueen, xK, xRK, xRQ;
-  x1 = PlusDelta(x0,0,0);
+  boolean Stop, CanCastRK, CanCastRQ, Check;
+  POINT x1=Lokasi(K), RKing, RQueen, xK, xRK, xRQ;
   Stop = false;
   CanCastRK = false;
   RKing = Lokasi(RK); RQueen = Lokasi(RQ);
-  while (IsPointValid(x1) && (!Stop)){
-    while (Absis(x1) != Absis(RKing)){
-      x1 = PlusDelta(x0,0,1);
-      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
-        Stop = true;
-      }
+  Check = isCheck(K, L1, L2);
+  while ((!Stop) && (Absis(x1) != Absis(RKing))){
+    x1 = PlusDelta(x1,1,0);
+    if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RKing)) && (!Check)){
+      Stop = true;
     }
   }
+
   if (!Stop && (CountMove(RK) == 0) && (CountMove(K) == 0)){
     CanCastRK = true;
   }
 
-  x0=Lokasi(K);
-  x1 = PlusDelta(x0,0,0);
+  x1=Lokasi(K);
   Stop = false;
   CanCastRQ = false;
-  while (IsPointValid(x1) && (!Stop)){
-    while (Absis(x1) != Absis(RQueen)){
-      x1 = PlusDelta(x0,0,1);
-      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
-        Stop = true;
-      }
+  while ((!Stop) && (Absis(x1) != Absis(RQueen))){
+    x1 = PlusDelta(x1,-1,0);
+    if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RQueen)) && (!Check)){
+      Stop = true;
     }
   }
 
@@ -661,34 +657,30 @@ boolean CanCastling(address K, address RK, address RQ, List *L1, List *L2){
 }
 
 void Castling(address K, address RK, address RQ, List *L1, List *L2){
-  boolean Stop, CanCastRK, CanCastRQ;
-  POINT x0=Lokasi(K), x1, RKing, RQueen, xK, xRK, xRQ;
-  x1 = PlusDelta(x0,0,0);
+  boolean Stop, CanCastRK, CanCastRQ, Check;
+  POINT x1=Lokasi(K), RKing, RQueen, xK, xRK, xRQ;
   Stop = false;
   CanCastRK = false;
+  Check = isCheck(K, L1, L2);
   RKing = Lokasi(RK); RQueen = Lokasi(RQ);
-  while (IsPointValid(x1) && (!Stop)){
-    while (Absis(x1) != Absis(RKing)){
-      x1 = PlusDelta(x0,0,1);
-      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
-        Stop = true;
-      }
+  while ((!Stop) && (Absis(x1) != Absis(RKing))){
+    x1 = PlusDelta(x1,1,0);
+    if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RKing)) && (!Check)){
+      Stop = true;
     }
   }
+
   if (!Stop && (CountMove(RK) == 0) && (CountMove(K) == 0)){
     CanCastRK = true;
   }
 
-  x0=Lokasi(K);
-  x1 = PlusDelta(x0,0,0);
+  x1=Lokasi(K);
   Stop = false;
   CanCastRQ = false;
-  while (IsPointValid(x1) && (!Stop)){
-    while (Absis(x1) != Absis(RQueen)){
-      x1 = PlusDelta(x0,0,1);
-      if (SearchEL(*L1,x1) || (SearchEL(*L2,x1))){
-        Stop = true;
-      }
+  while ((!Stop) && (Absis(x1) != Absis(RQueen))){
+    x1 = PlusDelta(x1,-1,0);
+    if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RQueen)) && (!Check)){
+      Stop = true;
     }
   }
 
@@ -704,37 +696,134 @@ void Castling(address K, address RK, address RQ, List *L1, List *L2){
     printf("Pilihan Castling yang tersedia: \n");
     printf("1. Castling King\n");
     printf("2. Castling Queen\n");
+    printf("Pilih gerakan khusus yang ingin dilakukan: ");
     scanf("%d", &pilihan);
     if (pilihan == 1){
       xK = PlusDelta(xK, 2, 0);
       xRK = PlusDelta(xRK, -2, 0);
       Lokasi(K) = xK; Lokasi(RK) = xRK;
+      printf("Castling berhasil dilakukan.\n");
+      printf("Bidak Raja telah berpindah dari (E,1) ke (G,1).\n");
+      printf("Bidak Benteng telah berpindah dari (H,1) ke (F,1).\n");
     }
     else if (pilihan == 2){
       xK = PlusDelta(xK, -2, 0);
-      xRQ = PlusDelta(xRK, 3, 0);
+      xRQ = PlusDelta(xRQ, 3, 0);
       Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+      printf("Castling berhasil dilakukan.\n");
+      printf("Bidak Raja telah berpindah dari (E,1) ke (C,1).\n");
+      printf("Bidak Benteng telah berpindah dari (A,1) ke (D,1).\n");
     }
   }
   else if (CanCastRK){
     xK = PlusDelta(xK, 2, 0);
     xRK = PlusDelta(xRK, -2, 0);
     Lokasi(K) = xK; Lokasi(RK) = xRK;
+    printf("Castling berhasil dilakukan.\n");
+    printf("Bidak Raja telah berpindah dari (E,1) ke (G,1).\n");
+    printf("Bidak Benteng telah berpindah dari (H,1) ke (F,1).\n");
+  }
+  else if (CanCastRQ){
+    xK = PlusDelta(xK, -2, 0);
+    xRQ = PlusDelta(xRQ, 3, 0);
+    Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+    printf("Castling berhasil dilakukan.\n");
+    printf("Bidak Raja telah berpindah dari (E,1) ke (C,1).\n");
+    printf("Bidak Benteng telah berpindah dari (A,1) ke (D,1).\n");
+  }
+  else{
+    printf("error\n");
+  }
+}
+
+void Castling2(address K, address RK, address RQ, List *L1, List *L2){
+  boolean Stop, CanCastRK, CanCastRQ, Check;
+  POINT x1=Lokasi(K), RKing, RQueen, xK, xRK, xRQ;
+  Stop = false;
+  CanCastRK = false;
+  Check = isCheck(K, L1, L2);
+  RKing = Lokasi(RK); RQueen = Lokasi(RQ);
+  while ((!Stop) && (Absis(x1) != Absis(RKing))){
+    x1 = PlusDelta(x1,1,0);
+    if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RKing)) && (!Check)){
+      Stop = true;
+    }
+  }
+
+  if (!Stop && (CountMove(RK) == 0) && (CountMove(K) == 0)){
+    CanCastRK = true;
+  }
+
+  x1=Lokasi(K);
+  Stop = false;
+  CanCastRQ = false;
+  while ((!Stop) && (Absis(x1) != Absis(RQueen))){
+    x1 = PlusDelta(x1,-1,0);
+    if ((SearchEL(*L1,x1) || (SearchEL(*L2,x1))) && (Absis(x1) != Absis(RQueen)) && (!Check)){
+      Stop = true;
+    }
+  }
+
+  if (!Stop && (CountMove(RQ) == 0) && (CountMove(K) == 0)){
+    CanCastRQ = true;
+  }
+
+  int pilihan;
+  xK = Lokasi(K);
+  xRK = Lokasi(RK);
+  xRQ = Lokasi(RQ);
+  if (CanCastRK && CanCastRQ){
+    printf("Pilihan Castling yang tersedia: \n");
+    printf("1. Castling King\n");
+    printf("2. Castling Queen\n");
+    printf("Pilih gerakan khusus yang ingin dilakukan: ");
+    scanf("%d", &pilihan);
+    if (pilihan == 1){
+      xK = PlusDelta(xK, 2, 0);
+      xRK = PlusDelta(xRK, -2, 0);
+      Lokasi(K) = xK; Lokasi(RK) = xRK;
+      printf("Castling berhasil dilakukan.\n");
+      printf("Bidak Raja telah berpindah dari (E,8) ke (G,8).\n");
+      printf("Bidak Benteng telah berpindah dari (H,8) ke (F,8).\n");
+    }
+    else if (pilihan == 2){
+      xK = PlusDelta(xK, -2, 0);
+      xRQ = PlusDelta(xRQ, 3, 0);
+      Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+      printf("Castling berhasil dilakukan.\n");
+      printf("Bidak Raja telah berpindah dari (E,8) ke (C,8).\n");
+      printf("Bidak Benteng telah berpindah dari (A,8) ke (D,8).\n");
+    }
   }
   else if (CanCastRK){
+    xK = PlusDelta(xK, 2, 0);
+    xRK = PlusDelta(xRK, -2, 0);
+    Lokasi(K) = xK; Lokasi(RK) = xRK;
+    printf("Castling berhasil dilakukan.\n");
+    printf("Bidak Raja telah berpindah dari (E,8) ke (G,8).\n");
+    printf("Bidak Benteng telah berpindah dari (H,8) ke (F,8).\n");
+  }
+  else if (CanCastRQ){
     xK = PlusDelta(xK, -2, 0);
-    xRQ = PlusDelta(xRK, 3, 0);
+    xRQ = PlusDelta(xRQ, 3, 0);
     Lokasi(K) = xK; Lokasi(RQ) = xRQ;
+    printf("Castling berhasil dilakukan.\n");
+    printf("Bidak Raja telah berpindah dari (E,8) ke (C,8).\n");
+    printf("Bidak Benteng telah berpindah dari (A,8) ke (D,8).\n");
+  }
+  else{
+    printf("error\n");
   }
 }
 
 void ShowSpecialMove(List *L1, List *L2, TabEl *T){
   int pilihan;
+  TabEl Tab;
   boolean cek;
   /*search address king*/
   address K;
   infolist king;
-  king.Lokasi = MakePOINT(4,1); 
+  king.Lokasi = MakePOINT(5,1); 
   king.Infobidak = 'k';  
   K = Search(*L1,king);
 
@@ -752,20 +841,73 @@ void ShowSpecialMove(List *L1, List *L2, TabEl *T){
   RookQueen.Infobidak = 'r';  
   RQ = Search(*L1,RookQueen);
 
-  // cek = CanCastling(K,RK,RQ,L1,L2);
-  // if(cek){
-  printf("Pilihan Special Move yang tersedia: \n");
-  printf("1. Castling\n");
-  scanf("%d", &pilihan);
-  if (pilihan == 1){
-    Castling(K, RK, RQ, L1, L2);
-    printarray(*T);
+  cek = CanCastling(K,RK,RQ,L1,L2);
+
+  if(cek){
+    printf("Daftar gerakan khusus yang bisa dilakukan: \n");
+    printf("1. Castling\n"); 
   }
-  //}
-  //else{
-    //printf("Tidak ada Special Move yang tersedia.\n");;
-  //}
+  else{
+    printf("Tidak ada Special Move yang tersedia.\n");;
+  }
+
+  if (cek){
+    printf("Pilih gerakan khusus yang ingin dilakukan: ");
+    scanf("%d", &pilihan);
+    if (pilihan == 1){
+      Castling(K, RK, RQ, L1, L2);
+      Tab = board(*L1,*L2);
+      printarray(Tab);
+    }
+  }
 }
+
+void ShowSpecialMove2(List *L1, List *L2, TabEl *T){
+  int pilihan;
+  TabEl Tab;
+  boolean cek;
+  /*search address king*/
+  address K;
+  infolist king;
+  king.Lokasi = MakePOINT(5,8); 
+  king.Infobidak = 'K';  
+  K = Search(*L2,king);
+
+  /*search address rook kanan*/
+  address RK;
+  infolist RookKing;
+  RookKing.Lokasi = MakePOINT(8,8); 
+  RookKing.Infobidak = 'R';  
+  RK = Search(*L2,RookKing);
+
+  /*search address rook kiri*/
+  address RQ;
+  infolist RookQueen;
+  RookQueen.Lokasi = MakePOINT(1,8); 
+  RookQueen.Infobidak = 'R';  
+  RQ = Search(*L2,RookQueen);
+
+  cek = CanCastling(K,RK,RQ,L1,L2);
+
+  if(cek){
+    printf("Daftar gerakan khusus yang bisa dilakukan: \n");
+    printf("1. Castling\n"); 
+  }
+  else{
+    printf("Tidak ada Special Move yang tersedia.\n");;
+  }
+
+  if (cek){
+    printf("Pilih gerakan khusus yang ingin dilakukan: ");
+    scanf("%d", &pilihan);
+    if (pilihan == 1){
+      Castling2(K, RK, RQ, L1, L2);
+      Tab = board(*L1,*L2);
+      printarray(Tab);
+    }
+  }
+}
+
 
 POINT moveselector(ListPindah S,int select){
   POINT X;
@@ -1609,59 +1751,15 @@ boolean isCheck2(address P,List *L1, List *L2){
   printarray(T);
   printf("\n");
   CreateEmptyStack(&S);
-  inisialisasi_Urutan(&Q1);
-  printf("%d\n",NBElmt(Q1));
-  do {
-  printf("Giliran Player %c untuk bermain!\n",InfoHead(Q1));
-  printf(" 1.Bergerak\n 2.Undo\n 3.Special Move\n Pilih Opsi yang anda inginkan : \n");
-  scanf("%d",&pilihanmenu);
-  if (pilihanmenu == 1){
-        Push(&S,T);
-        if(InfoHead(Q1) == '1'){
-            move(&L1,&L2,&T,&poinP1);
-        } else {
-            move2(&L1,&L2,&T,&poinP2);
-        }
-        Del(&Q1,&InfoHead(Q1));
-        printf("%d\n",NBElmt(Q1));
-        printf("%d\n",S.TOP);
-  }
-  else if (pilihanmenu == 2){
-    if (IsEmptyStack((S))){
-        printf("Perintah Undo belum dapat dijalankan.\n");
-    }else {
-        if(S.TOP == 1){
-            Pop(&S,&T);
-            TabToList (T,&L1,&L2);
-            if (InfoHead(Q1) == '1'){
-                Add(&Q1,'1');
-            }else {
-                Add(&Q1,'2');
-          } 
-            }
-        else {
-            Pop(&S,&T);
-            Pop(&S,&T);
-            TabToList(T,&L1,&L2);
-            if (InfoHead(Q1) == '1'){
-                Add(&Q1,'1');
-                Add(&Q1,'2');
-            }else {
-                Add(&Q1,'2');
-                Add(&Q1,'1');
-            } 
-        }
-        printarray(T);
-        printf("%d\n",NBElmt(Q1));
-        printf("%d\n",S.TOP);
-  }
-} else if (pilihanmenu == 3){
-    ShowSpecialMove(&L1,&L2,&T);
-} else {
-  printf ("Opsi yang anda pilih tidak valid. \n");
-}
-  } while (!IsEmptyQueue(Q1));
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  move(&L1,&L2,&T,&poinP1);
+  ShowSpecialMove(&L1,&L2,&T);
   return 0;
-}
-  */
+}*/
   
