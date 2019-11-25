@@ -126,27 +126,3 @@ void DelPQ(PrioQueue * Q, infotypePQ * X)
     else HeadPQ(*Q)=NextPQ(P);
     DealokasiPQ(P);
 }
-
-// int main(){
-//     PrioQueue Q;
-//     infotypePQ X,Y;
-//     char c[4]="iza",d[4]="uwu",e[4]="hmm";
-
-//     CreateEmptyPQ(&Q);
-//     strcpy(X.nama,c);
-//     X.score=20;
-//     AddPQ(&Q,X);
-//     strcpy(X.nama,d);
-//     X.score=9;
-//     AddPQ(&Q,X);
-//     strcpy(X.nama,e);
-//     X.score=90;
-//     AddPQ(&Q,X);
-
-//     DelPQ(&Q,&Y);
-//     printf("%s %d\n",Y.nama,Y.score);
-//     DelPQ(&Q,&Y);
-//     printf("%s %d\n",Y.nama,Y.score);
-//     DelPQ(&Q,&Y);
-//     printf("%s %d\n",Y.nama,Y.score);
-// }
