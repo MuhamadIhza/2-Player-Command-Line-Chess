@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <string.h>
-#include "leaderboard.h"
+#include "externalfile.h"
 
 char filename[63],*pemain,*sscore;
 int score;
 static FILE *file;
 
 void addtolb(char* pemain,int score){
-    file = fopen("../../Data/Leaderboard.txt", "a");
-    fprintf(file, "%s,%d\n",pemain,score);
+    file = fopen("../../Data/Leaderboard.txt", "a");    
+    fprintf(file, "%s,%d\n",pemain,score);              // menuliskan data ke file external leaderboard
 }
 
 void printlb(){
@@ -19,11 +19,11 @@ void printlb(){
     CreateEmpty(&Q);
 
     while (!EndKata) {
-        strcpy(X.nama,CKata.TabKata);
+        strcpy(X.nama,CKata.TabKata);       // data nama pemain
         ADVKATA();
-        X.score = toint(CKata.TabKata);
+        X.score = toint(CKata.TabKata);     // data score pemain
         ADVKATA();
-        Add(&Q,X);
+        Add(&Q,X);                          // menambahkan data ke Priority Queue
     }
 
     printf("+------------------------+\n");
@@ -35,7 +35,7 @@ void printlb(){
 
     while (!IsEmpty(Q)){
         Del(&Q,&X);
-        printf("|  %d \t|  %s \t %d \t |\n", i, X.nama, X.score);
+        printf("|  %d \t|  %s \t %d \t |\n", i, X.nama, X.score);      // iterasi print data
         i++;
     }
     printf("+ ---------------------- +\n\n");
@@ -47,7 +47,7 @@ int toint(char* x){
     int nilai=0;
     
     int i=0;
-    while(x[i]!='\0'){
+    while(x[i]!='\0'){              //  iterasi pengubahan menuju angka untuk setiap karakternya
         switch (x[i])
         {
         case '0':
