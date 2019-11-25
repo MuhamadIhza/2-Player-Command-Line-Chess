@@ -1573,7 +1573,6 @@ boolean isCheck2(address P,List *L1, List *L2){
       if ( c=='H' ) check = true;
     }
   }
-
   x1 = PlusDelta(x0,1,-2);
   if (IsPointValid(x1)) {
     if (!SearchEL(*L1,x1)){
@@ -1597,41 +1596,32 @@ boolean isCheck2(address P,List *L1, List *L2){
   }
   return check;
 }
-/*int main(){
+int main(){
   TabEl T;
-  List temp,temp1,temp2;
   List L1,L2;
   Queue Q1;
   Stack S;
   int pilihanmenu;
+  int poinP1 =0;
+  int poinP2 =0;
   initboard(&L1,&L2);
   T = board(L1,L2);
   printarray(T);
   /* print possible moves*/
   printf("\n");
   CreateEmptyStack(&S);
-  int poinP1 =0;
-  int poinP2 =0;
-  Queue Q1;
-  
-  initboard(&L1,&L2);
-  T = board(L1,L2);
-  printarray(T);
-  printf("\n");
   inisialisasi_Urutan(&Q1);
   printf("%d\n",NBElmt(Q1));
-  initboard(&temp1,&temp2);
-  address tes;
   do {
   printf("Giliran Player %c untuk bermain!\n",InfoHead(Q1));
-  printf("Pilih Opsi yang anda inginkan : \n 1.Bergerak\n 2.Undo\n");
+  printf(" 1.Bergerak\n 2.Undo\n 3.Special Move\n Pilih Opsi yang anda inginkan : \n");
   scanf("%d",&pilihanmenu);
   if (pilihanmenu == 1){
         Push(&S,T);
         if(InfoHead(Q1) == '1'){
-            move(&L1,&L2,&T);
+            move(&L1,&L2,&T,&poinP1);
         } else {
-            move2(&L1,&L2,&T);
+            move2(&L1,&L2,&T,&poinP2);
         }
         Del(&Q1,&InfoHead(Q1));
         printf("%d\n",NBElmt(Q1));
@@ -1653,7 +1643,7 @@ boolean isCheck2(address P,List *L1, List *L2){
         else {
             Pop(&S,&T);
             Pop(&S,&T);
-            TabToList (T,&L1,&L2);
+            TabToList(T,&L1,&L2);
             if (InfoHead(Q1) == '1'){
                 Add(&Q1,'1');
                 Add(&Q1,'2');
@@ -1666,13 +1656,13 @@ boolean isCheck2(address P,List *L1, List *L2){
         printf("%d\n",NBElmt(Q1));
         printf("%d\n",S.TOP);
   }
+} else if (pilihanmenu == 3){
+    ShowSpecialMove(&L1,&L2,&T);
+} else {
+  printf ("Opsi yang anda pilih tidak valid. \n");
 }
-  }
-  while (!IsEmptyQueue(Q1));
+  } while (!IsEmptyQueue(Q1));
   return 0;
 }
   
-  ShowSpecialMove(&L1,&L2,&T);
-
-  return 0;
-}*/
+  

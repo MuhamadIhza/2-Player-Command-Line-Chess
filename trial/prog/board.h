@@ -22,6 +22,7 @@ typedef struct {
 void initboard(List *L1,List *L2);
 TabEl board(List L1,List L2);
 void printarray(TabEl T);
+void TabToList(TabEl T,List *L1, List *L2);
 ListPindah getPionMove(address P,List *L1, List *L2);
 ListPindah getBishopMove(address P,List *L1, List *L2);
 ListPindah getPionMove2(address P,List *L1, List *L2);
